@@ -40,6 +40,24 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBPlace;
         
         /// <summary>
+        /// TBusername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBusername;
+        
+        /// <summary>
+        /// TBPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBPassword;
+        
+        /// <summary>
         /// BtnAddParish control.
         /// </summary>
         /// <remarks>

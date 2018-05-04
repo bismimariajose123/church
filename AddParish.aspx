@@ -25,7 +25,15 @@
       
       <asp:TextBox ID="TBPlace" runat="server" CssClass="input"></asp:TextBox>
    
-       
+       <label for="psw"><b>UserName</b></label>
+      
+      <asp:TextBox ID="TBusername" runat="server" CssClass="input"></asp:TextBox>
+      
+      <label for="psw"><b>Password</b></label>
+      
+      <asp:TextBox ID="TBPassword" runat="server" CssClass="input"></asp:TextBox>
+   
+   
       <asp:button runat="server" text="Add" CssClass="loginbutton" ID="BtnAddParish" OnClick="BtnAddParish_Click"/>
   </div>
         </div>

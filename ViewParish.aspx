@@ -61,6 +61,19 @@
                                     <asp:Label ID="LBLPlace" runat="server" Text='<%# Bind("Place") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Username" SortExpression="Username">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TBUname" runat="server" Text='<%# Bind("Username") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="LBLUname" runat="server" Text='<%# Bind("Username") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Password" SortExpression="Password">
+                                 <ItemTemplate>
+                                    <asp:Label ID="LBLPwd" runat="server" Text='<%# Bind("Password") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
                         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

@@ -47,7 +47,7 @@ namespace Diocese.Project_Code.SuperAdmin
 
             SqlCommand updateDesignationcmd = new SqlCommand("update Sup_PriestTable set Designation=@Designation,Current_Parish_id=@Current_Parish_id where Parish_Priest_ID = @id", con);
 
-            SqlCommand update_priestid_in_Sub_login = new SqlCommand("update Sup_SubAdminTable set Priest_Id=@priestid where Sub_Ad_Parish_id = @id", con);
+            //SqlCommand update_priestid_in_Sub_login = new SqlCommand("update Sup_SubAdminTable set Priest_Id=@priestid where Sub_Ad_Parish_id = @id", con);
             try
             {
                
@@ -63,9 +63,9 @@ namespace Diocese.Project_Code.SuperAdmin
                     updateDesignationcmd.Parameters.AddWithValue("@id", objPriestTransfer_BO.PriestID);
                     int update_result = updateDesignationcmd.ExecuteNonQuery();
 
-                    update_priestid_in_Sub_login.Parameters.AddWithValue("@priestid",objPriestTransfer_BO.PriestID);
-                    update_priestid_in_Sub_login.Parameters.AddWithValue("@id", objPriestTransfer_BO.ParishID);
-                    int update_result_login = updateDesignationcmd.ExecuteNonQuery();
+                    //update_priestid_in_Sub_login.Parameters.AddWithValue("@priestid",objPriestTransfer_BO.PriestID);
+                    //update_priestid_in_Sub_login.Parameters.AddWithValue("@id", objPriestTransfer_BO.ParishID);
+                   // int update_result_login = update_priestid_in_Sub_login.ExecuteNonQuery();
 
 
 
@@ -84,9 +84,9 @@ namespace Diocese.Project_Code.SuperAdmin
                     updateDesignationcmd.Parameters.AddWithValue("@id", objPriestTransfer_BO.PriestID);
                     int update_result= updateDesignationcmd.ExecuteNonQuery();
 
-                    update_priestid_in_Sub_login.Parameters.AddWithValue("@priestid", objPriestTransfer_BO.PriestID);
-                    update_priestid_in_Sub_login.Parameters.AddWithValue("@id", objPriestTransfer_BO.ParishID);
-                    int update_result_login = updateDesignationcmd.ExecuteNonQuery();
+                    //update_priestid_in_Sub_login.Parameters.AddWithValue("@priestid", objPriestTransfer_BO.PriestID);
+                    //update_priestid_in_Sub_login.Parameters.AddWithValue("@id", objPriestTransfer_BO.ParishID);
+                    //int update_result_login = update_priestid_in_Sub_login.ExecuteNonQuery();
 
                     con.Close();
                     return Result;

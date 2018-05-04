@@ -10,8 +10,10 @@ namespace Diocese.Project_Code.SuperAdmin
     {
         private string Parish_Name;
         private string Place;
-   
-    // Get and set values
+        private string Username;
+        private string Password;
+
+        // Get and set values
         public string ParishName
 
         {
@@ -38,6 +40,35 @@ namespace Diocese.Project_Code.SuperAdmin
                 Place = value;
             }
         }
+
+        public string UName
+
+        {
+            get
+            {
+                return Username;
+            }
+
+            set
+            {
+                Username = value;
+            }
+        }
+        public string Passwd
+
+        {
+            get
+            {
+                return Password;
+            }
+
+            set
+            {
+                Password = value;
+            }
+        }
+
+
 
     }
 

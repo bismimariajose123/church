@@ -57,9 +57,14 @@ namespace Diocese
             int result = 0;
             TextBox TBParish_Name = GVParishTable.Rows[e.RowIndex].FindControl("TBParish_Name") as TextBox;
             TextBox TBPlace = GVParishTable.Rows[e.RowIndex].FindControl("TBPlace") as TextBox;
+            TextBox TBUname = GVParishTable.Rows[e.RowIndex].FindControl("TBUname") as TextBox;
+            TextBox TBPwd = GVParishTable.Rows[e.RowIndex].FindControl("TBPwd") as TextBox;
+
             int id = Convert.ToInt16(GVParishTable.DataKeys[e.RowIndex].Values["Parish_ID"].ToString());
             objParishDetails_BO.ParishName = TBParish_Name.Text;
             objParishDetails_BO.ParishPlace = TBPlace.Text;
+            objParishDetails_BO.UName = TBUname.Text;
+            objParishDetails_BO.Passwd = TBPwd.Text;
             result = objParishDetails_BLL.UpdateParish(objParishDetails_BO,id);
             GVParishTable.EditIndex = -1;
             Load_data();

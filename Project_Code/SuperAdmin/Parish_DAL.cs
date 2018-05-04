@@ -17,11 +17,13 @@ namespace Diocese.Project_Code.SuperAdmin
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("insert into Sup_ParishTable values(@ParishName,@Place)", con);
+            SqlCommand cmd = new SqlCommand("insert into Sup_ParishTable values(@ParishName,@Place,@Username,@Password)", con);
             try
             {
                 cmd.Parameters.AddWithValue("@ParishName", objParishDetails_BO.ParishName);
                 cmd.Parameters.AddWithValue("@Place", objParishDetails_BO.ParishPlace);
+                cmd.Parameters.AddWithValue("@Username", objParishDetails_BO.UName);
+                cmd.Parameters.AddWithValue("@Password", objParishDetails_BO.Passwd);
                 int Result = cmd.ExecuteNonQuery();
                 con.Close();
                 return Result;
@@ -67,11 +69,12 @@ namespace Diocese.Project_Code.SuperAdmin
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("update Sup_ParishTable set Parish_Name=@ParishName,Place=@Place where Parish_ID = @id", con);
+            SqlCommand cmd = new SqlCommand("update Sup_ParishTable set Parish_Name=@ParishName,Place=@Place,Username=@Username,Password=@Password where Parish_ID = @id", con);
             cmd.Parameters.AddWithValue("@ParishName", objParishDetails_BO.ParishName);
             cmd.Parameters.AddWithValue("@Place", objParishDetails_BO.ParishPlace);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
+            cmd.Parameters.AddWithValue("@Username", objParishDetails_BO.UName);
+            cmd.Parameters.AddWithValue("@Password", objParishDetails_BO.Passwd);
+            cmd.Parameters.AddWithValue("@id",id);
             int Result = cmd.ExecuteNonQuery();
             con.Close();
             return Result;

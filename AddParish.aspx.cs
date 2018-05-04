@@ -25,6 +25,8 @@ namespace Diocese
             Parish_BLL objPariahDetailsBLL = new Parish_BLL();
             objParishDetails.ParishName = TBChurchName.Text;
             objParishDetails.ParishPlace = TBPlace.Text;
+            objParishDetails.UName = TBusername.Text;
+            objParishDetails.Passwd = TBPassword.Text;
            result=objPariahDetailsBLL.InsertParishDetails(objParishDetails);
             Response.Redirect("AddParish.aspx");
 
