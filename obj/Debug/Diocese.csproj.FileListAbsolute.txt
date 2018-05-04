@@ -1,0 +1,9 @@
+D:\3 tierfare\Diocese\bin\Diocese.dll.config
+D:\3 tierfare\Diocese\bin\Diocese.dll
+D:\3 tierfare\Diocese\bin\Diocese.pdb
+D:\3 tierfare\Diocese\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\3 tierfare\Diocese\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\3 tierfare\Diocese\obj\Debug\Diocese.csprojResolveAssemblyReference.cache
+D:\3 tierfare\Diocese\obj\Debug\Diocese.csproj.CoreCompileInputs.cache
+D:\3 tierfare\Diocese\obj\Debug\Diocese.dll
+D:\3 tierfare\Diocese\obj\Debug\Diocese.pdb

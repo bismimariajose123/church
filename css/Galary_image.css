@@ -1,0 +1,12 @@
+﻿
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 300px;
+    height: 300px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    padding-left:5px;
+}
+
