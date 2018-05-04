@@ -102,8 +102,18 @@ namespace Diocese
         {
             string searchstr = string.Empty;
             searchstr = TBsearch.Text;
-            GVPriestTable.DataSource = objPriestDetails_BLL.Get_Search_PriestDetails(searchstr);
-            GVPriestTable.DataBind();
+            DataTable dt = new DataTable();
+            dt= objPriestDetails_BLL.Get_Search_PriestDetails(searchstr);
+            if(dt.Rows.Count > 0)
+            {
+                GVPriestTable.DataSource = dt;
+                GVPriestTable.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('search not found');</script>");
+            }
+            
         }
     }
 }
