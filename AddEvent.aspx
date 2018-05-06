@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="AddEvent.aspx.cs" Inherits="Diocese.AddEvent" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
     <div class="reg-w3">
 <div class="w3layouts-main">
 	<h2>ADD EVENT</h2>

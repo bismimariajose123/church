@@ -90,10 +90,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<nav class="link-effect-2" id="link-effect-2">
 							<ul class="nav navbar-nav">
 								<li class="active">
-									<a href="HomePage.aspx" class="effect-3">Home</a>
+									<a href="HomePage.aspx" id="home" class="effect-3">Home</a>
 								</li>
 								<li>
-									<a href="about.html" class="effect-3">About Us</a>
+									<a href="about.html" id="aboutus" class="effect-3">About Us</a>
 								</li>
 								
 								<!--<li class="dropdown">
@@ -138,11 +138,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										
 									</ul>
 								</li>-->
-								<li class="active">
-									<a href="gallery.html" class="effect-3">Gallery</a>
+								<li>
+									<a href="gallery.html" id="galary" class="effect-3">Gallery</a>
 								</li>
 								<li>	
-					                 <a href="LoginForm.aspx" class="effect-3">Login</a>
+					                 <a id="loginid" href="LoginForm.aspx" class="effect-3">Login</a>
 								</li>
 								<li>
 									<a href="contact.html" class="effect-3">Logout</a>

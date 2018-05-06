@@ -212,9 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </aside>
 <!--sidebar end-->
 <!--main content start-->
-<section id="main-content">
-    WELCOME SUBADMIN
-   
+<section id="main-content"> 
 	<section class="wrapper">
          <form id="form1" runat="server">
         <div>

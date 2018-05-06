@@ -138,8 +138,9 @@ namespace Diocese.Project_Code.SuperAdmin
         {
         SqlConnection con = new SqlConnection(ConnectionString);
         con.Open();
-            
-        SqlCommand cmd = new SqlCommand("select p.Parish_Priest_ID,p.Parish_Priest_Name,p.Parish_Priest_Image,p.Phone_No,p.OrdinationDate,p.Native_Place,p.Designation,pa.Parish_Name from Sup_PriestTable p left join Sup_ParishTable pa on p.Current_Parish_id = pa.Parish_ID where p.Parish_Priest_ID not in (select Priest_Id from Sup_Priest_TransferTable) or pa.Parish_Name = p.Native_Place", con);
+            string query= "select p.Parish_Priest_ID,p.Parish_Priest_Name,p.Native_Place,p.Designation,pa.Parish_Name,p.OrdinationDate,p.Parish_Priest_Image,p.Phone_No from Sup_PriestTable p left join Sup_ParishTable pa on p.Current_Parish_id = pa.Parish_ID where p.Parish_Priest_ID not in (select Priest_Id from Sup_Priest_TransferTable where Parish_Id not in (select Parish_Id from Sup_Priest_TransferTable group by Parish_Id having count(Parish_Id)> 1))";
+
+            SqlCommand cmd = new SqlCommand(query, con);
         SqlDataAdapter sda = new SqlDataAdapter(cmd);
         DataTable dt = new DataTable();
         sda.Fill(dt);

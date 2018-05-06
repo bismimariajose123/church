@@ -5,18 +5,29 @@
   <div class="logincontainer">
     <label for="uname"><b>Username</b></label>
       
-      <asp:TextBox ID="TBUsername" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" title="Enter username"></asp:TextBox>
+      <asp:TextBox ID="TBUsername" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" required="" placeholder="Enter username"></asp:TextBox>
    
           
     <label for="psw"><b>Password</b></label>
       
-      <asp:TextBox ID="TBPassword" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" title="Enter password"></asp:TextBox>
+      <asp:TextBox ID="TBPassword" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" required="" placeholder="Enter password"></asp:TextBox>
    
        <label for="parish"><b>Parish</b></label>
-      <asp:DropDownList ID="DDLParish" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" title="Select Parish"></asp:DropDownList>
+      <asp:DropDownList ID="DDLParish" runat="server" AppendDataBoundItems="True" CssClass="input" data-toggle="tooltip" data-placement="top" required="" placeholder="Select Parish" DataSourceID="ParishName" DataTextField="Parish_Name" DataValueField="Parish_ID">
+          <asp:ListItem Value="0">--select--</asp:ListItem>
+      </asp:DropDownList>
      
-      <asp:button runat="server" text="Login" CssClass="loginbutton"/>
+      <asp:SqlDataSource ID="ParishName" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [Sup_ParishTable]"></asp:SqlDataSource>
+     
+      <asp:button runat="server" text="Login" ID="LogibBtn" CssClass="loginbutton" OnClick="LogibBtn_Click"/>
     
+       <asp:DropDownList ID="DLLUsertype" runat="server" AppendDataBoundItems="True" CssClass="input" data-toggle="tooltip" data-placement="top" required="" >
+          <asp:ListItem Value="0">--select--</asp:ListItem>
+            <asp:ListItem Value="1">Super Admin</asp:ListItem>
+           <asp:ListItem Value="2">Sub Admin</asp:ListItem>
+           <asp:ListItem Value="3">Member</asp:ListItem>
+           <asp:ListItem Value="4">Guest</asp:ListItem>
+      </asp:DropDownList>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
