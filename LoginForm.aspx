@@ -19,8 +19,7 @@
      
       <asp:SqlDataSource ID="ParishName" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [Sup_ParishTable]"></asp:SqlDataSource>
      
-      <asp:button runat="server" text="Login" ID="LogibBtn" CssClass="loginbutton" OnClick="LogibBtn_Click"/>
-    
+      <label for="parish"><b>User Type</b></label>
        <asp:DropDownList ID="DLLUsertype" runat="server" AppendDataBoundItems="True" CssClass="input" data-toggle="tooltip" data-placement="top" required="" >
           <asp:ListItem Value="0">--select--</asp:ListItem>
             <asp:ListItem Value="1">Super Admin</asp:ListItem>
@@ -28,6 +27,8 @@
            <asp:ListItem Value="3">Member</asp:ListItem>
            <asp:ListItem Value="4">Guest</asp:ListItem>
       </asp:DropDownList>
+       <asp:button runat="server" text="Login" ID="LogibBtn" CssClass="loginbutton" OnClick="LogibBtn_Click"/>
+    
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

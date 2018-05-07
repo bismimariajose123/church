@@ -23,6 +23,7 @@ namespace Diocese
             objLoginBO.Pwd = TBPassword.Text;
             objLoginBO.Parishid = Convert.ToInt32(DDLParish.SelectedValue);
             objLoginBO.User_type = Convert.ToInt32(DLLUsertype.SelectedValue);
+            Session["parishid"] = objLoginBO.Parishid;
 
             int result = objLoginBLL.CheckLogin(objLoginBO);
             if(result==1)

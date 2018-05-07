@@ -20,10 +20,10 @@
 			<asp:TextBox ID="TBPass" runat="server" CssClass="input" TextMode="Password"></asp:TextBox>
 			
            <%-- input in loginform.css--%>
-			  <label for="uname"><b>Parish Name </b></label>
-            <asp:TextBox ID="TBParishName" runat="server" CssClass="input"></asp:TextBox>
-            <label for="uname"><b>Ward Name </b></label>
-            <asp:DropDownList ID="DDLWardName" runat="server" CssClass="input"></asp:DropDownList>
+			    <label for="uname"><b>Ward Name </b></label>
+            <asp:DropDownList ID="DDLWardName" runat="server" CssClass="input" AppendDataBoundItems="true">
+                 <asp:ListItem Value="0">--select--</asp:ListItem>
+            </asp:DropDownList>
            <br />
             <label for="uname"><b>Contact Nob</b></label>
 			<asp:TextBox ID="TBContactNo" runat="server" CssClass="input"></asp:TextBox>
@@ -33,7 +33,7 @@
            
           	<div class="clearfix"></div>
 				<%--buttonregform in subadmin/style.css--%>
-            <asp:Button ID="Button1" runat="server" Text="ADD"  CssClass="buttonregform"/>
+            <asp:Button ID="BtnCreateFamily" runat="server" Text="ADD"  CssClass="buttonregform" OnClick="BtnCreateFamily_Click"/>
 		</div>
 		<a href="login.html">CreateFamily</a>
 </div>

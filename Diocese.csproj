@@ -425,6 +425,12 @@
     <Compile Include="Project_Code\LoginBLL.cs" />
     <Compile Include="Project_Code\LoginBO.cs" />
     <Compile Include="Project_Code\LoginDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\FamilyBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\FamilyBO.cs" />
+    <Compile Include="Project_Code\SubAdmin\FamilyDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\WardBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\WardBO.cs" />
+    <Compile Include="Project_Code\SubAdmin\WardDAL.cs" />
     <Compile Include="Project_Code\SuperAdmin\Parish_Priest_BLL.cs" />
     <Compile Include="Project_Code\SuperAdmin\Parish_BLL.cs" />
     <Compile Include="Project_Code\SuperAdmin\Parish_BO.cs" />
@@ -554,7 +560,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Project_Code\People\" />
-    <Folder Include="Project_Code\SubAdmin\" />
     <Folder Include="Project_Code\SuperAdmin\Priest_Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>

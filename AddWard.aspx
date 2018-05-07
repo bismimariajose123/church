@@ -11,7 +11,7 @@
             
 				<div class="clearfix"></div>
 				<%--buttonregform in subadmin/style.css--%>
-            <asp:Button ID="Button1" runat="server" Text="ADD"  CssClass="buttonregform"/>
+            <asp:Button ID="BtnAddWard" runat="server" Text="ADD"  CssClass="buttonregform" OnClick="BtnAddWard_Click"/>
 		</div>
 		
 </div>

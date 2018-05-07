@@ -9,11 +9,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<%--<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>--%>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
    
   <link href="css/loginform.css" rel="stylesheet" type="text/css" media="all" />
+
 	
 <!-- bootstrap-css -->
 <link rel="stylesheet" href="subadmin/css/bootstrap.min.css" >
@@ -235,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="subadmin/js/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
-<script>
+<%--<script>
 	$(document).ready(function() {
 		//BOX BUTTON SHOW AND CLOSE
 	   jQuery('.small-graph-box').hover(function() {
@@ -322,6 +323,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //calendar -->
-    
+    --%>
 </body>
 </html>
