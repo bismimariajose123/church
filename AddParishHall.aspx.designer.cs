@@ -22,12 +22,39 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBHallName;
         
         /// <summary>
-        /// Btnadd control.
+        /// TBHallNO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btnadd;
+        protected global::System.Web.UI.WebControls.TextBox TBHallNO;
+        
+        /// <summary>
+        /// TBNobr_People control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBNobr_People;
+        
+        /// <summary>
+        /// TBRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBRate;
+        
+        /// <summary>
+        /// BtnaddHall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnaddHall;
     }
 }

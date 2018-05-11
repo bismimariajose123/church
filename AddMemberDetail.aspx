@@ -44,7 +44,7 @@
               <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Date of Birth</label>
-                <input type="date" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
+                <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate" ng-model="model.date" required="" onchange="date_dis()">
                 <asp:hiddenfield ID="Dobhidden" runat="server"></asp:hiddenfield>
                 </div>
             <div class="col-md-6 form-group1 form-last">
@@ -57,7 +57,11 @@
                <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Relation to Head</label>
-                <asp:dropdownlist ID="DDLRelation" runat="server" required="" style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:9px;height:30px"></asp:dropdownlist>
+                <asp:dropdownlist ID="DDLRelation" runat="server" required="" AppendDataBoundItems="True"
+                    style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:9px;height:30px" DataSourceID="PositionTable" DataTextField="Position_Name" DataValueField="Position_Id">
+                    <asp:ListItem Value="0">--select--</asp:ListItem>
+                </asp:dropdownlist>
+                <asp:SqlDataSource ID="PositionTable" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [PositionTable]"></asp:SqlDataSource>
                 </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Occupation</label>
@@ -82,8 +86,9 @@
             <div class="col-md-6 form-group1">
                 <div class="checkbox1">
                 <label>
-                    <asp:checkbox runat="server" ng-model="model.winner" required="" class="ng-invalid ng-invalid-required"></asp:checkbox>
+                    <asp:checkbox runat="server" id="marriedstatus" ng-model="model.winner" required="" class="ng-invalid ng-invalid-required" onclick="MarriedCheck()"></asp:checkbox>
                    Are you a married?
+                    <asp:HiddenField ID="HiddenFieldMarriedstatus" runat="server" />
                 </label>
               </div>
                </div>
@@ -94,7 +99,7 @@
             <div class="clearfix"> </div>
             </div>
 
-            <div class="vali-form">
+            <div class="vali-form" id="Wifediv" style="display:none">
             <div class="col-md-6 form-group1">
               <label class="control-label">Wife's Official Name</label>
                 <asp:textbox ID="TBWifeOffName" runat="server" required="" placeholder="Official Name"></asp:textbox>
@@ -105,10 +110,12 @@
           </div>
             <div class="clearfix"> </div>
             </div>
+               <label for="psw"><b>Image</b></label>
+      <asp:FileUpload ID="FileUploadimg" runat="server" />
+
              <div class="vali-form">
               <div class="col-md-12 form-group">
-              
-              <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn btn-primary"/>
+              <asp:Button ID="BtnAddMember" runat="server" Text="Submit" OnClick="BtnAddMember_Click" CssClass="btn btn-primary" />
               <button type="reset" class="btn btn-default">Reset</button>
             </div>
           <div class="clearfix"> </div>
@@ -118,4 +125,28 @@
 
 </div>
 
+     <script type="text/javascript">
+         function MarriedCheck()
+        {
+             var Wifediv = document.getElementById("Wifediv");
+            // var HiddenFieldMarriedstatus = document.getElementById('<%= HiddenFieldMarriedstatus.ClientID  %>')
+            if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked)) {
+              //  HiddenFieldMarriedstatus.value = 1;
+                Wifediv.style.display = "block";
+               
+            }
+            else {
+               // HiddenFieldMarriedstatus.value = 0;
+                Wifediv.style.display = "none";
+
+            }
+           
+        }
+         
+             function date_dis() {
+          var textbox = document.getElementById('orddate');
+          document.getElementById('<%=Dobhidden.ClientID%>').value = textbox.value;
+      }
+   
+</script>
 </asp:Content>

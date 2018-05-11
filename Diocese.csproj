@@ -272,6 +272,7 @@
     <Content Include="ViewAllWard.aspx" />
     <Content Include="ViewDonation.aspx" />
     <Content Include="ViewParish.aspx" />
+    <Content Include="ViewParishHall.aspx" />
     <Content Include="ViewParishPriest.aspx" />
     <Content Include="ViewParish_Priest.aspx" />
     <Content Include="Web.config" />
@@ -424,10 +425,16 @@
     <Compile Include="Project_Code\Galary_BLL.cs" />
     <Compile Include="Project_Code\LoginBLL.cs" />
     <Compile Include="Project_Code\LoginBO.cs" />
-    <Compile Include="Project_Code\LoginDAL.cs" />
+    <Compile Include="Project_Code\LoginDAL2.cs" />
+    <Compile Include="Project_Code\People\MemberRegisterDAL.cs" />
+    <Compile Include="Project_Code\People\MemberRegisterBLL.cs" />
+    <Compile Include="Project_Code\People\MemberRegisterBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\Parish_HallBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\Parish_HallBO.cs" />
+    <Compile Include="Project_Code\SubAdmin\Parish_HallDAL.cs" />
     <Compile Include="Project_Code\SubAdmin\WardBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\WardBO.cs" />
     <Compile Include="Project_Code\SubAdmin\WardDAL.cs" />
@@ -542,6 +549,13 @@
     <Compile Include="ViewParish.aspx.designer.cs">
       <DependentUpon>ViewParish.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewParishHall.aspx.cs">
+      <DependentUpon>ViewParishHall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewParishHall.aspx.designer.cs">
+      <DependentUpon>ViewParishHall.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewParishPriest.aspx.cs">
       <DependentUpon>ViewParishPriest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -559,7 +573,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Project_Code\People\" />
+    <Folder Include="Project_Code\People\PeopleImage\" />
     <Folder Include="Project_Code\SuperAdmin\Priest_Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>

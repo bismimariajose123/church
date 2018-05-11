@@ -12,6 +12,7 @@ namespace Diocese
     {
         LoginBO objLoginBO = new LoginBO();
         LoginBLL objLoginBLL = new LoginBLL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,21 +26,23 @@ namespace Diocese
             objLoginBO.User_type = Convert.ToInt32(DLLUsertype.SelectedValue);
             Session["parishid"] = objLoginBO.Parishid;
 
-            int result = objLoginBLL.CheckLogin(objLoginBO);
-            if(result==1)
+             int value = objLoginBLL.CheckLogin(objLoginBO);
+            if(value==1 && objLoginBO.User_type==1)
             {
                 Response.Redirect("Superadminhome.aspx");
             }
-            else if(result==2)
+            else if(value == 1 && objLoginBO.User_type == 2)
             {
                 Session["AdminName"] = objLoginBO.Personname.ToString();
                 Response.Redirect("SubAdminHome.aspx");
             }
-            else if (result == 3)
+            else if (value == 1 && objLoginBO.User_type == 3)
             {
+                Session["Headname"] = objLoginBO.Personname;
+                Session["family_id"] = objLoginBO.Familyid;
                 Response.Redirect("MemberHome.aspx");
             }
-            else if (result == 4)
+            else if (value == 1 && objLoginBO.User_type == 4)
             {
                 Response.Redirect("NonParishMemberHome.aspx");
             }

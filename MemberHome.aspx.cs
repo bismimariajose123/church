@@ -11,7 +11,10 @@ namespace Diocese
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LBLHeadName.Text = Session["Headname"].ToString();
+            HiddenFieldFamilyID.Value = Session["family_id"].ToString();
 
         }
+        
     }
 }

@@ -94,6 +94,15 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDLRelation;
         
         /// <summary>
+        /// PositionTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PositionTable;
+        
+        /// <summary>
         /// TBOccupation control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,24 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TBMotherName;
+        
+        /// <summary>
+        /// marriedstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox marriedstatus;
+        
+        /// <summary>
+        /// HiddenFieldMarriedstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldMarriedstatus;
         
         /// <summary>
         /// TBPO control.
@@ -148,12 +175,21 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBWifeBapName;
         
         /// <summary>
-        /// Button1 control.
+        /// FileUploadimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadimg;
+        
+        /// <summary>
+        /// BtnAddMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAddMember;
     }
 }

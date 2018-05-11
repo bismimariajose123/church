@@ -39,5 +39,85 @@ namespace Diocese
             }
 
         }
+
+        protected void Imgbtnsearch_Click(object sender, ImageClickEventArgs e)
+        {
+            string searchstr = string.Empty;
+            searchstr = TBsearch.Text;
+            objFamilyBO.parish_id = Convert.ToInt32(Session["parishid"].ToString());
+            DataTable dt = objFamilyBLL.Get_Search_FamilyDetails(objFamilyBO, searchstr);
+
+            if (dt.Rows.Count > 0)
+            {
+                GVFamilyDetails.DataSource = dt;
+                GVFamilyDetails.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('search not found');</script>");
+
+            }
+        }
+
+        protected void DDLPagesize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+if ((DDLPagesize.SelectedValue != "--") && (DDLPagesize.SelectedValue != "All"))
+            {
+                GVFamilyDetails.PageSize = Convert.ToInt32(DDLPagesize.SelectedValue);
+                DataTable dt = (DataTable)Session["Dt"];
+                GVFamilyDetails.DataSource = dt;
+                GVFamilyDetails.DataBind();
+            }
+            else if ((DDLPagesize.SelectedValue != "--") && (DDLPagesize.SelectedValue == "All"))
+            {
+                GVFamilyDetails.AllowPaging = false;
+                DataTable dt = (DataTable)Session["Dt"];
+                GVFamilyDetails.DataSource = dt;
+                GVFamilyDetails.DataBind();
+            }
+            else
+            {
+                GVFamilyDetails.AllowPaging = false;
+                Load_data();
+            }
+        }
+
+        //protected void GVFamilyDetails_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        //{
+        //    GVFamilyDetails.EditIndex = -1;
+        //    Load_data();
+        //}
+
+        protected void GVFamilyDetails_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int result = 0;
+            int id = Convert.ToInt16(GVFamilyDetails.DataKeys[e.RowIndex].Values["Family_ID"].ToString());
+            result = objFamilyBLL.Delete_Family(id);
+            Load_data();
+        }
+
+        //protected void GVFamilyDetails_RowEditing(object sender, GridViewEditEventArgs e)
+        //{
+        //    GVFamilyDetails.EditIndex = e.NewEditIndex;
+        //    Load_data();
+        //}
+
+        //protected void GVFamilyDetails_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        //{
+        //    int result = 0;
+        //    TextBox TBFamilyName = GVFamilyDetails.Rows[e.RowIndex].FindControl("FamilyName") as TextBox;
+           
+        //    int id = Convert.ToInt16(GVFamilyDetails.DataKeys[e.RowIndex].Values["Family_ID"].ToString());
+        //    objFamilyBO.familyname = TBFamilyName.Text;
+          // result = objFamilyBLL.UpdateWard(objFamilyBO, id);
+        //    GVFamilyDetails.EditIndex = -1;
+        //    Load_data();
+        //}
+
+        protected void GVFamilyDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GVFamilyDetails.PageIndex = e.NewPageIndex;
+            this.Load_data();
+        }
     }
 }

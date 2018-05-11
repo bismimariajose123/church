@@ -28,5 +28,20 @@ namespace Diocese.Project_Code.SubAdmin
         {
             return objFamilyDAL.GetFamilyDetails(objFamilyBO);
         }
+
+        public DataTable Get_Search_FamilyDetails(FamilyBO objFamilyBO, string searchstr)
+        {
+            return objFamilyDAL.Get_Search_FamilyDetails(objFamilyBO, searchstr);
+        }
+
+        public int Delete_Family(int id)
+        {
+            return objFamilyDAL.Delete_Family(id);
+        }
+
+        //public int UpdateWard(FamilyBO objFamilyBO, int id)
+        //{
+        //    return objFamilyDAL.UpdateWard(objFamilyBO, id);
+        //}
     }
 }

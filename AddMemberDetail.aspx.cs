@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Diocese.Project_Code.People;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,9 +11,80 @@ namespace Diocese
 {
     public partial class AddMemberDetail : System.Web.UI.Page
     {
+        MemberRegisterBO objMemberRegisterBO = new MemberRegisterBO();
+        MemberRegisterBLL objMemberRegisterBLL = new MemberRegisterBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
+            objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
+            objMemberRegisterBO.Familyid = Convert.ToInt32(Session["family_id"].ToString());
+            if(!IsPostBack)
+            {
+                Load_MemberData();
+            }
+        }
 
+        public void Load_MemberData()
+        {
+            MemberRegisterBO memberobj = new MemberRegisterBO();
+            memberobj = objMemberRegisterBLL.Load_MemberData(objMemberRegisterBO);
+        }
+        protected void BtnAddMember_Click(object sender, EventArgs e)
+        {
+            if(marriedstatus.Checked)
+            {
+                objMemberRegisterBO.Marriedstatus = 1;
+                objMemberRegisterBO.WifesOfficialname = TBWifeOffName.Text;
+                objMemberRegisterBO.WifesBapname = TBWifeBapName.Text;
+            }
+            else
+            {
+                objMemberRegisterBO.Marriedstatus = 0;
+                objMemberRegisterBO.WifesOfficialname =" ";
+                objMemberRegisterBO.WifesBapname =" ";
+            }
+            string fileName = string.Empty;
+            if (FileUploadimg.HasFile)
+            {
+
+                fileName = FileUploadimg.FileName; //gets full path name in filename
+                fileName = "~/Project_Code/People/PeopleImage/" + fileName;
+                FileUploadimg.SaveAs(Server.MapPath(fileName));
+            }
+            objMemberRegisterBO.Relationid = Convert.ToInt32(DDLRelation.SelectedValue);
+            objMemberRegisterBO.Officialname = TBOfficialName.Text;
+            objMemberRegisterBO.Baptismname = TBBaptismName.Text;
+            objMemberRegisterBO.Contactno = TBContactNumber.Text;
+            if(TBOccupation.Text==" ")
+            {
+                objMemberRegisterBO.occupation = " ";
+            }
+            else
+            {
+                objMemberRegisterBO.occupation = TBOccupation.Text;
+            }
+            if (TBEmail.Text == " ")
+            {
+                objMemberRegisterBO.email = " ";
+            }
+            else
+            {
+                objMemberRegisterBO.email = TBEmail.Text;
+            }
+            
+            string a = Dobhidden.Value.ToString();
+            DateTime oDate = DateTime.Parse(a);
+            string dob = Convert.ToDateTime(oDate.ToLongDateString()).ToString("dd/MM/yyyy"); //returns 25/09/2011
+            objMemberRegisterBO.dob = dob;
+            objMemberRegisterBO.landmark = TBLandmark.Text;
+            objMemberRegisterBO.Fathername = TBFatherName.Text;
+            objMemberRegisterBO.Mothername = TBMotherName.Text;
+            objMemberRegisterBO.Parishmember = 1;
+            objMemberRegisterBO.po = TBPO.Text;
+            objMemberRegisterBO.Imagepath = fileName;
+            objMemberRegisterBO.Baptism_id = 0;
+            objMemberRegisterBO.Marriage_id = 0;
+            objMemberRegisterBO.Registered_Status = 0;
+            int value = objMemberRegisterBLL.InsertMemberDetails(objMemberRegisterBO);
         }
     }
 }

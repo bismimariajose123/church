@@ -13,13 +13,31 @@ namespace Diocese {
     public partial class ViewAllFamily {
         
         /// <summary>
-        /// TBSearchFamily control.
+        /// TBsearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBSearchFamily;
+        protected global::System.Web.UI.WebControls.TextBox TBsearch;
+        
+        /// <summary>
+        /// Imgbtnsearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton Imgbtnsearch;
+        
+        /// <summary>
+        /// DDLPagesize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLPagesize;
         
         /// <summary>
         /// GVFamilyDetails control.

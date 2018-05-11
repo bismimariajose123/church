@@ -47,6 +47,42 @@ namespace Diocese.Project_Code.SubAdmin
             return result;
         }
 
+        //public int UpdateWard(FamilyBO objFamilyBO, int id)
+        //{
+        //    int result;
+        //    SqlConnection con = new SqlConnection(ConnectionString);
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand("update Sub_Create_FamilyLoginTable set FamilyName=@FamilyName where Family_ID=@id", con);
+        //    cmd.Parameters.AddWithValue("@FamilyName", objFamilyBO.familyname);
+        //    cmd.Parameters.AddWithValue("@id", id);
+        //    result = cmd.ExecuteNonQuery();
+        //    return result;
+        //}
+
+        public int Delete_Family(int id)
+        {
+            int result;
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete from Sub_Create_FamilyLoginTable where Family_ID=@id", con);
+            cmd.Parameters.AddWithValue("@id", id);
+            result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public DataTable Get_Search_FamilyDetails(FamilyBO objFamilyBO, string searchstr)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select c.Family_ID,w.WardName,c.FamilyNo,c.FamilyName,c.HeadName,c.Username,c.Password,c.Contact_No from Sub_Create_FamilyLoginTable c,Sub_WardTable w where w.Ward_ID=c.Ward_id  and c.Parish_id="+objFamilyBO.parish_id+" and (w.WardName like '%" + searchstr + "%' or c.FamilyName like '%" + searchstr + "%' or c.HeadName like '%" + searchstr + "%')";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+        }
+
         public DataTable GetFamilyDetails(FamilyBO objFamilyBO)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
@@ -60,7 +96,7 @@ namespace Diocese.Project_Code.SubAdmin
             sda.Fill(dt);
             return dt;
         }
-
+        //load DDl
         public DataTable GetWardName(FamilyBO objFamilyBO)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
