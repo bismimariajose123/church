@@ -271,6 +271,7 @@
     <Content Include="ViewAllFamily.aspx" />
     <Content Include="ViewAllWard.aspx" />
     <Content Include="ViewDonation.aspx" />
+    <Content Include="ViewFamilyMembers.aspx" />
     <Content Include="ViewParish.aspx" />
     <Content Include="ViewParishHall.aspx" />
     <Content Include="ViewParishPriest.aspx" />
@@ -426,9 +427,9 @@
     <Compile Include="Project_Code\LoginBLL.cs" />
     <Compile Include="Project_Code\LoginBO.cs" />
     <Compile Include="Project_Code\LoginDAL2.cs" />
-    <Compile Include="Project_Code\People\MemberRegisterDAL.cs" />
-    <Compile Include="Project_Code\People\MemberRegisterBLL.cs" />
-    <Compile Include="Project_Code\People\MemberRegisterBO.cs" />
+    <Compile Include="Project_Code\People\MemberDAL.cs" />
+    <Compile Include="Project_Code\People\MemberBLL.cs" />
+    <Compile Include="Project_Code\People\MemberBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyDAL.cs" />
@@ -541,6 +542,13 @@
     </Compile>
     <Compile Include="ViewDonation.aspx.designer.cs">
       <DependentUpon>ViewDonation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFamilyMembers.aspx.cs">
+      <DependentUpon>ViewFamilyMembers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFamilyMembers.aspx.designer.cs">
+      <DependentUpon>ViewFamilyMembers.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewParish.aspx.cs">
       <DependentUpon>ViewParish.aspx</DependentUpon>

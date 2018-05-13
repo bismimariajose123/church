@@ -11,8 +11,8 @@ namespace Diocese
 {
     public partial class AddMemberDetail : System.Web.UI.Page
     {
-        MemberRegisterBO objMemberRegisterBO = new MemberRegisterBO();
-        MemberRegisterBLL objMemberRegisterBLL = new MemberRegisterBLL();
+        MemberBO objMemberRegisterBO = new MemberBO();
+        MemberBLL objMemberRegisterBLL = new MemberBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
             objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
@@ -25,8 +25,10 @@ namespace Diocese
 
         public void Load_MemberData()
         {
-            MemberRegisterBO memberobj = new MemberRegisterBO();
+            MemberBO memberobj = new MemberBO();
             memberobj = objMemberRegisterBLL.Load_MemberData(objMemberRegisterBO);
+            TBFamilyName.Text = memberobj.FamilyName;
+            TBParishName.Text = Session["Parishname"].ToString();
         }
         protected void BtnAddMember_Click(object sender, EventArgs e)
         {
@@ -84,7 +86,10 @@ namespace Diocese
             objMemberRegisterBO.Baptism_id = 0;
             objMemberRegisterBO.Marriage_id = 0;
             objMemberRegisterBO.Registered_Status = 0;
+            objMemberRegisterBO.NativeParishName = TBParishName.Text;
+            objMemberRegisterBO.FamilyName = TBFamilyName.Text;
             int value = objMemberRegisterBLL.InsertMemberDetails(objMemberRegisterBO);
+            Response.Redirect("AddMemberDetail.aspx");
         }
     }
 }

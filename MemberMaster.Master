@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										 <li id="menu-academico1" ><a href="#"><i class="fa fa-tachometer"></i> <span> FAMILY</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
                                            <li id="menu-academico-avaliacoes1" ><a href="AddMemberDetail.aspx">REGISTER MEMBERS</a></li>
-										   <li id="menu-academico-avaliacoes" ><a href="icons.html">VIEW MEMBERS</a></li>
+										   <li id="menu-academico-avaliacoes" ><a href="ViewFamilyMembers.aspx">VIEW MEMBERS</a></li>
 											 </ul>
 										</li>
 									<li id="menu-academico" ><a href="errorpage.html"><i class="fa fa-tachometer"></i> <span>NOTIFICATION</span><div class="clearfix"></div></a></li>

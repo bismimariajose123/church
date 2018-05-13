@@ -8,11 +8,11 @@
          	<div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Family Name</label>
-                <asp:textbox ID="TBFamilyName" runat="server" required="" placeholder="Family Name"></asp:textbox>
+                <asp:textbox ID="TBFamilyName" runat="server" required="" placeholder="Native Name"></asp:textbox>
             </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Parish Name</label>
-               <asp:textbox ID="TBParishName" runat="server" required="" placeholder="Parish Name"></asp:textbox>
+               <asp:textbox ID="TBParishName" runat="server" required="" placeholder="Native Name"></asp:textbox>
             </div>
             <div class="clearfix"> </div>
             </div>
@@ -58,7 +58,7 @@
             <div class="col-md-6 form-group1">
               <label class="control-label">Relation to Head</label>
                 <asp:dropdownlist ID="DDLRelation" runat="server" required="" AppendDataBoundItems="True"
-                    style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:9px;height:30px" DataSourceID="PositionTable" DataTextField="Position_Name" DataValueField="Position_Id">
+                    style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:9px;height:45px;font-size:12px" DataSourceID="PositionTable" DataTextField="Position_Name" DataValueField="Position_Id">
                     <asp:ListItem Value="0">--select--</asp:ListItem>
                 </asp:dropdownlist>
                 <asp:SqlDataSource ID="PositionTable" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [PositionTable]"></asp:SqlDataSource>
@@ -101,11 +101,11 @@
 
             <div class="vali-form" id="Wifediv" style="display:none">
             <div class="col-md-6 form-group1">
-              <label class="control-label">Wife's Official Name</label>
+              <label class="control-label">Spouse's Official Name</label>
                 <asp:textbox ID="TBWifeOffName" runat="server" required="" placeholder="Official Name"></asp:textbox>
             </div>
             <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Wife's Baptism Name</label>
+              <label class="control-label">Spouse's Baptism Name</label>
                <asp:textbox ID="TBWifeBapName" runat="server" required="" placeholder="Baptism Name"></asp:textbox>
           </div>
             <div class="clearfix"> </div>
