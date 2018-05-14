@@ -18,13 +18,10 @@ namespace Diocese
             objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
             objMemberRegisterBO.Familyid = Convert.ToInt32(Session["family_id"].ToString());
 
-            if (!IsPostBack)
-            { 
+          
             Load_Image();
-               
-
-
-        }
+         
+        
         }
 
        
@@ -51,7 +48,13 @@ namespace Diocese
 
         protected void Member_Image_Command(object sender, CommandEventArgs e)
         {
+            if (e.CommandName == "Member")
+            {
+                string id = e.CommandArgument.ToString();
 
+                int priest_id = Convert.ToInt32(id);
+               
+            }
         }
 
         protected void Imgbtnsearch_Click(object sender, ImageClickEventArgs e)
@@ -118,23 +121,28 @@ namespace Diocese
             }
         }
 
-        protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e) //notworking
+        protected void LnkBap_Command(object sender, CommandEventArgs e)
         {
-
-
             if (e.CommandName == "Baptism")
             {
-                int memberid = (int)e.CommandArgument;
+            
+            int memberid = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["memberid"] = memberid;
                 Response.Redirect("BaptismForm.aspx");
             }
-            else if (e.CommandName == "Marriage")
+        }
+
+        protected void LnkMarriage_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "Marriage")
             {
-                int memberid = (int)e.CommandArgument;
+
+                int memberid = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["memberid"] = memberid;
                 Response.Redirect("MarriageDetails_Fill.aspx");
             }
-
         }
+
+       
     }
     }

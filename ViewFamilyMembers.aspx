@@ -12,7 +12,7 @@
                               </div>
      <table>
      <asp:Panel ID="PanelImage" runat="server">
-            <asp:ListView ID="ListView1" runat="server" OnItemDataBound="ListView1_ItemDataBound" OnItemCommand="ListView1_ItemCommand" DataKeyNames="Member_ID">
+            <asp:ListView ID="ListView1" runat="server" OnItemDataBound="ListView1_ItemDataBound"  DataKeyNames="Member_ID">
                 <ItemTemplate>
                    
                         <tr>
@@ -42,12 +42,16 @@
 
                                 
                               
-                                <li>
-                                    <asp:LinkButton ID="LnkBap" runat="server" Visible="false"  CommandArgument='<%#Eval("Member_ID") %>' CommandName="Baptism">Baptism Form</asp:LinkButton>
+                              <li>
+                                    <asp:LinkButton ID="LnkBap" runat="server" Visible="false"  CommandArgument='<%#Eval("Member_ID")%>' CommandName="Baptism" OnCommand="LnkBap_Command" >Baptism Form</asp:LinkButton>
                                     
                                 </li>
-                                <li><asp:LinkButton ID="LnkMarriage" runat="server" Visible="false"   CommandArgument='<%#Eval("Member_ID") %>' CommandName="Marriage">Marriage Form</asp:LinkButton></li>
-                                </ul>
+                                <li><asp:LinkButton ID="LnkMarriage" runat="server" Visible="false"  CommandArgument='<%#Eval("Member_ID")%>' CommandName="Marriage" OnCommand="LnkMarriage_Command">Marriage Form</asp:LinkButton></li>
+                              
+                            
+                                 
+                             
+                            </ul>
                            
                            
                             
