@@ -52,7 +52,8 @@ namespace Diocese
             {
                 string id = e.CommandArgument.ToString();
 
-                int priest_id = Convert.ToInt32(id);
+                int memberid = Convert.ToInt32(id);
+                Session["ParishMember_id"] = memberid;
                
             }
         }
@@ -104,10 +105,10 @@ namespace Diocese
                     lnkbap.Visible = false;
                     lnkmar.Visible = false;
                 }
-                else if (bapid == 0 && marstus == 0)//newborn
-                {
-                    lnkbap.Visible = true;
-                }
+                //else if (bapid == 0 && marstus == 0)//newborn
+                //{
+                //    lnkbap.Visible = true;
+                //}
                 else if (bapid == 0 && marid == 0 && marstus != 0)//married bt not registered B & M
                 {
                     lnkbap.Visible = true;
@@ -117,7 +118,16 @@ namespace Diocese
                 {
                     lnkmar.Visible = true;
                 }
-                
+                else if (marstus == 0 && bapid == 0 && marid == 0) // single bt not new born  ,baptism not registered, married not registered
+                {
+                    lnkbap.Visible = true;
+                    lnkmar.Visible = true;
+                }
+                else if (marstus == 0 && bapid == 0 && marid == 0) // single bt not new born  ,baptism not registered, married not registered
+                {
+                    lnkbap.Visible = true;
+                    lnkmar.Visible = true;
+                }
             }
         }
 
@@ -127,7 +137,7 @@ namespace Diocese
             {
             
             int memberid = Convert.ToInt32(e.CommandArgument.ToString());
-                Session["memberid"] = memberid;
+                Session["ParishMember_id"] = memberid;
                 Response.Redirect("BaptismForm.aspx");
             }
         }
@@ -138,11 +148,14 @@ namespace Diocese
             {
 
                 int memberid = Convert.ToInt32(e.CommandArgument.ToString());
-                Session["memberid"] = memberid;
+                Session["ParishMember_id"] = memberid;
                 Response.Redirect("MarriageDetails_Fill.aspx");
             }
         }
 
-       
+        protected void LnkbtnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MemberHome.aspx");
+        }
     }
     }

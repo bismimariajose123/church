@@ -147,7 +147,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li>
 									<a href="contact.html" class="effect-3">Logout</a>
 								</li>
-								
+								<li>
+									<a href="contact.html" class="effect-3">Register</a>
+								</li>
 							</ul>
 						</nav>
 					</div>

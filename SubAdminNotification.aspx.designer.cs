@@ -13,12 +13,48 @@ namespace Diocese {
     public partial class SubAdminNotification {
         
         /// <summary>
-        /// TBSearch control.
+        /// Lblname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBSearch;
+        protected global::System.Web.UI.WebControls.Label Lblname;
+        
+        /// <summary>
+        /// TBsearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBsearch;
+        
+        /// <summary>
+        /// Imgbtnsearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton Imgbtnsearch;
+        
+        /// <summary>
+        /// DDLPagesize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLPagesize;
+        
+        /// <summary>
+        /// GVSubAdminNotification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVSubAdminNotification;
     }
 }

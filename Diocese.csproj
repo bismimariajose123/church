@@ -169,6 +169,7 @@
     <Content Include="subadmin\js\raphael-min.js" />
     <Content Include="subadmin\js\script.js" />
     <Content Include="subadmin\js\scripts.js" />
+    <Content Include="Sub_ViewMore_Baptism_Details.aspx" />
     <Content Include="Superadminhome.aspx" />
     <Content Include="SuperAdminMaster.Master" />
     <Content Include="SuperAdminNotification.aspx" />
@@ -422,6 +423,9 @@
     <Compile Include="PriestGalary.aspx.designer.cs">
       <DependentUpon>PriestGalary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Project_Code\BaptismBLL.cs" />
+    <Compile Include="Project_Code\BaptismBO.cs" />
+    <Compile Include="Project_Code\BaptismDAL.cs" />
     <Compile Include="Project_Code\GalaryDAL.cs" />
     <Compile Include="Project_Code\Galary_BLL.cs" />
     <Compile Include="Project_Code\LoginBLL.cs" />
@@ -430,6 +434,9 @@
     <Compile Include="Project_Code\People\MemberDAL.cs" />
     <Compile Include="Project_Code\People\MemberBLL.cs" />
     <Compile Include="Project_Code\People\MemberBO.cs" />
+    <Compile Include="Project_Code\RequestBLL.cs" />
+    <Compile Include="Project_Code\RequestBO.cs" />
+    <Compile Include="Project_Code\RequestDAL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyDAL.cs" />
@@ -486,6 +493,13 @@
     </Compile>
     <Compile Include="SubAdminNotification.aspx.designer.cs">
       <DependentUpon>SubAdminNotification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sub_ViewMore_Baptism_Details.aspx.cs">
+      <DependentUpon>Sub_ViewMore_Baptism_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sub_ViewMore_Baptism_Details.aspx.designer.cs">
+      <DependentUpon>Sub_ViewMore_Baptism_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Superadminhome.aspx.cs">
       <DependentUpon>Superadminhome.aspx</DependentUpon>

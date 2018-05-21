@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SimpleFormsMaster.Master" AutoEventWireup="true" CodeBehind="AddMemberDetail.aspx.cs" Inherits="Diocese.AddMemberDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <!--grid-->
+    <asp:LinkButton ID="LinkButtonHome" runat="server" OnClick="LinkButtonHome_Click">Back to Home</asp:LinkButton>
+    <!--grid-->
  	<div class="validation-system">
  		
  		<div class="validation-form">
@@ -86,8 +87,8 @@
             <div class="col-md-6 form-group1">
                 <div class="checkbox1">
                 <label>
-                    <asp:checkbox runat="server" id="marriedstatus" ng-model="model.winner" required="" class="ng-invalid ng-invalid-required" onclick="MarriedCheck()"></asp:checkbox>
-                   Are you a married?
+                    <asp:checkbox runat="server" id="marriedstatus" ng-model="model.winner"  class="ng-invalid ng-invalid-required" onclick="MarriedCheck()"></asp:checkbox>
+                   Are you a married?   tick if yes
                     <asp:HiddenField ID="HiddenFieldMarriedstatus" runat="server" />
                 </label>
               </div>
@@ -102,11 +103,11 @@
             <div class="vali-form" id="Wifediv" style="display:none">
             <div class="col-md-6 form-group1">
               <label class="control-label">Spouse's Official Name</label>
-                <asp:textbox ID="TBWifeOffName" runat="server" required="" placeholder="Official Name"></asp:textbox>
+                <asp:textbox ID="TBWifeOffName" runat="server"  placeholder="Official Name"></asp:textbox>
             </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Spouse's Baptism Name</label>
-               <asp:textbox ID="TBWifeBapName" runat="server" required="" placeholder="Baptism Name"></asp:textbox>
+               <asp:textbox ID="TBWifeBapName" runat="server" placeholder="Baptism Name"></asp:textbox>
           </div>
             <div class="clearfix"> </div>
             </div>

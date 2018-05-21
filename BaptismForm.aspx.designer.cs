@@ -13,6 +13,15 @@ namespace Diocese {
     public partial class BaptismForm {
         
         /// <summary>
+        /// LnkbtnHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LnkbtnHome;
+        
+        /// <summary>
         /// newborn control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox parishmember;
+        
+        /// <summary>
+        /// TBBapTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBBapTime;
         
         /// <summary>
         /// TBFamilyName control.
@@ -76,13 +94,13 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBBaptismName;
         
         /// <summary>
-        /// Dobaphidden control.
+        /// Dobhidden control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Dobaphidden;
+        protected global::System.Web.UI.WebControls.HiddenField Dobhidden;
         
         /// <summary>
         /// DDLGender control.
@@ -94,13 +112,13 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDLGender;
         
         /// <summary>
-        /// DDLPlaceBaptism control.
+        /// TBBapPlace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLPlaceBaptism;
+        protected global::System.Web.UI.WebControls.TextBox TBBapPlace;
         
         /// <summary>
         /// TBBapParish control.
@@ -202,6 +220,15 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.FileUpload FileuploadMotherCertificate;
         
         /// <summary>
+        /// Fileuploadurcertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload Fileuploadurcertificate;
+        
+        /// <summary>
         /// FileuploadGF control.
         /// </summary>
         /// <remarks>
@@ -220,12 +247,12 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.FileUpload FileuploadGM;
         
         /// <summary>
-        /// Button1 control.
+        /// Btn_insertBaptism_details control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Btn_insertBaptism_details;
     }
 }

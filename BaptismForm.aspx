@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SimpleFormsMaster.Master" AutoEventWireup="true" CodeBehind="BaptismForm.aspx.cs" Inherits="Diocese.BaptismForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <!--grid-->
+   
+     <asp:LinkButton ID="LnkbtnHome" runat="server" OnClick="LnkbtnHome_Click">Back to Home</asp:LinkButton>
+    <br />
+    <!--grid-->
  	<div class="validation-system">
  		
  		<div class="validation-form">
@@ -41,8 +44,13 @@
               </div>
                 
                </div>
-           
-            </div>
+            <div id="BaptismTime" style="display:none">
+                 <label class="control-label" id="lblbaptime" >Time of Baptism</label>
+                <asp:textbox ID="TBBapTime" runat="server"  placeholder="Time of Baptism(hh,pm/am)"></asp:textbox>
+         </div>
+                   <div class="clearfix"> </div>
+                 </div>
+            
 
          	<div class="vali-form">
             <div class="col-md-6 form-group1">
@@ -51,7 +59,7 @@
             </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Parish Name</label>
-               <asp:textbox ID="TBParishName" runat="server" required="" placeholder="Parish Name"></asp:textbox>
+               <asp:textbox ID="TBParishName" runat="server" required="" placeholder="Native Parish Name"></asp:textbox>
             </div>
             <div class="clearfix"> </div>
             </div>
@@ -71,13 +79,16 @@
               <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Date of Baptism</label>
-                <input type="date" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
-                <asp:hiddenfield ID="Dobaphidden" runat="server"></asp:hiddenfield>
+                <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate" ng-model="model.date" required="" onchange="date_dis()">
+                <asp:hiddenfield ID="Dobhidden" runat="server"></asp:hiddenfield>
+              
                 </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Gender</label>
               <asp:dropdownlist ID="DDLGender" runat="server"  required="" style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:7px;height:45px;font-size:9px" placeholder="--select--">
-               <asp:ListItem Text="Male" Value="1"></asp:ListItem>
+              <asp:ListItem Text="--select--" Value="0"></asp:ListItem>
+              
+                  <asp:ListItem Text="Male" Value="1"></asp:ListItem>
                <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                
               </asp:dropdownlist>
@@ -89,13 +100,13 @@
                <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Place of Baptism</label>
-                  <asp:dropdownlist ID="DDLPlaceBaptism" runat="server"  required="" style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing:border-box;margin-top:7px;height:45px;font-size:9px" placeholder="--select--">
-             </asp:dropdownlist> 
+                 <asp:textbox ID="TBBapPlace" runat="server"  placeholder="City or town " required=""></asp:textbox>
+          
 
             </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label"> Baptism Parish</label>
-               <asp:textbox ID="TBBapParish" runat="server"  placeholder="Parish Name"></asp:textbox>
+               <asp:textbox ID="TBBapParish" runat="server"  placeholder="Name of parish receiving baptism " required=""></asp:textbox>
           </div>
             <div class="clearfix"> </div>
             </div>
@@ -115,11 +126,11 @@
                <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Father's Baptism Name</label>
-                <asp:textbox ID="TBFatherBapName" runat="server"  placeholder="Baptism Name"></asp:textbox>
+                <asp:textbox ID="TBFatherBapName" runat="server"  placeholder="Baptism Name" required=""></asp:textbox>
             </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Mother's Baptism Name</label>
-               <asp:textbox ID="TBMotherBapName" runat="server"  placeholder="Baptism Name"></asp:textbox>
+               <asp:textbox ID="TBMotherBapName" runat="server"  placeholder="Baptism Name" required=""></asp:textbox>
           </div>
             <div class="clearfix"> </div>
             </div>
@@ -152,81 +163,162 @@
             <div class="vali-form" id="divFC" style="display:none">
             <div class="col-md-6 form-group1">
                <label class="control-label">Father's BaptismCertificate or any proof of christianity</label>
-                <asp:fileupload runat="server" ID="FileuploadFatherCertificate" required=""></asp:fileupload>
+                <asp:fileupload runat="server" ID="FileuploadFatherCertificate" ></asp:fileupload>
                 </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Mother's BaptismCertificate any proof of christianity</label>
-                <asp:fileupload runat="server" ID="FileuploadMotherCertificate" required=""></asp:fileupload>
+                <asp:fileupload runat="server" ID="FileuploadMotherCertificate" ></asp:fileupload>
                 </div>
             <div class="clearfix"> </div>
             </div>
+
+               <div class="vali-form" id="divUR" style="display:none">
+            <div class="col-md-6 form-group1">
+               <label class="control-label">Your baptism Certificate copy</label>
+                <asp:fileupload runat="server" ID="Fileuploadurcertificate" ></asp:fileupload>
+                </div>
+           
+            <div class="clearfix"> </div>
+            </div>
+
 
              <div class="vali-form" id="divGFC" style="display:none">
             <div class="col-md-6 form-group1">
                <label class="control-label">GodFather's BaptismCertificate</label>
-                <asp:fileupload runat="server" ID="FileuploadGF" required=""></asp:fileupload>
+                <asp:fileupload runat="server" ID="FileuploadGF" ></asp:fileupload>
                 </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">GodMother's BaptismCertificate</label>
-                <asp:fileupload runat="server" ID="FileuploadGM" required=""></asp:fileupload>
+                <asp:fileupload runat="server" ID="FileuploadGM" ></asp:fileupload>
                 </div>
             <div class="clearfix"> </div>
             </div> 
-
-  <div class="vali-form">
+           
+             <div class="vali-form">
               <div class="col-md-12 form-group">
-              
-              <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn btn-primary"/>
-              <button type="reset" class="btn btn-default">Reset</button>
+              <asp:Button ID="Btn_insertBaptism_details" runat="server" Text="Submit"  CssClass="btn btn-primary" OnClick="Btn_insertBaptism_details_Click" />
+                
+                <button type="reset" class="btn btn-default">Reset</button>
             </div>
           <div class="clearfix"> </div>
-   </div>
-
+   
+      </div>
    
  	<!---->
  </div>
 
 </div>
+
+    Uparishmember
     <script type="text/javascript">
+
+        function date_dis()
+        {
+            var textbox = document.getElementById('orddate');
+            if (document.getElementById('<%= newborn.ClientID  %>').checked)
+            {  //newborn
+                
+                var CurrentDate = new Date();
+                var currdate=CurrentDate.toLocaleDateString();
+                
+                var givendate = new Date(textbox.value)
+                var bapdate=givendate.toLocaleDateString();
+                alert(bapdate);
+                if (bapdate < currdate)
+                {
+                   
+                    alert("invalid date");
+                }
+
+                else
+                {
+                    alert("valid date");
+                    document.getElementById('<%=Dobhidden.ClientID%>').value = textbox.value;
+                }
+            }
+            else 
+            {
+                document.getElementById('<%=Dobhidden.ClientID%>').value = textbox.value;
+                alert("not new born");
+            }
+            
+        }
         function Newborn()
         {
             if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= newborn.ClientID  %>').checked)) {
                 alert("incorrect selection");
             }
-            else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked)) {
-                // if ((document.getElementById('<%= parishmember.ClientID  %>').checked) == false && (document.getElementById('<%= marriedstatus.ClientID  %>').checked) == false) {
-                // alert("hi");
+            else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) && (document.getElementById('<%= marriedstatus.ClientID  %>').checked)==false) {  //newborn & parents parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
-
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+              
                 divFC.style.display = "none"
                 divGFC.style.display = "block";
+                divUR.style.display = "none";
+                BaptismTime.style.display = "block";
 
-
+                alert("baprequest");
 
             }
-            else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) {
+            else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) { //newborn & parents not parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+                BaptismTime.style.display = "block";
 
                 divFC.style.display = "block"
                 divGFC.style.display = "block";
-
+                divUR.style.display = "none";
             }
-            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked)) {
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked)) { //married & parents parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+                BaptismTime.style.display = "none";
+
+
                 divFC.style.display = "none"
                 divGFC.style.display = "none";
+                divUR.style.display = "block";
             }
 
-            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) {
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) { //married & parents not  parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+                BaptismTime.style.display = "none";
+
                 divFC.style.display = "none"
-                divGFC.style.display = "block";
+                divGFC.style.display = "none";
+                divUR.style.display = "block";
             }
-            
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked)== false && (document.getElementById('<%=  newborn.ClientID  %>').checked)== false && (document.getElementById('<%= parishmember.ClientID  %>').checked)){
+                var divFC = document.getElementById("divFC");              //not married & not new born but parents is parish member
+                var divGFC = document.getElementById("divGFC");
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+                BaptismTime.style.display = "none";
+
+                divFC.style.display = "none"
+                divGFC.style.display = "none";
+                divUR.style.display = "block";
+            }
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) == false && (document.getElementById('<%=  newborn.ClientID  %>').checked) == false && (document.getElementById('<%= parishmember.ClientID  %>').checked)==false) {
+                var divFC = document.getElementById("divFC");              //not married & not new born but parents not is parish member
+                var divGFC = document.getElementById("divGFC");
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+                BaptismTime.style.display = "none";
+
+                divFC.style.display = "none"
+                divGFC.style.display = "none";
+                divUR.style.display = "block";
+            }
         }
         
         

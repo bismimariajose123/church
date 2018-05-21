@@ -52,6 +52,11 @@ namespace Diocese
                 fileName = "~/Project_Code/People/PeopleImage/" + fileName;
                 FileUploadimg.SaveAs(Server.MapPath(fileName));
             }
+            else
+            {
+                fileName = " ";
+               
+            }
             objMemberRegisterBO.Relationid = Convert.ToInt32(DDLRelation.SelectedValue);
             objMemberRegisterBO.Officialname = TBOfficialName.Text;
             objMemberRegisterBO.Baptismname = TBBaptismName.Text;
@@ -90,6 +95,11 @@ namespace Diocese
             objMemberRegisterBO.FamilyName = TBFamilyName.Text;
             int value = objMemberRegisterBLL.InsertMemberDetails(objMemberRegisterBO);
             Response.Redirect("AddMemberDetail.aspx");
+        }
+
+        protected void LinkButtonHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MemberHome.aspx");
         }
     }
 }

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="reg-w3">
 <div class="w3layouts-main">
-	<h2>CREATE WARD</h2>
+	<h2>ADD Parish Priest</h2>
 		<div>
              <label for="uname"><b>Priest Name</b></label>
            <%-- input in loginform.css--%>
