@@ -44,6 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\asp.net project\church\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\..\asp.net project\church\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>.\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>..\..\asp.net project\church\itextsharp.xtra.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -106,6 +118,7 @@
     <Content Include="Member\fonts\FontAwesome.otf" />
     <Content Include="Member\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Member\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="NonMemberMasterPage.Master" />
     <None Include="packages.config" />
     <Content Include="Member\css\basictable.css" />
     <Content Include="Member\css\bootstrap.min.css" />
@@ -132,6 +145,9 @@
     <Content Include="Member\js\morris.js" />
     <Content Include="Member\js\raphael-min.js" />
     <Content Include="Member\js\scripts.js" />
+    <Content Include="Member_ViewNotification.aspx" />
+    <Content Include="NonMemberHome.aspx" />
+    <Content Include="NonMemberRegistration.aspx" />
     <Content Include="ParishHallBooking.aspx" />
     <Content Include="PriestGalary.aspx" />
     <Content Include="Selected_priest_details.aspx" />
@@ -409,6 +425,34 @@
     <Compile Include="MemberMaster.Master.designer.cs">
       <DependentUpon>MemberMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Member_ViewNotification.aspx.cs">
+      <DependentUpon>Member_ViewNotification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member_ViewNotification.aspx.designer.cs">
+      <DependentUpon>Member_ViewNotification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NonMemberMasterPage.Master.cs">
+      <DependentUpon>NonMemberMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NonMemberMasterPage.Master.designer.cs">
+      <DependentUpon>NonMemberMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="NonMemberHome.aspx.cs">
+      <DependentUpon>NonMemberHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NonMemberHome.aspx.designer.cs">
+      <DependentUpon>NonMemberHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NonMemberRegistration.aspx.cs">
+      <DependentUpon>NonMemberRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NonMemberRegistration.aspx.designer.cs">
+      <DependentUpon>NonMemberRegistration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ParishHallBooking.aspx.cs">
       <DependentUpon>ParishHallBooking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -434,6 +478,9 @@
     <Compile Include="Project_Code\People\MemberDAL.cs" />
     <Compile Include="Project_Code\People\MemberBLL.cs" />
     <Compile Include="Project_Code\People\MemberBO.cs" />
+    <Compile Include="Project_Code\People\NonMemberBLL.cs" />
+    <Compile Include="Project_Code\People\NonMemberBO.cs" />
+    <Compile Include="Project_Code\People\NonMemberDAL.cs" />
     <Compile Include="Project_Code\RequestBLL.cs" />
     <Compile Include="Project_Code\RequestBO.cs" />
     <Compile Include="Project_Code\RequestDAL.cs" />

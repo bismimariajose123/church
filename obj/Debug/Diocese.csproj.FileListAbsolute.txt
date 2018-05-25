@@ -7,3 +7,8 @@ D:\3 tierfare\Diocese\obj\Debug\Diocese.csprojResolveAssemblyReference.cache
 D:\3 tierfare\Diocese\obj\Debug\Diocese.csproj.CoreCompileInputs.cache
 D:\3 tierfare\Diocese\obj\Debug\Diocese.dll
 D:\3 tierfare\Diocese\obj\Debug\Diocese.pdb
+D:\3 tierfare\Diocese\bin\itextsharp.dll
+D:\3 tierfare\Diocese\bin\itextsharp.pdfa.dll
+D:\3 tierfare\Diocese\bin\itextsharp.xmlworker.dll
+D:\3 tierfare\Diocese\bin\itextsharp.xtra.dll
+D:\3 tierfare\Diocese\bin\itextsharp.xml

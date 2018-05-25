@@ -16,17 +16,34 @@ namespace Diocese
         BaptismBO objBaptismBO = new BaptismBO();
         protected void Page_Load(object sender, EventArgs e)
         {
+            objBaptismBO.Usertype = Convert.ToInt32(Session["Usertype_normal_bap_req"]);          //viewfamilymember   gets usertype
+            if(objBaptismBO.Usertype!=0)   //if member is not loaded usertype=0
+            { 
             objBaptismBO.To_Parish_id = Convert.ToInt32(Session["parishid"].ToString());
             objBaptismBO.Member_id = Convert.ToInt32(Session["ParishMember_id"].ToString());
+           // objBaptismBO.isParishMember = 1;
+            }
+            else
+            {
+                //if non member is loaded usertype 
+                objBaptismBO.To_Parish_id = Convert.ToInt32(Session["parishid"].ToString()); //else memberid=nonmemberid
+                objBaptismBO.Member_id = Convert.ToInt32(Session["nonmember_id"]);
+                //objBaptismBO.isParishMember = 0;
+                objBaptismBO.Usertype = Convert.ToInt32(Session["non_member_type"]);
 
+            }
             if (!IsPostBack)
             { 
+                
               Load_MemberData();
+               
             }
         }
 
         public void Load_MemberData()
         {
+            if(objBaptismBO.Usertype==3)
+            { 
             objBaptismBO = objBaptismBLL.Load_MemberData(objBaptismBO);
 
             TBFamilyName.Text = objBaptismBO.Familyname;
@@ -36,7 +53,11 @@ namespace Diocese
             TBFatherName.Text = objBaptismBO.Fathername;
             TBMotherName.Text = objBaptismBO.Mothername;
             Session["isparishmember"] = objBaptismBO.isParishMember;
-           
+            }
+            else
+            {
+                return;
+            }
         }
 
         protected void Btn_insertBaptism_details_Click(object sender, EventArgs e)
@@ -277,7 +298,14 @@ namespace Diocese
 
         protected void LnkbtnHome_Click(object sender, EventArgs e)
         {
+            if(objBaptismBO.Usertype==3)
+            { 
             Response.Redirect("MemberHome.aspx");
+            }
+            else if(objBaptismBO.Usertype == 4)
+            {
+                Response.Redirect("NonMemberHome.aspx");
+            }
         }
     }
 }

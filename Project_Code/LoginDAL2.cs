@@ -98,8 +98,47 @@ namespace Diocese.Project_Code
                     throw ex;
                 }
             }
-            else if (objLoginBO.User_type == 4)
+            else if (objLoginBO.User_type == 4) //non parish member
             {
+
+                SqlConnection con = new SqlConnection(ConnectionString);
+                con.Open();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("select count(*) from NonMemberLoginTable where Uname=@Username and Pwd=@Password and To_Parishid=@Parish_ID", con);
+                    cmd.Parameters.AddWithValue("@Username", objLoginBO.username);
+                    cmd.Parameters.AddWithValue("@Password", objLoginBO.Pwd);
+                    cmd.Parameters.AddWithValue("@Parish_ID", objLoginBO.Parishid);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count == 1)
+                    {
+
+                        string query2 = "select NonMember_id,OfficialName from NonMemberLoginTable where Uname='" + objLoginBO.username + "' and Pwd='" + objLoginBO.Pwd + "' and To_Parishid=" + objLoginBO.Parishid;
+                        SqlCommand cmd_Headname = new SqlCommand(query2, con);
+
+                        SqlDataReader dr = cmd_Headname.ExecuteReader();
+                        if (dr.HasRows)
+                        {
+                            dr.Read();
+                            result = 1;
+                            objLoginBO.Personname = dr["OfficialName"].ToString();
+                            objLoginBO.Familyid = Convert.ToInt32(dr["NonMember_id"].ToString());
+                        }
+                        else
+                        {
+                            result = 0;
+                        }
+                        dr.Close();
+                    }
+                    else
+                    {
+                        result = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
 
             }
             else

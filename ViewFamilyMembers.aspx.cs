@@ -138,6 +138,7 @@ namespace Diocese
             
             int memberid = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["ParishMember_id"] = memberid;
+                Session["Usertype_normal_bap_req"] = 3;
                 Response.Redirect("BaptismForm.aspx");
             }
         }
@@ -146,7 +147,7 @@ namespace Diocese
         {
             if (e.CommandName == "Marriage")
             {
-
+                Session["Usertype_normal_marr_req"] = 3;
                 int memberid = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["ParishMember_id"] = memberid;
                 Response.Redirect("MarriageDetails_Fill.aspx");

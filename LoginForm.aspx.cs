@@ -28,16 +28,16 @@ namespace Diocese
             Session["parishid"] = objLoginBO.Parishid;
 
              int value = objLoginBLL.CheckLogin(objLoginBO);
-            if(value==1 && objLoginBO.User_type==1)
+            if(value==1 && objLoginBO.User_type==1)       //Superadmin
             {
                 Response.Redirect("Superadminhome.aspx");
             }
-            else if(value == 1 && objLoginBO.User_type == 2)
+            else if(value == 1 && objLoginBO.User_type == 2)  //subadmin
             {
                 Session["AdminName"] = objLoginBO.Personname.ToString();
                 Response.Redirect("SubAdminHome.aspx");
             }
-            else if (value == 1 && objLoginBO.User_type == 3)
+            else if (value == 1 && objLoginBO.User_type == 3) //member
             {
                 Session["Headname"] = objLoginBO.Personname;
                 Session["family_id"] = objLoginBO.Familyid;
@@ -45,7 +45,8 @@ namespace Diocese
             }
             else if (value == 1 && objLoginBO.User_type == 4)
             {
-                Response.Redirect("NonParishMemberHome.aspx");
+                Session["nonmember_id"] = objLoginBO.Familyid;
+                Response.Redirect("NonMemberHome.aspx");
             }
             else
             {

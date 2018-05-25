@@ -10,7 +10,7 @@
           
     <label for="psw"><b>Password</b></label>
       
-      <asp:TextBox ID="TBPassword" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" required="" placeholder="Enter password"></asp:TextBox>
+      <asp:TextBox ID="TBPassword" runat="server" CssClass="input" data-toggle="tooltip" data-placement="top" required="" placeholder="Enter password" TextMode="Password"></asp:TextBox>
    
        <label for="parish"><b>Parish</b></label>
       <asp:DropDownList ID="DDLParish" runat="server" AppendDataBoundItems="True" CssClass="input" data-toggle="tooltip" data-placement="top" required="" placeholder="Select Parish" DataSourceID="ParishName" DataTextField="Parish_Name" DataValueField="Parish_ID">

@@ -2,10 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text;
+
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
 
 namespace Diocese
 {
@@ -106,36 +111,209 @@ namespace Diocese
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label RequestStatus = (Label)e.Row.FindControl("LBLRequestStatus");
-                Button requestbtn = (Button)e.Row.FindControl("Downloadbtn");
+                Button Addtbn = (Button)e.Row.FindControl("Addtbn");
                 Label Event_Name = (Label)e.Row.FindControl("LBLEvent_Name");
-                if (RequestStatus.Text=="1" && Event_Name.Text=="Baptism")
+                Button Download = (Button)e.Row.FindControl("Download");
+          
+
+                if (RequestStatus == null && Addtbn.Text != null && Event_Name.Text != null)
+                {
+                    return;
+                }
+
+                else if (RequestStatus.Text == "1" && Event_Name.Text == "Baptism")
                 {
 
-                    requestbtn.Visible=true;
+                    Addtbn.Visible = true;
+                }
+               
+                else if(RequestStatus.Text == "4" && Event_Name.Text == "Baptism")
+                {
+                    Addtbn.Visible = true;
+                    Addtbn.Text = "Added";
+                    Download.Visible = true;
+                }
+                else
+                {
+                    Addtbn.Visible = false;
                 }
 
             }
         }
 
-        protected void Downloadbtn_Click(object sender, EventArgs e)
+
+
+      
+
+        protected void GVSubAdminNotification_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int memberid = 0;
+           
+            if (e.CommandName == "Add")
+            {
 
-            int memberid = Convert.ToInt32(((Button)sender).CommandArgument);
-            Session["btn_Dwn_memberid"] = memberid;
+                GridViewRow gv = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                Label Event_Name = (Label)gv.FindControl("LBLEvent_Name");
+                Button Addtbn = (Button)gv.FindControl("Addtbn");
+                Button Download = (Button)gv.FindControl("Download");
 
-            //pending codes for update
+                memberid = Convert.ToInt32(e.CommandArgument);
 
-        }
+                if (Event_Name.Text == "Baptism")
+                {
+                    int result = objRequestBLL.DownloadBaptismForm(memberid);//update baptism id in member table an bap status =1 in baptable
+                    if (result == 1)
+                    {
+                        Download.Visible = true;
+                       
+                    }
 
-        protected void LinkBtnMoreDetails_Command(object sender, CommandEventArgs e)
-        {
+                }
+                if (Event_Name.Text == "Betrothal")
+                {
+                    // int result = objRequestBLL.DownloadBaptismForm(memberid);
+                }
+            }
+
             if (e.CommandName == "Details")
             {
-                int memberid = Convert.ToInt32(e.CommandArgument.ToString());
+                 memberid = Convert.ToInt32(e.CommandArgument.ToString());
                 Session["SubAdmin_viewDetails"] = memberid;
                 //check whether member is 'isparish' or 'or not' 
                 Response.Redirect("Sub_ViewMore_Baptism_Details.aspx");
             }
+            
+
+
+        }
+
+        public void Downloadfun(int memid)
+        {
+
+            DataTable dt = objRequestBLL.GeneratePdfBaptism(memid);
+            DataRow drow = dt.Rows[0];
+            if(dt.Rows.Count>0)
+            {
+                Document doc = new Document(PageSize.A4, 50, 40, 50, 40);
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("D:/BaptismCertificate1.pdf", FileMode.Create));
+                doc.Open();
+                iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance("D:/3 tierfare/Diocese/Project_Code/People/PeopleImage/stjosephslogo.jpg");
+                pic.Alignment = Element.ALIGN_CENTER;
+                pic.ScaleToFit(100f, 100f);
+                doc.Add(pic);
+
+                Paragraph p_space_image = new Paragraph();
+                Chunk img_space = new Chunk(Chunk.NEWLINE);
+                p_space_image.Add(img_space);
+                p_space_image.SpacingAfter = 20;
+
+                Chunk c1 = new Chunk("This is to certify that ", FontFactory.GetFont("Times New Roman"));
+                c1.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c1.Font.SetStyle(0);
+                c1.Font.Size = 12;
+                Chunk c2 = new Chunk(drow["BaptismName"].ToString(), FontFactory.GetFont("Times New Roman"));
+                c2.Font.Size = 14;
+                Chunk c3 = new Chunk(" was Baptised at ", FontFactory.GetFont("Times New Roman"));
+                c3.Font.Size = 12;
+                Chunk c4 = new Chunk(" St. Joseph's Church, Parappa ", FontFactory.GetFont("Times New Roman"));
+                c4.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c4.Font.SetStyle(0);
+                c4.Font.Size = 14;
+                Chunk c5 = new Chunk(" on ", FontFactory.GetFont("Times New Roman"));
+                c5.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c5.Font.SetStyle(0);
+                c5.Font.Size = 12;
+
+               
+                Chunk c7 = new Chunk(drow["DoBaptism"].ToString(), FontFactory.GetFont("Times New Roman"));
+                c7.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c7.Font.SetStyle(0);
+                c7.Font.Size = 14;
+
+                Chunk c8 = new Chunk(" by ", FontFactory.GetFont("Times New Roman"));
+                c8.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c8.Font.SetStyle(0);
+                c8.Font.Size = 12;
+
+                Chunk c9 = new Chunk(drow["Celebrant"].ToString(), FontFactory.GetFont("Times New Roman"));
+                c9.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c9.Font.SetStyle(0);
+                c9.Font.Size = 14;
+
+               
+
+                Chunk c11 = new Chunk("Signed By :  "+ drow["Vicar"].ToString());
+               
+                Chunk c12 = new Chunk("Godfather :  "+ drow["GFName"].ToString());
+               
+                Chunk c13 = new Chunk("GodMother :  "+ drow["GMName"].ToString());
+
+
+                Phrase phnew1 = new Phrase();
+                phnew1.Add(c1);
+                phnew1.Add(c2);
+                phnew1.Add(c3);
+                phnew1.Add(c4);
+                phnew1.Add(c5);
+              
+                Phrase phnew2 = new Phrase();
+                phnew2.Add(c7);
+                phnew2.Add(c8);
+                phnew2.Add(c9);
+               
+
+               
+                Phrase p2 = new Phrase();
+                p2.Add(c11);
+                Phrase p3 = new Phrase();
+                p3.Add(c12);
+
+                Phrase p4 = new Phrase();
+                p4.Add(c13);
+               
+
+                Paragraph pnew1= new Paragraph();
+                pnew1.Add(phnew1);
+                pnew1.Alignment = Element.ALIGN_JUSTIFIED;
+
+                Paragraph pnew2 = new Paragraph();
+                pnew2.Add(phnew2);
+                pnew2.Alignment = Element.ALIGN_JUSTIFIED;
+                pnew2.SpacingBefore = 10;
+               
+
+                Paragraph para2 = new Paragraph();
+                para2.Add(p2);
+                para2.Alignment = Element.ALIGN_JUSTIFIED;
+                para2.SpacingBefore = 10;
+
+                Paragraph para3 = new Paragraph();
+                para3.Add(p3);
+                para3.Alignment = Element.ALIGN_JUSTIFIED;
+                para3.SpacingBefore = 10;
+
+                Paragraph para4 = new Paragraph();
+                para4.Add(p4);
+                para4.Alignment = Element.ALIGN_JUSTIFIED;
+                para4.SpacingBefore = 10;
+
+
+                doc.Add(p_space_image);
+                doc.Add(pnew1);
+                doc.Add(pnew2);
+                doc.Add(para3);
+                doc.Add(para4);
+                doc.Add(para2);
+               
+                doc.Close();
+                Response.Write("successfully downloaded");
+            }
+        }
+
+        protected void Download_Click(object sender, EventArgs e)
+        {
+            int memberid = Convert.ToInt32(((Button)sender).CommandArgument);
+            Downloadfun(memberid);
         }
     }
 }

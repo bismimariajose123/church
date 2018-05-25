@@ -152,6 +152,9 @@ namespace Diocese.Project_Code
             get { return Baptism_id; }
             set { Baptism_id = value; }
         }
-       
+
+        public int Usertype { get => usertype; set => usertype = value; }
+
+        private int usertype;
     }
 }
