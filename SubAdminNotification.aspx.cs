@@ -61,8 +61,10 @@ namespace Diocese
             int result = 0;
             TextBox TBDescription = GVSubAdminNotification.Rows[e.RowIndex].FindControl("TBDescription") as TextBox;
             DropDownList Status = GVSubAdminNotification.Rows[e.RowIndex].FindControl("DropDownList1") as DropDownList;
+            Label LBLIsParishMember = GVSubAdminNotification.Rows[e.RowIndex].FindControl("LBLIsParishMember") as Label;
             objRequestBO.RequestStatus_Description1 = TBDescription.Text;
             objRequestBO.RequestStatus = Convert.ToInt32(Status.SelectedValue);
+            objRequestBO.IsParishMember = Convert.ToInt32(LBLIsParishMember.Text);  //set is parish member
             int id = Convert.ToInt16(GVSubAdminNotification.DataKeys[e.RowIndex].Values["Memberid"].ToString());
             result = objRequestBLL.UpdateRequest(objRequestBO, id);
             GVSubAdminNotification.EditIndex = -1;
@@ -114,36 +116,67 @@ namespace Diocese
                 Button Addtbn = (Button)e.Row.FindControl("Addtbn");
                 Label Event_Name = (Label)e.Row.FindControl("LBLEvent_Name");
                 Button Download = (Button)e.Row.FindControl("Download");
-          
-
-                if (RequestStatus == null && Addtbn.Text != null && Event_Name.Text != null)
+                Label LBLIsParishMember = (Label)e.Row.FindControl("LBLIsParishMember"); //nobr for is parishmember
+                Label isparishmemberName = (Label)e.Row.FindControl("isparishmemberName");//expand nob to terms in label for ismember
+                if (RequestStatus == null && Addtbn.Text != null && Event_Name.Text != null && LBLIsParishMember.Text !=null)
                 {
                     return;
                 }
 
                 else if (RequestStatus.Text == "1" && Event_Name.Text == "Baptism")
                 {
-
-                    Addtbn.Visible = true;
+                    if (LBLIsParishMember.Text =="1") 
+                    {
+                        isparishmemberName.Text = "Member";
+                        isparishmemberName.Visible = true;
+                        LBLIsParishMember.Visible = false;
+                    }
+                    else
+                    {
+                        isparishmemberName.Text = "Non Member";
+                        isparishmemberName.Visible = true;
+                        LBLIsParishMember.Visible = false;
+                    }
+                        Addtbn.Visible = true;
                 }
                
                 else if(RequestStatus.Text == "4" && Event_Name.Text == "Baptism")
                 {
+                    if (LBLIsParishMember.Text == "1")
+                    {
+                        isparishmemberName.Text = "Member";
+                        isparishmemberName.Visible = true;
+                        LBLIsParishMember.Visible = false;
+                    }
+                    else
+                    {
+                        isparishmemberName.Text = "Non Member";
+                        isparishmemberName.Visible = true;
+                        LBLIsParishMember.Visible = false;
+                    }
                     Addtbn.Visible = true;
                     Addtbn.Text = "Added";
                     Download.Visible = true;
                 }
                 else
                 {
+                    if (LBLIsParishMember.Text == "1")
+                    {
+                        isparishmemberName.Text = "Member";
+                        isparishmemberName.Visible = true;
+                        LBLIsParishMember.Visible = false;
+                    }
+                    else
+                    {
+                        isparishmemberName.Text = "Non Member";
+                        isparishmemberName.Visible = true;
+                        LBLIsParishMember.Visible = false;
+                    }
                     Addtbn.Visible = false;
                 }
 
             }
         }
-
-
-
-      
 
         protected void GVSubAdminNotification_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -156,41 +189,90 @@ namespace Diocese
                 Label Event_Name = (Label)gv.FindControl("LBLEvent_Name");
                 Button Addtbn = (Button)gv.FindControl("Addtbn");
                 Button Download = (Button)gv.FindControl("Download");
-
+                Label LBLIsParishMember = (Label)gv.FindControl("LBLIsParishMember");
                 memberid = Convert.ToInt32(e.CommandArgument);
-
-                if (Event_Name.Text == "Baptism")
+                if (LBLIsParishMember.Text == "1")  //Member
                 {
-                    int result = objRequestBLL.DownloadBaptismForm(memberid);//update baptism id in member table an bap status =1 in baptable
-                    if (result == 1)
+                    int isparishmember = Convert.ToInt32(LBLIsParishMember.Text);
+                    if (Event_Name.Text == "Baptism")
                     {
-                        Download.Visible = true;
-                       
+                        int result = objRequestBLL.DownloadBaptismForm(memberid,isparishmember);//update baptism id in member table an bap status =1 in baptable
+                        if (result == 1)
+                        {
+                            Download.Visible = true;
+
+                        }
+
+                    }
+                    if (Event_Name.Text == "Betrothal")
+                    {
+                        // int result = objRequestBLL.DownloadBaptismForm(memberid);
+                    }
+                }
+ 
+                else if(LBLIsParishMember.Text == "0")  //Non member
+                {
+                    int isparishmember = Convert.ToInt32(LBLIsParishMember.Text);
+                    if (Event_Name.Text == "Baptism")
+                    {
+                        int result = objRequestBLL.DownloadBaptismForm(memberid,isparishmember);//update baptism id in member table an bap status =1 in baptable
+                        if (result == 1)
+                        {
+                            Download.Visible = true;
+
+                        }
+
+                    }
+                    if (Event_Name.Text == "Betrothal")
+                    {
+                        // int result = objRequestBLL.DownloadBaptismForm(memberid);
                     }
 
                 }
-                if (Event_Name.Text == "Betrothal")
+            }
+
+            if (e.CommandName == "Details")   //view more details
+            {
+                GridViewRow gv = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                memberid = Convert.ToInt32(e.CommandArgument.ToString());
+                Label Event_Name = (Label)gv.FindControl("LBLEvent_Name");
+                Button Addtbn = (Button)gv.FindControl("Addtbn");
+                Button Download = (Button)gv.FindControl("Download");
+                Label LBLIsParishMember = (Label)gv.FindControl("LBLIsParishMember");
+
+                if(LBLIsParishMember.Text=="1") //if parish member true
                 {
-                    // int result = objRequestBLL.DownloadBaptismForm(memberid);
+                    Session["isparishmember"] = 1; //use in view_more_bap_details.aspx
+                    if(Event_Name.Text== "Baptism")                                      //BAPTISM
+                    {
+                        Session["SubAdmin_viewDetails_memberid"] = memberid;  //assign member id of parish member
+                    }
+                    Response.Redirect("Sub_ViewMore_Baptism_Details.aspx");
+                }
+                else if(LBLIsParishMember.Text == "0")
+                {
+                    Session["isparishmember"] = 0; //use in view_more_bap_details.aspx
+                    if (Event_Name.Text == "Baptism")                                    //BAPTISM
+                    {
+                        Session["SubAdmin_viewDetails_memberid"] = memberid; //assign nonmemberid
+                    }
+                    Response.Redirect("Sub_ViewMore_Baptism_Details.aspx");
                 }
             }
-
-            if (e.CommandName == "Details")
-            {
-                 memberid = Convert.ToInt32(e.CommandArgument.ToString());
-                Session["SubAdmin_viewDetails"] = memberid;
-                //check whether member is 'isparish' or 'or not' 
-                Response.Redirect("Sub_ViewMore_Baptism_Details.aspx");
-            }
-            
-
-
         }
-
-        public void Downloadfun(int memid)
+        protected void Download_Click(object sender, EventArgs e)//get memberid and isparishmember and requestid
+        {
+            Button lnk = sender as Button;
+            GridViewRow gvr = lnk.NamingContainer as GridViewRow;
+            Label LBLIsParishMember = gvr.FindControl("LBLIsParishMember") as Label;
+            Label LBLRequestid = gvr.FindControl("LBLRequestid") as Label;
+            int memberid = Convert.ToInt32(((Button)sender).CommandArgument);
+            Downloadfun(memberid,Convert.ToInt32(LBLIsParishMember.Text), Convert.ToInt32(LBLRequestid.Text));
+        }
+        public void Downloadfun(int memid,int isparishmember,int requsetid)
         {
 
-            DataTable dt = objRequestBLL.GeneratePdfBaptism(memid);
+            DataTable dt = objRequestBLL.GeneratePdfBaptism(memid,isparishmember,requsetid);
             DataRow drow = dt.Rows[0];
             if(dt.Rows.Count>0)
             {
@@ -310,10 +392,6 @@ namespace Diocese
             }
         }
 
-        protected void Download_Click(object sender, EventArgs e)
-        {
-            int memberid = Convert.ToInt32(((Button)sender).CommandArgument);
-            Downloadfun(memberid);
-        }
+       
     }
 }

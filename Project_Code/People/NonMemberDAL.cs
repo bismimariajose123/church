@@ -15,7 +15,7 @@ namespace Diocese.Project_Code.People
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query1 = "insert into NonMemberLoginTable values(@Uname,@Pwd,@ContactNo,@Email,@To_Parishid,@Family_Name,@OfficialName,@Po,@Dob,@Landmark,@FName,@MName,@IsParishMember)";
+            string query1 = "insert into NonMemberLoginTable values(@Uname,@Pwd,@ContactNo,@Email,@To_Parishid,@Family_Name,@OfficialName,@Po,@Dob,@Landmark,@FName,@MName,@IsParishMember,@Requestid)";
             SqlCommand cmd = new SqlCommand(query1, con);
             cmd.Parameters.AddWithValue("@Uname", objNonMemberBO.Uname1);
             cmd.Parameters.AddWithValue("@Pwd", objNonMemberBO.Pwd1);
@@ -30,7 +30,9 @@ namespace Diocese.Project_Code.People
             cmd.Parameters.AddWithValue("@FName", objNonMemberBO.FName1);
             cmd.Parameters.AddWithValue("@MName", objNonMemberBO.MName1);
             cmd.Parameters.AddWithValue("@IsParishMember", objNonMemberBO.IsParishMember1);
-     
+ cmd.Parameters.AddWithValue("@Requestid",""); 
+
+
             int a = cmd.ExecuteNonQuery();
             return a;
         }

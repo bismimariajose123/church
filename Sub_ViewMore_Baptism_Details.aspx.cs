@@ -29,9 +29,10 @@ namespace Diocese
 
         public void Load_Baptism_data()
         {
-            int id = Convert.ToInt32(Session["SubAdmin_viewDetails"]);
+            int id = Convert.ToInt32(Session["SubAdmin_viewDetails_memberid"]);
+            int isparishmember = Convert.ToInt32(Session["isparishmember"]);
             DataTable dt = new DataTable();
-            dt = objBaptismBLL.GEt_BapDetails(id);
+            dt = objBaptismBLL.GEt_BapDetails(id, isparishmember);
             if (dt.Rows.Count > 0)
             {
                 ListView1.DataSource = dt;

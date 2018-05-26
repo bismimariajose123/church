@@ -38,14 +38,47 @@ namespace Diocese.Project_Code
             return objBaptismBO;
         }
 
-        public DataTable GEt_BapDetails(int id)
+        public int Update_Bap_req_id(RequestBO objRequestBO,BaptismBO objBaptismBO)
+        {
+            int result = 0;
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select Request_Id from Sub_RequestTable where Memberid=@memberid and Parishid=@Parishid and isParishMember=@isparishmember";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@memberid", objRequestBO.Memberid1);
+            cmd.Parameters.AddWithValue("@Parishid", objRequestBO.Parishid1);
+            cmd.Parameters.AddWithValue("@isparishmember", objRequestBO.IsParishMember);
+            int requestid = Convert.ToInt32(cmd.ExecuteScalar());
+            //if(objBaptismBO.Usertype==3)
+            //{
+                SqlCommand update_reqid_bap_cmd = new SqlCommand("update BaptismTable set Requestid=@Requestid where Memberid=@Memberid and ToParish_id=@ToParish_id and ParishMember=@ParishMember", con);
+                update_reqid_bap_cmd.Parameters.AddWithValue("@Requestid",requestid);
+                update_reqid_bap_cmd.Parameters.AddWithValue("@Memberid", objRequestBO.Memberid1);
+                update_reqid_bap_cmd.Parameters.AddWithValue("@ToParish_id", objRequestBO.Parishid1);
+                update_reqid_bap_cmd.Parameters.AddWithValue("@ParishMember", objRequestBO.IsParishMember);
+
+                result = Convert.ToInt32(update_reqid_bap_cmd.ExecuteScalar());
+            //}
+            //else if(objBaptismBO.Usertype == 4)
+            //{
+            //    SqlCommand update_reqid_bap_cmd = new SqlCommand("update BaptismTable set Requestid=@Requestid where Memberid=@Memberid and ToParish_id=@ToParish_id", con);
+            //    update_reqid_bap_cmd.Parameters.AddWithValue("@Requestid", requestid);
+            //    update_reqid_bap_cmd.Parameters.AddWithValue("@Memberid", objRequestBO.Memberid1);
+            //    update_reqid_bap_cmd.Parameters.AddWithValue("@ToParish_id", objRequestBO.Parishid1);
+            //    result = Convert.ToInt32(update_reqid_bap_cmd.ExecuteScalar());
+            //}
+            return result;
+        }
+
+        public DataTable GEt_BapDetails(int id,int isparishmember)
         {
            
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query = "select * from BaptismTable where Memberid=@memberid";
+            string query = "select * from BaptismTable where Memberid=@memberid and ParishMember=@ParishMember";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@memberid",id);
+            cmd.Parameters.AddWithValue("@ParishMember", isparishmember);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -85,7 +118,7 @@ namespace Diocese.Project_Code
             
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query1 = "insert into Sub_RequestTable values(@Event_Name,@Memberid,@RequestStatus,@RequestDate,@RequestTime,@RequestStatus_Description,@Parishid,@ProposedDateOfBap,@ProposedTimeOfBap)";
+            string query1 = "insert into Sub_RequestTable values(@Event_Name,@Memberid,@RequestStatus,@RequestDate,@RequestTime,@RequestStatus_Description,@Parishid,@ProposedDateOfBap,@ProposedTimeOfBap,@IsParishMember)";
             SqlCommand cmd = new SqlCommand(query1, con);
             cmd.Parameters.AddWithValue("@Event_Name", objRequestBO.Event_Name1);
             cmd.Parameters.AddWithValue("@Memberid", objRequestBO.Memberid1);
@@ -96,7 +129,8 @@ namespace Diocese.Project_Code
             cmd.Parameters.AddWithValue("@Parishid", objRequestBO.Parishid1);
             cmd.Parameters.AddWithValue("@ProposedDateOfBap",objRequestBO.ProposedDateOfBap1);
             cmd.Parameters.AddWithValue("@ProposedTimeOfBap", objRequestBO.ProposedTimeOfBap1);
-             int a = cmd.ExecuteNonQuery();
+            cmd.Parameters.AddWithValue("@IsParishMember", objRequestBO.IsParishMember);
+            int a = cmd.ExecuteNonQuery();
             return a;
         }
 
@@ -125,7 +159,7 @@ namespace Diocese.Project_Code
             con.Open();
             SqlCommand cmd = new SqlCommand("insert into BaptismTable values(@BaptismName,@OfficialName,@PersonParishName,@FamilyName," +
                 "@FatherName,@MotherName,@Father_Bap_Name,@Mother_Bap_Name,@DoBaptism,@GFName,@GMName,@GFProof,@GMProof,@FProof,@MProof,@ToParish_id," +
-                "@Gender,@Vicar,@Celebrant,@ParishMember,@Memberid,@BaptismStatus,@UrBapProof)", con);
+                "@Gender,@Vicar,@Celebrant,@ParishMember,@Memberid,@BaptismStatus,@UrBapProof,@Requestid)", con);
             try
             {
                 cmd.Parameters.AddWithValue("@BaptismName", objBaptismBO.Baptismname);
@@ -158,6 +192,7 @@ namespace Diocese.Project_Code
                 cmd.Parameters.AddWithValue("@Memberid", objBaptismBO.Member_id);
                 cmd.Parameters.AddWithValue("@BaptismStatus", objBaptismBO.Baptism_Status);
                 cmd.Parameters.AddWithValue("@UrBapProof", objBaptismBO.Ur_BapProof);
+                cmd.Parameters.AddWithValue("@Requestid",objBaptismBO.Requestid1);
 
                 int a = cmd.ExecuteNonQuery();
                 con.Close();

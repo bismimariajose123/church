@@ -154,7 +154,9 @@ namespace Diocese.Project_Code
         }
 
         public int Usertype { get => usertype; set => usertype = value; }
+        public int Requestid1 { get => Requestid; set => Requestid = value; }
 
         private int usertype;
+        private int Requestid;
     }
 }

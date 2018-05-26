@@ -148,6 +148,7 @@
     <Content Include="Member_ViewNotification.aspx" />
     <Content Include="NonMemberHome.aspx" />
     <Content Include="NonMemberRegistration.aspx" />
+    <Content Include="NonMember_Notification.aspx" />
     <Content Include="ParishHallBooking.aspx" />
     <Content Include="PriestGalary.aspx" />
     <Content Include="Selected_priest_details.aspx" />
@@ -452,6 +453,13 @@
     </Compile>
     <Compile Include="NonMemberRegistration.aspx.designer.cs">
       <DependentUpon>NonMemberRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NonMember_Notification.aspx.cs">
+      <DependentUpon>NonMember_Notification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NonMember_Notification.aspx.designer.cs">
+      <DependentUpon>NonMember_Notification.aspx</DependentUpon>
     </Compile>
     <Compile Include="ParishHallBooking.aspx.cs">
       <DependentUpon>ParishHallBooking.aspx</DependentUpon>

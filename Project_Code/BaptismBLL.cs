@@ -29,9 +29,14 @@ namespace Diocese.Project_Code
             return objBaptismDAL.BaptismRequest(objRequestBO);
         }
 
-        public DataTable GEt_BapDetails(int id)
+        public DataTable GEt_BapDetails(int id,int isparishmember)
         {
-            return objBaptismDAL.GEt_BapDetails(id);
+            return objBaptismDAL.GEt_BapDetails(id, isparishmember);
+        }
+
+        public int Update_Bap_req_id(RequestBO objRequestBO,BaptismBO objBaptismBO)
+        {
+            return objBaptismDAL.Update_Bap_req_id(objRequestBO, objBaptismBO);
         }
     }
 }

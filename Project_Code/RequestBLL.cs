@@ -29,21 +29,31 @@ namespace Diocese.Project_Code
             return objRequestDAL.GetMemberNotificationDetails(objRequestBO);
         }
 
-        public int UpdateMember_Request(RequestBO objRequestBO, int id)
+        public object GetNon_MemberNotificationDetails(RequestBO objRequestBO)
+        {
+            return objRequestDAL.GetNon_MemberNotificationDetails(objRequestBO);
+        }
+
+        public int UpdateMember_Request(RequestBO objRequestBO, int id) //member update request
         {
             return objRequestDAL.UpdateMember_Request(objRequestBO, id);
         }
 
-        public int DownloadBaptismForm(int memberid)
+        public int DownloadBaptismForm(int memberid,int isparishmember)
         {
-            return objRequestDAL.DownloadBaptismForm(memberid);
+            return objRequestDAL.DownloadBaptismForm(memberid, isparishmember);
         }
 
-        public DataTable GeneratePdfBaptism(int memberid)
+        public DataTable GeneratePdfBaptism(int memberid, int isparishmember, int requsetid)
         {
-            return objRequestDAL.GeneratePdfBaptism(memberid);
+            return objRequestDAL.GeneratePdfBaptism(memberid,isparishmember,requsetid);
 
 
+        }
+
+        public int UpdateNon_Member_Request(RequestBO objRequestBO, int id) //non member update request
+        {
+            return objRequestDAL.UpdateNon_Member_Request(objRequestBO, id);
         }
 
         //public int Delete_MemberRequest(int id)

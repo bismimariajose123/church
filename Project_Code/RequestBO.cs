@@ -28,12 +28,14 @@ namespace Diocese.Project_Code
         public int Parishid1 { get => Parishid; set => Parishid = value; }
         public string ProposedDateOfBap1 { get => ProposedDateOfBap; set => ProposedDateOfBap = value; }
         public string ProposedTimeOfBap1 { get => ProposedTimeOfBap; set => ProposedTimeOfBap = value; }
+        public int IsParishMember { get => isParishMember; set => isParishMember = value; }
 
         private string RequestStatus_Description;
 
         private int Parishid;
         private string ProposedDateOfBap;
         private string ProposedTimeOfBap;
+        private int isParishMember;
 
     }
 }

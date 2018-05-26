@@ -15,7 +15,8 @@ namespace Diocese
         RequestBO objRequestBO = new RequestBO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            objRequestBO.Parishid1 = Convert.ToInt32(Session["parishid"]);
+            objRequestBO.Parishid1 = Convert.ToInt32(Session["parishid"]); // from login
+            objRequestBO.IsParishMember = 1;
             if (!IsPostBack)
             {
                 Load_data();
