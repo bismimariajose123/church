@@ -92,10 +92,10 @@ namespace Diocese
                 LinkButton lnkmar = (LinkButton)e.Item.FindControl("LnkMarriage");
                 
 
-                bap.Value = drv["BaptismId"].ToString();
-                mar.Value= drv["Marriageid"].ToString();
-                marsts.Value=drv["MarriesStatus"].ToString();
-                regsts.Value= drv["RegisteredStatus"].ToString();
+                bap.Value = drv["BaptismId"].ToString();  //if baptism form details filled
+                mar.Value= drv["Marriageid"].ToString();   //if marriage details filled
+                marsts.Value=drv["MarriesStatus"].ToString();   //if married membertable marriage status =1
+                regsts.Value= drv["RegisteredStatus"].ToString();  //if both marriage and bap registered reg status =1
                 int bapid = Convert.ToInt32(bap.Value.ToString());
                 int marid = Convert.ToInt32(mar.Value.ToString());
                 int marstus = Convert.ToInt32(marsts.Value.ToString());
@@ -123,9 +123,9 @@ namespace Diocese
                     lnkbap.Visible = true;
                     lnkmar.Visible = true;
                 }
-                else if (marstus == 0 && bapid == 0 && marid == 0) // single bt not new born  ,baptism not registered, married not registered
+                else if (marstus == 0 && bapid != 0 && marid == 0) //  new born ,baptism  registered, married not registered
                 {
-                    lnkbap.Visible = true;
+                    lnkbap.Visible = false;
                     lnkmar.Visible = true;
                 }
             }

@@ -39,12 +39,15 @@ namespace Diocese
             }
             else if (value == 1 && objLoginBO.User_type == 3) //member
             {
+                Session["usertype"] = 3;  //for donation identification
+
                 Session["Headname"] = objLoginBO.Personname;
                 Session["family_id"] = objLoginBO.Familyid;
                 Response.Redirect("MemberHome.aspx");
             }
             else if (value == 1 && objLoginBO.User_type == 4)
             {
+                Session["usertype"] = 4; //for donation identification
                 Session["nonmember_id"] = objLoginBO.Familyid;
                 Response.Redirect("NonMemberHome.aspx");
             }

@@ -52,7 +52,8 @@
                                  <ItemTemplate>
                                     <asp:Label ID="LBLIsParishMember" runat="server" Text='<%# Bind("isParishMember") %>'></asp:Label>
                                       <asp:Label ID="LBLRequestid" runat="server"  Visible="false" Text='<%# Bind("Request_Id") %>'></asp:Label>
-                                     </ItemTemplate>
+                                 <asp:Label ID="isparishmemberName" runat="server" Visible="false"> </asp:Label>    
+                                 </ItemTemplate>
                             </asp:TemplateField>
 
 

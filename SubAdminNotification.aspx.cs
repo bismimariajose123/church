@@ -266,10 +266,11 @@ namespace Diocese
             GridViewRow gvr = lnk.NamingContainer as GridViewRow;
             Label LBLIsParishMember = gvr.FindControl("LBLIsParishMember") as Label;
             Label LBLRequestid = gvr.FindControl("LBLRequestid") as Label;
+            Label LBLOfficialName = gvr.FindControl("LBLOfficialName") as Label;
             int memberid = Convert.ToInt32(((Button)sender).CommandArgument);
-            Downloadfun(memberid,Convert.ToInt32(LBLIsParishMember.Text), Convert.ToInt32(LBLRequestid.Text));
+            Downloadfun(memberid,Convert.ToInt32(LBLIsParishMember.Text), Convert.ToInt32(LBLRequestid.Text), LBLOfficialName.Text);
         }
-        public void Downloadfun(int memid,int isparishmember,int requsetid)
+        public void Downloadfun(int memid,int isparishmember,int requsetid,string name)
         {
 
             DataTable dt = objRequestBLL.GeneratePdfBaptism(memid,isparishmember,requsetid);
@@ -277,7 +278,7 @@ namespace Diocese
             if(dt.Rows.Count>0)
             {
                 Document doc = new Document(PageSize.A4, 50, 40, 50, 40);
-                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("D:/BaptismCertificate1.pdf", FileMode.Create));
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("D:/Certificates/BaptismCertificate"+name+".pdf", FileMode.Create));
                 doc.Open();
                 iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance("D:/3 tierfare/Diocese/Project_Code/People/PeopleImage/stjosephslogo.jpg");
                 pic.Alignment = Element.ALIGN_CENTER;
@@ -388,7 +389,8 @@ namespace Diocese
                 doc.Add(para2);
                
                 doc.Close();
-                Response.Write("successfully downloaded");
+                Response.Write("<script>alert('successfull downloaded');</script>");
+
             }
         }
 

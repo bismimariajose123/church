@@ -182,8 +182,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 <li>
                             <a href="SuperAdminNotification.aspx"><i class="fa fa-dashboard fa-fw"></i> NOTIFICATION </a>
                         </li>
-                           
-                       
+                            <li>
+                            <a href="Super_AdminChange.aspx"><i class="fa fa-dashboard fa-fw"></i> CHANGE ADMIN </a>
+                        </li>
+                        <li>
+                            <a href="Super_AdminView.aspx"><i class="fa fa-dashboard fa-fw"></i> VIEW ADMIN </a>
+                        </li>
                         
                         
                     </ul>

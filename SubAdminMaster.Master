@@ -48,7 +48,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-   <a> SubAdmin</a> 
+   <a style="color:chartreuse;font:bold 14px"> SUBADMIN</a> 
+   
      <div style="margin-left:400%;width:800px;font-family:Algerian;font:100px;">SYRO MALABAR ARCHDIOCESE THALLASERY</div>
  
     <div class="sidebar-toggle-box">
@@ -95,6 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </header>
 <!--header end-->
+
 <!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse" style="margin-top:8px;">
@@ -218,6 +220,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+               
             </asp:ContentPlaceHolder>
         </div>
        

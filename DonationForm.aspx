@@ -68,9 +68,9 @@
                 </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">To Parish Name</label>
-               <asp:dropdownlist ID="DDLPreParishName" runat="server"  required="" style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:7px;height:45px;font-size:9px;" placeholder="--select--">
-              <asp:ListItem Text="select" Value="0"></asp:ListItem>
-                  </asp:dropdownlist>  
+              
+                <asp:textbox ID="TBTOParishName" runat="server" required="" placeholder="amount "></asp:textbox>
+           
               </div>
             <div class="clearfix"> </div>
             </div>
@@ -87,7 +87,7 @@
              
              <div class="vali-form">
               <div class="col-md-12 form-group">
-              <asp:Button ID="Btndeath" runat="server" Text="Submit"  CssClass="btn btn-primary"/>
+              <asp:Button ID="BtnDonation" runat="server" Text="Submit"  CssClass="btn btn-primary" OnClick="BtnDonation_Click"/>
               <button type="reset" class="btn btn-default">Reset</button>
             </div>
           <div class="clearfix"> </div>

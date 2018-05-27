@@ -13,5 +13,12 @@ namespace Diocese
         {
              LBLsubadminname.Text = Session["AdminName"].ToString();
         }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(2000);
+            Session.Clear();
+            Response.Redirect("LoginForm.aspx");
+        }
     }
 }

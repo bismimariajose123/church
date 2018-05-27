@@ -16,7 +16,21 @@ namespace Diocese.Project_Code
             int result = 0;
             if(objLoginBO.User_type==1)
             {
-                result=1;
+                SqlConnection con = new SqlConnection(ConnectionString);
+                con.Open();
+                
+                    string query = "select count(*) from SuperAdminLoginTable where Username='" + objLoginBO.username + "' and Password='" + objLoginBO.Pwd + "' and IsActive=1";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count == 1)
+                    {
+                    return result = 1;
+                    }
+                else
+                {
+                    return result = 0;
+                }
+                        
             }
             else if(objLoginBO.User_type == 2)
             {

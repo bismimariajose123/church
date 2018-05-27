@@ -85,13 +85,13 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDLEventName;
         
         /// <summary>
-        /// DDLPreParishName control.
+        /// TBTOParishName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLPreParishName;
+        protected global::System.Web.UI.WebControls.TextBox TBTOParishName;
         
         /// <summary>
         /// TBAmount control.
@@ -103,12 +103,12 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBAmount;
         
         /// <summary>
-        /// Btndeath control.
+        /// BtnDonation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btndeath;
+        protected global::System.Web.UI.WebControls.Button BtnDonation;
     }
 }

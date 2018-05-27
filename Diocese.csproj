@@ -190,6 +190,7 @@
     <Content Include="Superadminhome.aspx" />
     <Content Include="SuperAdminMaster.Master" />
     <Content Include="SuperAdminNotification.aspx" />
+    <Content Include="Super_AdminChange.aspx" />
     <Content Include="Sup_PriestTransfer.aspx" />
     <Content Include="Sup_Priest_NOT_Transfer.aspx" />
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -478,6 +479,9 @@
     <Compile Include="Project_Code\BaptismBLL.cs" />
     <Compile Include="Project_Code\BaptismBO.cs" />
     <Compile Include="Project_Code\BaptismDAL.cs" />
+    <Compile Include="Project_Code\DonationBLL.cs" />
+    <Compile Include="Project_Code\DonationBO.cs" />
+    <Compile Include="Project_Code\DonationDAL.cs" />
     <Compile Include="Project_Code\GalaryDAL.cs" />
     <Compile Include="Project_Code\Galary_BLL.cs" />
     <Compile Include="Project_Code\LoginBLL.cs" />
@@ -492,6 +496,9 @@
     <Compile Include="Project_Code\RequestBLL.cs" />
     <Compile Include="Project_Code\RequestBO.cs" />
     <Compile Include="Project_Code\RequestDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\EventBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\EventBO.cs" />
+    <Compile Include="Project_Code\SubAdmin\EventDAL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyDAL.cs" />
@@ -513,6 +520,9 @@
     <Compile Include="Project_Code\SuperAdmin\Sub_admin_LoginBLL.cs" />
     <Compile Include="Project_Code\SuperAdmin\Sub_admin_LoginBO.cs" />
     <Compile Include="Project_Code\SuperAdmin\Sub_admin_LoginDAL.cs" />
+    <Compile Include="Project_Code\SuperAdmin\SuperAdminBLL.cs" />
+    <Compile Include="Project_Code\SuperAdmin\SuperAdminBO.cs" />
+    <Compile Include="Project_Code\SuperAdmin\SuperAdminDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Selected_priest_details.aspx.cs">
       <DependentUpon>Selected_priest_details.aspx</DependentUpon>
@@ -576,6 +586,13 @@
     </Compile>
     <Compile Include="SuperAdminNotification.aspx.designer.cs">
       <DependentUpon>SuperAdminNotification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super_AdminChange.aspx.cs">
+      <DependentUpon>Super_AdminChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super_AdminChange.aspx.designer.cs">
+      <DependentUpon>Super_AdminChange.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sup_PriestTransfer.aspx.cs">
       <DependentUpon>Sup_PriestTransfer.aspx</DependentUpon>
