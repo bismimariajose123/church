@@ -10,10 +10,7 @@
             <div class="col-md-6 form-group1">
  
              <div class="checkbox1">
-                <label>
-                    <asp:checkbox runat="server" ID="parishmember" ng-model="model.winner" required="" class="ng-invalid ng-invalid-required" onclick="ShowHideDiv()" checked></asp:checkbox>
-                   Is a member of this Parish?<label style="margin-left:30px;color:cadetblue">tick if yes</label>
-                </label>
+              
               </div>
                 </div>
                   <div class="clearfix"> </div>
@@ -62,26 +59,22 @@
             <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Event Name</label>
-                <asp:dropdownlist ID="DDLEventName" runat="server"  required="" style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:7px;height:45px;font-size:9px;" placeholder="--select--">
+                <asp:dropdownlist ID="DDLEventName" runat="server"  required="" AppendDataBoundItems="true" style="width:100%;display: inline-block; border: 1px solid #ccc;box-sizing: border-box;margin-top:7px;height:45px;font-size:9px;" placeholder="--select--" >
               <asp:ListItem Text="select" Value="0"></asp:ListItem>
                   </asp:dropdownlist>  
+                
                 </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">To Parish Name</label>
-              
-                <asp:textbox ID="TBTOParishName" runat="server" required="" placeholder="amount "></asp:textbox>
-           
-              </div>
             <div class="clearfix"> </div>
             </div>
 
-               
+              
+           
             <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Amount</label>
                 <asp:textbox ID="TBAmount" runat="server" required="" placeholder="amount "></asp:textbox>
             </div>
-           
+                      
             <div class="clearfix"> </div>
             </div>
              
@@ -89,6 +82,7 @@
               <div class="col-md-12 form-group">
               <asp:Button ID="BtnDonation" runat="server" Text="Submit"  CssClass="btn btn-primary" OnClick="BtnDonation_Click"/>
               <button type="reset" class="btn btn-default">Reset</button>
+                  <asp:LinkButton ID="PaymentLink" runat="server" Visible="false">Click for payment</asp:LinkButton>
             </div>
           <div class="clearfix"> </div>
    </div>

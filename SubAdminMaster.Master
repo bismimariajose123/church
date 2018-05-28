@@ -174,10 +174,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span> ACCOUNTS NOT DONE <i class="glyphicon glyphicon-chevron-right"></i></span>
+                        <span> ACCOUNTS <i class="glyphicon glyphicon-chevron-right"></i></span>
                     </a>
                     <ul class="sub">
-                        <li><a href="AddWard.aspx">INCOME</a></li>
+                        <li><a href="SubAdimn_Income.aspx">INCOME</a></li>
                         <li><a href="ViewAllWard.aspx">EXPENSE</a></li>
                     </ul>
                 </li>

@@ -150,8 +150,12 @@
     <Content Include="NonMemberRegistration.aspx" />
     <Content Include="NonMember_Notification.aspx" />
     <Content Include="ParishHallBooking.aspx" />
+    <Content Include="Paymentgateway.aspx" />
+    <Content Include="PaymentGatewayScripts\css\style.css" />
+    <Content Include="PaymentGatewayScripts\js\index.js" />
     <Content Include="PriestGalary.aspx" />
     <Content Include="Selected_priest_details.aspx" />
+    <Content Include="SubAdimn_Income.aspx" />
     <Content Include="SubAdminHome.aspx" />
     <Content Include="SubAdminNotification.aspx" />
     <Content Include="subadmin\css\bootstrap.min.css" />
@@ -469,6 +473,13 @@
     <Compile Include="ParishHallBooking.aspx.designer.cs">
       <DependentUpon>ParishHallBooking.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Paymentgateway.aspx.cs">
+      <DependentUpon>Paymentgateway.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paymentgateway.aspx.designer.cs">
+      <DependentUpon>Paymentgateway.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PriestGalary.aspx.cs">
       <DependentUpon>PriestGalary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -537,6 +548,13 @@
     </Compile>
     <Compile Include="SimpleFormsMaster.Master.designer.cs">
       <DependentUpon>SimpleFormsMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdimn_Income.aspx.cs">
+      <DependentUpon>SubAdimn_Income.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdimn_Income.aspx.designer.cs">
+      <DependentUpon>SubAdimn_Income.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubAdminHome.aspx.cs">
       <DependentUpon>SubAdminHome.aspx</DependentUpon>

@@ -13,15 +13,6 @@ namespace Diocese {
     public partial class DonationForm {
         
         /// <summary>
-        /// parishmember control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox parishmember;
-        
-        /// <summary>
         /// TBFamilyName control.
         /// </summary>
         /// <remarks>
@@ -85,15 +76,6 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDLEventName;
         
         /// <summary>
-        /// TBTOParishName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTOParishName;
-        
-        /// <summary>
         /// TBAmount control.
         /// </summary>
         /// <remarks>
@@ -110,5 +92,14 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnDonation;
+        
+        /// <summary>
+        /// PaymentLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton PaymentLink;
     }
 }
