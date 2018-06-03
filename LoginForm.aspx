@@ -26,6 +26,7 @@
            <asp:ListItem Value="2">Sub Admin</asp:ListItem>
            <asp:ListItem Value="3">Member</asp:ListItem>
            <asp:ListItem Value="4">Guest</asp:ListItem>
+           <asp:ListItem Value="5">Accountant</asp:ListItem>
       </asp:DropDownList>
        <asp:button runat="server" text="Login" ID="LogibBtn" CssClass="loginbutton" OnClick="LogibBtn_Click"/>
     

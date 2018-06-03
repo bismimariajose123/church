@@ -161,6 +161,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
+                        <span>RESPONSIBILITY <i class="glyphicon glyphicon-chevron-right"></i></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="SubadminAddResponsibility.aspx">ADD RESPONSIBILITY</a></li>
+                        
+                    </ul>
+                </li>
+                <%-- <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
                         <span> CERTIFICATES NOT DONE <i class="glyphicon glyphicon-chevron-right"></i></span>
                     </a>
                     <ul class="sub">
@@ -170,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="ViewAllWard.aspx">DEATH</a></li>
                         <li><a href="ViewAllWard.aspx">COMMUNITY</a></li>
                     </ul>
-                </li>
+                </li>--%>
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
@@ -178,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                     <ul class="sub">
                         <li><a href="SubAdimn_Income.aspx">INCOME</a></li>
-                        <li><a href="ViewAllWard.aspx">EXPENSE</a></li>
+                        <li><a href="SubAdminExpense.aspx">EXPENSE</a></li>
                     </ul>
                 </li>
 				<li>

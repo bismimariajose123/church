@@ -61,17 +61,17 @@ namespace Diocese
             objMemberRegisterBO.Officialname = TBOfficialName.Text;
             objMemberRegisterBO.Baptismname = TBBaptismName.Text;
             objMemberRegisterBO.Contactno = TBContactNumber.Text;
-            if(TBOccupation.Text==" ")
+            if(TBOccupation.Text=="")
             {
-                objMemberRegisterBO.occupation = " ";
+                objMemberRegisterBO.occupation = "";
             }
             else
             {
                 objMemberRegisterBO.occupation = TBOccupation.Text;
             }
-            if (TBEmail.Text == " ")
+            if (TBEmail.Text == "")
             {
-                objMemberRegisterBO.email = " ";
+                objMemberRegisterBO.email = "";
             }
             else
             {

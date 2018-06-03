@@ -78,6 +78,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountantSundayCollection.aspx" />
     <Content Include="AddEvent.aspx" />
     <Content Include="AddMemberDetail.aspx" />
     <Content Include="AddParish.aspx" />
@@ -119,6 +120,7 @@
     <Content Include="Member\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Member\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="NonMemberMasterPage.Master" />
+    <Content Include="AccountantMasterPage.Master" />
     <None Include="packages.config" />
     <Content Include="Member\css\basictable.css" />
     <Content Include="Member\css\bootstrap.min.css" />
@@ -156,6 +158,8 @@
     <Content Include="PriestGalary.aspx" />
     <Content Include="Selected_priest_details.aspx" />
     <Content Include="SubAdimn_Income.aspx" />
+    <Content Include="SubadminAddResponsibility.aspx" />
+    <Content Include="SubAdminExpense.aspx" />
     <Content Include="SubAdminHome.aspx" />
     <Content Include="SubAdminNotification.aspx" />
     <Content Include="subadmin\css\bootstrap.min.css" />
@@ -302,6 +306,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountantMasterPage.Master.cs">
+      <DependentUpon>AccountantMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountantMasterPage.Master.designer.cs">
+      <DependentUpon>AccountantMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AccountantSundayCollection.aspx.cs">
+      <DependentUpon>AccountantSundayCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountantSundayCollection.aspx.designer.cs">
+      <DependentUpon>AccountantSundayCollection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddEvent.aspx.cs">
       <DependentUpon>AddEvent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -487,6 +505,9 @@
     <Compile Include="PriestGalary.aspx.designer.cs">
       <DependentUpon>PriestGalary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Project_Code\Accountant\AccountantBLL.cs" />
+    <Compile Include="Project_Code\Accountant\AccountantBO.cs" />
+    <Compile Include="Project_Code\Accountant\AccountantDAL.cs" />
     <Compile Include="Project_Code\BaptismBLL.cs" />
     <Compile Include="Project_Code\BaptismBO.cs" />
     <Compile Include="Project_Code\BaptismDAL.cs" />
@@ -510,12 +531,18 @@
     <Compile Include="Project_Code\SubAdmin\EventBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\EventBO.cs" />
     <Compile Include="Project_Code\SubAdmin\EventDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\ExpenseBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\ExpenseBO.cs" />
+    <Compile Include="Project_Code\SubAdmin\ExpenseDAL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyBO.cs" />
     <Compile Include="Project_Code\SubAdmin\FamilyDAL.cs" />
     <Compile Include="Project_Code\SubAdmin\Parish_HallBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\Parish_HallBO.cs" />
     <Compile Include="Project_Code\SubAdmin\Parish_HallDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\ResponsibilityBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\ResponsibilityBO.cs" />
+    <Compile Include="Project_Code\SubAdmin\ResponsibilityDAL.cs" />
     <Compile Include="Project_Code\SubAdmin\WardBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\WardBO.cs" />
     <Compile Include="Project_Code\SubAdmin\WardDAL.cs" />
@@ -555,6 +582,20 @@
     </Compile>
     <Compile Include="SubAdimn_Income.aspx.designer.cs">
       <DependentUpon>SubAdimn_Income.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubadminAddResponsibility.aspx.cs">
+      <DependentUpon>SubadminAddResponsibility.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubadminAddResponsibility.aspx.designer.cs">
+      <DependentUpon>SubadminAddResponsibility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdminExpense.aspx.cs">
+      <DependentUpon>SubAdminExpense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdminExpense.aspx.designer.cs">
+      <DependentUpon>SubAdminExpense.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubAdminHome.aspx.cs">
       <DependentUpon>SubAdminHome.aspx</DependentUpon>

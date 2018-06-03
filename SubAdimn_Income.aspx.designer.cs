@@ -40,6 +40,33 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.ImageButton Imgbtnsearch;
         
         /// <summary>
+        /// DDleventid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDleventid;
+        
+        /// <summary>
+        /// Event control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Event;
+        
+        /// <summary>
+        /// BtnEventvalue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEventvalue;
+        
+        /// <summary>
         /// Dobhidden control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,24 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField Dobhidden;
+        
+        /// <summary>
+        /// Dobhidden1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Dobhidden1;
+        
+        /// <summary>
+        /// Datesearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Datesearch;
         
         /// <summary>
         /// DDLPagesize control.
@@ -65,5 +110,32 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GVIncomeTable;
+        
+        /// <summary>
+        /// EventNameSundaycollection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EventNameSundaycollection;
+        
+        /// <summary>
+        /// GVSundayCollection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVSundayCollection;
+        
+        /// <summary>
+        /// LblTotalIncome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTotalIncome;
     }
 }

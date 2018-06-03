@@ -51,6 +51,13 @@ namespace Diocese
                 Session["nonmember_id"] = objLoginBO.Familyid;
                 Response.Redirect("NonMemberHome.aspx");
             }
+            else if (value == 1 && objLoginBO.User_type == 5)
+            {
+                Session["usertype"] = 5; //for donation identification
+                Session["Responsibilityid"] = objLoginBO.Familyid;    //here familyid as  Responsibilityd id
+                Session["DutyName"] = objLoginBO.Personname;       //here personname as dutyname
+                Response.Redirect("AccountantSundayCollection.aspx");
+            }
             else
             {
                 Response.Write("<script>alert('Invalid login');</script>");

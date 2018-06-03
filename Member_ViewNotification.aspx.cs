@@ -17,6 +17,7 @@ namespace Diocese
         {
             objRequestBO.Parishid1 = Convert.ToInt32(Session["parishid"]); // from login
             objRequestBO.IsParishMember = 1;
+            objRequestBO.FamilyId1 = Convert.ToInt32(Session["family_id"].ToString());
             if (!IsPostBack)
             {
                 Load_data();
@@ -25,9 +26,17 @@ namespace Diocese
 
         public void Load_data()
         {
-            Session["Dt"] = objRequestBLL.GetMemberNotificationDetails(objRequestBO);
+            DataTable dt = objRequestBLL.GetMemberNotificationDetails(objRequestBO);
+            if(dt.Rows.Count>0)
+            {
+             Session["Dt"] = dt;
             GVMemberNotification.DataSource = Session["Dt"];
             GVMemberNotification.DataBind();
+        }
+            else
+            {
+                Response.Write("<script>alert('no notification')</script>");
+            }
         }
 
         protected void DDLPagesize_SelectedIndexChanged(object sender, EventArgs e)

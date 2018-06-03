@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diocese.Project_Code.SubAdmin;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -14,7 +15,7 @@ namespace Diocese.Project_Code
         public int CheckLogin(LoginBO objLoginBO)
         {
             int result = 0;
-            if(objLoginBO.User_type==1)
+            if(objLoginBO.User_type==1)  //superAdmin
             {
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
@@ -32,7 +33,7 @@ namespace Diocese.Project_Code
                 }
                         
             }
-            else if(objLoginBO.User_type == 2)
+            else if(objLoginBO.User_type == 2)   //subadmin
             {
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
@@ -71,7 +72,7 @@ namespace Diocese.Project_Code
                 }
 
             }
-            else if (objLoginBO.User_type == 3)
+            else if (objLoginBO.User_type == 3)  //Member
             {
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
@@ -112,7 +113,7 @@ namespace Diocese.Project_Code
                     throw ex;
                 }
             }
-            else if (objLoginBO.User_type == 4) //non parish member
+            else if (objLoginBO.User_type == 4) //non parish member or guest
             {
 
                 SqlConnection con = new SqlConnection(ConnectionString);
@@ -152,6 +153,50 @@ namespace Diocese.Project_Code
                 catch (Exception ex)
                 {
                     throw ex;
+                }
+
+            }
+            else if(objLoginBO.User_type == 5) //accountant
+            {
+                SqlConnection con = new SqlConnection(ConnectionString);
+                con.Open();
+                try
+                {
+                    string query = "select count(*) from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid;
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count == 1)
+                    {
+
+                        string query2 = "select Responsibilityd,DutyName from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid;
+                        SqlCommand cmd_Headname = new SqlCommand(query2, con);
+
+                        SqlDataReader dr = cmd_Headname.ExecuteReader();
+                        if (dr.HasRows)
+                        {
+                           
+                            dr.Read();
+                            result = 1;
+
+                            objLoginBO.Familyid = Convert.ToInt32(dr["Responsibilityd"].ToString());    //here familyid as  Responsibilityd id
+                            objLoginBO.Personname =dr["DutyName"].ToString(); //here personname as dutyname
+                        }
+                        else
+                        {
+                            result = 0;
+                        }
+                        dr.Close();
+                       
+                    }
+                    else
+                    {
+                        result = 0;
+                    }
+                }
+
+                catch (Exception e)
+                {
+                    throw e;
                 }
 
             }

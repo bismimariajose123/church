@@ -16,12 +16,12 @@ namespace Diocese.Project_Code
 
 
 
-        public DataTable LoadEvent(int parishid)
+        public DataTable LoadEvent(int parishid) 
         {
             return objDonationDAL.LoadEvent(parishid);
         }
 
-        public DataTable Load_DonationIncome(int parishid)
+        public DataTable Load_DonationIncome(int parishid) //load into gv
         {
            return  objDonationDAL.Load_DonationIncome(parishid);
         }
@@ -31,9 +31,72 @@ namespace Diocese.Project_Code
              objDonationDAL.Update_ispayed_inDonation(userid, usertype);
         }
 
-        public DataTable Get_Search_IncomeDetails(string searchstr,int parishid)
+        public DataTable Get_Search_IncomeDetails(string searchstr,int parishid) //only string search
         {
             return objDonationDAL.Get_Search_IncomeDetails(searchstr, parishid);
+        }
+
+        public string Display_TotalAmount(int parishid)    //display total amount
+        {
+            return objDonationDAL.Display_TotalAmount(parishid);
+        }
+
+        public DataTable Load_DonationIncome_Onedate1(DateTime date1, int parishid) //date1parishid (2a)
+        {
+            return objDonationDAL.Load_DonationIncome_Onedate1(date1, parishid);
+        }
+
+        public DataTable Load_DonationIncome_TwoDate(DateTime oDate, DateTime oDate1, int parishid) //date1+date2+parishid (3a)
+        {
+            return objDonationDAL.Load_DonationIncome_TwoDate(oDate, oDate1, parishid);
+        }
+
+        public string DisplaySearchedString_TotalAmount(int parishid, DateTime date1) //date1+parishid (2b)
+        {
+            return objDonationDAL.DisplaySearchedString_TotalAmount(parishid, date1);
+        }
+
+        public string DisplayTwoDatesBased_TotalAmount(int parishid, DateTime date1, DateTime date2) //date1+date2+parishid (3a)
+        {
+            return objDonationDAL.DisplayTwoDatesBased_TotalAmount(parishid, date1, date2);
+        }
+
+        public DataTable Load_DonationIncome_Two_date_string(DateTime date1, DateTime date2, int parishid, string searchstr) //string+date1+date2+parishid (1b)
+        {
+            return objDonationDAL.Load_DonationIncome_Two_date_string(date1, date2,parishid,searchstr)
+ ;
+        }
+
+        public string DisplayTwoDatesBasedString_TotalAmount(int parishid, DateTime date1, DateTime date2, string searchstr) //string+date1+date2+parishid (1a)
+        {
+            return objDonationDAL.DisplayTwoDatesBasedString_TotalAmount(parishid, date1, date2, searchstr);
+        }
+
+        public string Search_Event(int parishid, int eventid)
+        {
+            return objDonationDAL.Search_Event(parishid, eventid);
+        }
+
+        public string Get_Search_TotalAmount(string searchstr, int parishid)
+        {
+            return objDonationDAL.Get_Search_TotalAmount(searchstr, parishid);
+        }
+
+        public DataTable LoadEvent_search(int parishid, int eventid)
+        {
+            return objDonationDAL.LoadEvent_search(parishid, eventid);
+        }
+
+        public string DisplayTwoDatesBasedEventName_TotalAmount(int parishid, DateTime oDate, DateTime oDate1, int eventid)
+        {
+            return objDonationDAL.DisplayTwoDatesBasedEventName_TotalAmount(parishid, oDate, oDate1, eventid);
+        }
+
+       
+
+        public DataTable Load_DonationIncome_Twodate_EventName(DateTime oDate, DateTime oDate1, int parishid, int eventid)
+        {
+            return objDonationDAL.Load_DonationIncome_Twodate_EventName(oDate, oDate1, parishid, eventid);
         }
     }
 }

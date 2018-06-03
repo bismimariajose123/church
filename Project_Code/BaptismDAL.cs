@@ -113,12 +113,12 @@ namespace Diocese.Project_Code
 
         }
 
-        public int BaptismRequest(RequestBO objRequestBO)
+        public int BaptismRequest(RequestBO objRequestBO)  //insert into request table
         {
             
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query1 = "insert into Sub_RequestTable values(@Event_Name,@Memberid,@RequestStatus,@RequestDate,@RequestTime,@RequestStatus_Description,@Parishid,@ProposedDateOfBap,@ProposedTimeOfBap,@IsParishMember)";
+            string query1 = "insert into Sub_RequestTable values(@Event_Name,@Memberid,@RequestStatus,@RequestDate,@RequestTime,@RequestStatus_Description,@Parishid,@ProposedDateOfBap,@ProposedTimeOfBap,@IsParishMember,@FamilyId)";
             SqlCommand cmd = new SqlCommand(query1, con);
             cmd.Parameters.AddWithValue("@Event_Name", objRequestBO.Event_Name1);
             cmd.Parameters.AddWithValue("@Memberid", objRequestBO.Memberid1);
@@ -130,6 +130,8 @@ namespace Diocese.Project_Code
             cmd.Parameters.AddWithValue("@ProposedDateOfBap",objRequestBO.ProposedDateOfBap1);
             cmd.Parameters.AddWithValue("@ProposedTimeOfBap", objRequestBO.ProposedTimeOfBap1);
             cmd.Parameters.AddWithValue("@IsParishMember", objRequestBO.IsParishMember);
+            cmd.Parameters.AddWithValue("@FamilyId", objRequestBO.FamilyId1);
+
             int a = cmd.ExecuteNonQuery();
             return a;
         }

@@ -29,6 +29,7 @@ namespace Diocese.Project_Code
         public string ProposedDateOfBap1 { get => ProposedDateOfBap; set => ProposedDateOfBap = value; }
         public string ProposedTimeOfBap1 { get => ProposedTimeOfBap; set => ProposedTimeOfBap = value; }
         public int IsParishMember { get => isParishMember; set => isParishMember = value; }
+        public int FamilyId1 { get => FamilyId; set => FamilyId = value; }
 
         private string RequestStatus_Description;
 
@@ -36,6 +37,7 @@ namespace Diocese.Project_Code
         private string ProposedDateOfBap;
         private string ProposedTimeOfBap;
         private int isParishMember;
+        private int FamilyId;
 
     }
 }

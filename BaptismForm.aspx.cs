@@ -291,8 +291,9 @@ namespace Diocese
                     objRequestBO.Memberid1 = objBaptismBO.Member_id;
                     objRequestBO.Parishid1 = objBaptismBO.To_Parish_id;
                     objRequestBO.RequestStatus = 0;
+                    objRequestBO.FamilyId1 = Convert.ToInt32(Session["family_id"].ToString());  //family id of member from login page
 
-                    string currentdate = Convert.ToDateTime(DateTime.Now.ToLongDateString()).ToString("dd/MM/yyyy");//system date
+                        string currentdate = Convert.ToDateTime(DateTime.Now.ToLongDateString()).ToString("dd/MM/yyyy");//system date
                     objRequestBO.RequestDate1 = currentdate;
                     string time = DateTime.Now.ToString("h:mm:ss tt");//system time
 
@@ -320,7 +321,7 @@ namespace Diocese
 
 
 
-            else if(objBaptismBO.Usertype == 4)
+            else if(objBaptismBO.Usertype == 4)  //guest user
             {
 
                 if((marriedstatus.Checked) == false  && (parishmember.Checked) == false && (newborn.Checked)==true)  //non parish member new born
@@ -419,6 +420,7 @@ namespace Diocese
                         objRequestBO.ProposedDateOfBap1 = dob;
                         objRequestBO.ProposedTimeOfBap1 = TBBapTime.Text;
                         objRequestBO.IsParishMember = 0;
+                        objRequestBO.FamilyId1 = 0;
                         int insert_Request = objBaptismBLL.BaptismRequest(objRequestBO);
                         if (insert_Request == 1)
                         {

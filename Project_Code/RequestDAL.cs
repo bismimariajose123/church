@@ -155,7 +155,7 @@ namespace Diocese.Project_Code
 
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query = "select r.Event_Name,b.FamilyName,b.OfficialName,r.ProposedDateOfBap,r.ProposedTimeOfBap,r.Memberid,r.RequestStatus_Description,r.RequestStatus from Sub_RequestTable r left join BaptismTable b on r.Request_Id = b.Requestid where r.Parishid="+objRequestBO.Parishid1+ " and r.isParishMember=" + objRequestBO.IsParishMember;
+            string query = "select r.Event_Name,b.FamilyName,b.OfficialName,r.ProposedDateOfBap,r.ProposedTimeOfBap,r.Memberid,r.RequestStatus_Description,r.RequestStatus from Sub_RequestTable r left join BaptismTable b on r.Request_Id = b.Requestid where r.Parishid="+objRequestBO.Parishid1+ " and r.isParishMember=" + objRequestBO.IsParishMember + " and r.FamilyId="+objRequestBO.FamilyId1;
 
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
