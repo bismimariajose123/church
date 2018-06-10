@@ -27,44 +27,49 @@
                                      </table>
                             
                  </div>
-                <div style="margin-top:20px">
+
+
+                 
+                <div style="margin-top:5px">
                   <table>
                         <tr>
-                                         <th>
-                                            <b> Select Event &nbsp;</b><asp:DropDownList ID="DDleventid" Width="90px"  runat="server" AppendDataBoundItems="True" DataSourceID="Event" DataTextField="EventName" DataValueField="EventId">
-                                                <asp:ListItem Value="0">--select--</asp:ListItem>
-                                                                </asp:DropDownList></th>
-                                             <asp:SqlDataSource ID="Event" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [EventTable]"></asp:SqlDataSource>
-                                        <th><asp:Button id="BtnEventvalue" Text="search" runat="server" OnClick="BtnEventvalue_Click"/></th>
-                                     </tr>
-                                     
+                         <th style="padding-right:70px">
+                        <b style="color:cadetblue"> Select Event </b>
+                         </th>
+                         <th  style="padding-right:70px"> <b style="color:cadetblue"> Search by Date: From </b> </th> 
+                         <th> &nbsp;  &nbsp;<b style="color:cadetblue">To</b></th>
+                         
+                       <tr>
+                           <th ><asp:DropDownList ID="DDleventid" Width="90px"  runat="server" AppendDataBoundItems="True" DataSourceID="Event" DataTextField="EventName" DataValueField="EventId">
+                                 <asp:ListItem Value="0">--select--</asp:ListItem>
+                                </asp:DropDownList>
+                                 <asp:SqlDataSource ID="Event" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [EventTable]"></asp:SqlDataSource>
+         
+                           </th>
+                       <th> 
+                           <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate" ng-model="model.date" onchange="date_dis()">
+                            <asp:hiddenfield ID="Dobhidden" runat="server"></asp:hiddenfield>
+                       </th>
+                       <th style="padding-right:70px">  &nbsp;  &nbsp;
+                           <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate1" ng-model="model.date" onchange="date_dis1()">
+                       <asp:hiddenfield ID="Dobhidden1" runat="server"></asp:hiddenfield></th>
+                     
+                          
+                           <th>
+                               <asp:Button ID="BTN_Search" runat="server" Text="GO" OnClick="BTN_Search_Click" />  <%--//original--%>
+                           </th>
+                           </tr>
+                                   
                     </table>
                     </div>
-                 <div style="margin-top:15px">
-                    <table>
-                                     <tr>
-                                         <th>
-                                             Search by Date: From
-                                         </th>
-                                         
-                                        <th> &nbsp;  &nbsp;To</th>
-                                     </tr>
-                        <tr>
-                                         <th>
-                                              <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate" ng-model="model.date" onchange="date_dis()">
-                <asp:hiddenfield ID="Dobhidden" runat="server"></asp:hiddenfield>
-                                         </th>
-                              <th>  &nbsp;  &nbsp; <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate1" ng-model="model.date" onchange="date_dis1()">
-                <asp:hiddenfield ID="Dobhidden1" runat="server"></asp:hiddenfield></th>
-                   <th>
-                       <asp:Button ID="Datesearch" runat="server" Text="Search" OnClick="Datesearch_Click" />
-                   </th>
-                            </tr>
 
-                                   
-                                 </table>
-                             
-               </div>
+
+
+
+               
+                                            
+             
+                  
                 <br />
                      Select Entries:
                          <div class="dropdown">
@@ -85,7 +90,7 @@
                     <asp:gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
                         BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="356px" AutoGenerateColumns="False"
                          DataKeyNames="DonationId"   
-                      AllowPaging="True" OnPageIndexChanging="GVIncomeTable_PageIndexChanging" >
+                      AllowPaging="True" OnPageIndexChanging="GVIncomeTable_PageIndexChanging" Visible="false">
                         <AlternatingRowStyle BackColor="#CCCCCC" />
                         <Columns>
                                  
@@ -143,11 +148,7 @@
                                     <asp:Label ID="LblAmountReceivedDate" runat="server" Text='<%# Bind("AmountReceivedDate") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                               
-                                
-                                   
-                                
-                           
+                            
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
                         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -158,14 +159,18 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#383838" />
                     </asp:gridview>
-                          
+                          <div style="margin-left:467px;margin-bottom:10px"> <b style="color:chocolate">
+                        <asp:Label ID="LblTotalAmt" runat="server" Visible="false" Text="Total amount=">
+
+                   </asp:Label>  </b><b style="color:aquamarine"> <asp:Label ID="LblTotalIncome" runat="server"  Visible="false"></asp:Label></b>
+           </div>
                      <!-- /.container-fluid -->
         
         <!-- /#page-wrapper -->
 
                 <div style="margin-top:10px">
                     <b style="color:aqua"><asp:Label ID="EventNameSundaycollection" runat="server" Text="Sunday Collection" Visible="false"></asp:Label> </b>
-                <asp:GridView ID="GVSundayCollection" runat="server" AutoGenerateColumns="False" DataKeyNames="Collection_SundayId" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="264px" >
+                <asp:GridView ID="GVSundayCollection" runat="server" AutoGenerateColumns="False" Visible="false" DataKeyNames="Collection_SundayId" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="264px" >
                     <Columns>
                          <asp:TemplateField HeaderText="Amount" SortExpression="Amount">
                              <ItemTemplate>
@@ -191,10 +196,12 @@
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
 
                 </asp:GridView>
+
+                      <div style="margin-left:70px;margin-bottom:10px"> <b style="color:chocolate"> <asp:Label runat="server" id="LabelTotal" Text="Total amount=" Visible="false"></asp:Label> </b><b style="color:aquamarine"> <asp:Label ID="LblSunday" runat="server"  Visible="false"></asp:Label></b>
+           </div>
                     </div>
 
-                   <b style="color:chocolate"> Total amount= </b><b style="color:aquamarine"> <asp:Label ID="LblTotalIncome" runat="server" ></asp:Label></b>
-           
+                  
                     </div>
                
             </div>

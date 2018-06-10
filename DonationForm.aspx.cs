@@ -59,11 +59,15 @@ namespace Diocese
                 Session["usertype_donation"] = 3;
             }
             
-            objDonationBO.Amount1 = Convert.ToInt32(TBAmount.Text);
+            objDonationBO.Amount1 = Convert.ToInt64(TBAmount.Text);
             DateTime created_date = DateTime.Now;
-           // string date_joined = Convert.ToDateTime(created_date.ToLongDateString()).ToString("dd/MM/yyyy");
+            string h = created_date.ToString();
+            DateTime i = Convert.ToDateTime(h.Substring(0, 9));
 
-            objDonationBO.AmountReceivedDate1 = created_date;
+            // string date_joined = Convert.ToDateTime(created_date.ToLongDateString()).ToString("dd/MM/yyyy");
+
+            objDonationBO.AmountReceivedDate1 = i;
+            objDonationBO.BalanceAmount1 = objDonationBO.Amount1;
             Session["Amount"]= TBAmount.Text;
            
             int result = objDonationBLL.DonationAmount(objDonationBO);

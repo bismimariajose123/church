@@ -58,15 +58,6 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.SqlDataSource Event;
         
         /// <summary>
-        /// BtnEventvalue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEventvalue;
-        
-        /// <summary>
         /// Dobhidden control.
         /// </summary>
         /// <remarks>
@@ -85,13 +76,13 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.HiddenField Dobhidden1;
         
         /// <summary>
-        /// Datesearch control.
+        /// BTN_Search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Datesearch;
+        protected global::System.Web.UI.WebControls.Button BTN_Search;
         
         /// <summary>
         /// DDLPagesize control.
@@ -112,6 +103,24 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.GridView GVIncomeTable;
         
         /// <summary>
+        /// LblTotalAmt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTotalAmt;
+        
+        /// <summary>
+        /// LblTotalIncome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTotalIncome;
+        
+        /// <summary>
         /// EventNameSundaycollection control.
         /// </summary>
         /// <remarks>
@@ -130,12 +139,21 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.GridView GVSundayCollection;
         
         /// <summary>
-        /// LblTotalIncome control.
+        /// LabelTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblTotalIncome;
+        protected global::System.Web.UI.WebControls.Label LabelTotal;
+        
+        /// <summary>
+        /// LblSunday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblSunday;
     }
 }

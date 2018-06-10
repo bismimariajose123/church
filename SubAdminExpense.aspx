@@ -42,11 +42,7 @@
             </div>   
                 <%--/FORM--%>
 
-
-                            
-                
-            
-                
+                                
                 <div style="margin-top:5px">
                   <table>
                         <tr>
@@ -65,36 +61,17 @@
                        </th>
                        <th style="padding-right:70px">  &nbsp;  &nbsp; <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate1" ng-model="model.date" onchange="date_dis1()">
                        <asp:hiddenfield ID="Dobhidden1" runat="server"></asp:hiddenfield></th>
-                     <th><asp:Button  ID="BtnSearch" runat="server"  Text="Search"/></th>
+                     <th><asp:Button  ID="BtnSearch" runat="server"  Text="Search" OnClick="BtnSearch_Click"/></th>
+                           <th><asp:Button  ID="BtnConvertPdf" runat="server"  Text="Generate Report" OnClick="BtnConvertPdf_Click"/> </th>
                            </tr>
                                    
                     </table>
-                    </div>
-                
-               
-                
+                    </div>          
                 <br />
                    
-              <div style="margin-top:15px">
-                  
-                   <b style="color:cadetblue">Select Entries:</b> 
-                         <div class="dropdown">
-                             <asp:DropDownList ID="DDLPagesize" runat="server" 
-                                 OnSelectedIndexChanged="DDLPagesize_SelectedIndexChanged" AutoPostBack="true"> 
-                       <asp:ListItem Selected="True" Text="--Select--" Value="--"></asp:ListItem>
-                          <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                          <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                          <asp:ListItem Text="25" Value="20"></asp:ListItem>
-                        <asp:ListItem Text="50" Value="10"></asp:ListItem>
-                          <asp:ListItem Text="100" Value="20"></asp:ListItem>
-                        <asp:ListItem Text="All" Value="All"></asp:ListItem>
-                       </asp:DropDownList>
-                        </div>
-                      
-                     </div>    <!-- /input-group -->
-                     
+            
 
-                    <asp:gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
+                    <asp:Gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
                         BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="356px" AutoGenerateColumns="False"
                          DataKeyNames="ExpenseId"   
                       AllowPaging="True" OnPageIndexChanging="GVIncomeTable_PageIndexChanging">
@@ -102,24 +79,30 @@
                                                        
                                
                         <Columns>
-                             <asp:TemplateField HeaderText="Amount" SortExpression="Expense_Amount">
+                             <asp:BoundField HeaderText="Amount" SortExpression="Expense_Amount" DataField="Expense_Amount">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblAmount" runat="server" Text='<%# Bind("Expense_Amount") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                             <asp:TemplateField HeaderText="Date" SortExpression="Exp_date">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                             <asp:BoundField HeaderText="Date" SortExpression="Exp_date" DataField="Exp_date">
                                
-                                <ItemTemplate>
+                                <%--<ItemTemplate>
                                     <asp:Label ID="LblDateExpense" runat="server" Text='<%# Bind("Exp_date") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Event Name" SortExpression="EventName">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Event Name" SortExpression="EventName" DataField="EventName">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblEventName" runat="server" Text='<%# Bind("EventName") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                          <asp:BoundField HeaderText="Reason" SortExpression="EventName" DataField="Reason">
+                               
+                               <%-- <ItemTemplate>
+                                    <asp:Label ID="LblReason" runat="server" Text='<%# Bind("Reason") %>'></asp:Label>
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
                         </Columns>
                                                        
                                
@@ -131,11 +114,9 @@
                         <SortedAscendingHeaderStyle BackColor="#808080" />
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#383838" />
-                    </asp:gridview>
+                    </asp:Gridview>
                           
-                       <asp:SqlDataSource ID="ExpenseDB" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [ExpenseTable]"></asp:SqlDataSource>
-                          
-                       <b> Total amount= </b><b style="color:aquamarine"> <asp:Label ID="LblTotalIncome" runat="server" ></asp:Label></b>
+                         <b> <asp:Label ID="LblTotalLabel" runat="server" Text="Total amount=" Visible="false"> </asp:Label>  </b><b style="color:aquamarine"> <asp:Label ID="LblTotalIncome" runat="server" Visible="false" ></asp:Label></b>
             <!-- /.container-fluid -->
         
         <!-- /#page-wrapper -->

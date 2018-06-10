@@ -18,12 +18,13 @@ namespace Diocese.Project_Code.Accountant
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
            
-            SqlCommand cmd = new SqlCommand("insert into SundayCollectionTable values(@Amount,@Parishid,@SundayCollectionDate)", con);
+            SqlCommand cmd = new SqlCommand("insert into SundayCollectionTable values(@Amount,@Parishid,@SundayCollectionDate,@SC_BalanceAmount)", con);
 
             cmd.Parameters.AddWithValue("@Amount", objAccountantBO.Amount1);
             cmd.Parameters.AddWithValue("@Parishid", objAccountantBO.Parishid1);
             cmd.Parameters.AddWithValue("@SundayCollectionDate", objAccountantBO.SundayCollectionDate1);
-            
+            cmd.Parameters.AddWithValue("@SC_BalanceAmount", objAccountantBO.SC_BalanceAmount1);
+
             int Result = cmd.ExecuteNonQuery();
             con.Close();
             return Result;

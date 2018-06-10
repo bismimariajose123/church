@@ -21,7 +21,10 @@ namespace Diocese
         {
             try {
                 objAccountantBO.Amount1 = Convert.ToInt64(TBAmount.Text.ToString());
-                objAccountantBO.SundayCollectionDate1 = Convert.ToDateTime(Dobhidden.Value);
+                string h =Dobhidden.Value;
+                DateTime dt= Convert.ToDateTime(h.Substring(0,9));
+                objAccountantBO.SundayCollectionDate1 = dt;
+                objAccountantBO.SC_BalanceAmount1 = objAccountantBO.Amount1;
             }
             catch(Exception ex)
             {
