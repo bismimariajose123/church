@@ -34,6 +34,11 @@ namespace Diocese.Project_Code.SubAdmin
             return objParish_HallDAL.UpdateParishHall(objParish_HallBO,id);
         }
 
+        public DataTable LoadMemberNotification(int parishid, int userid,int usertype)
+        {
+            return objParish_HallDAL.LoadMemberNotification(parishid, userid, usertype);
+        }
+
         public Parish_HallBO GetParishHallDetails(int hallid)
         {
             return objParish_HallDAL.GetParishHallDetails(hallid);
@@ -52,6 +57,11 @@ namespace Diocese.Project_Code.SubAdmin
         public int AddHallRequest(Parish_HallBO objParish_HallBO)
         {
             return objParish_HallDAL.AddHallRequest(objParish_HallBO);
+        }
+
+        public int UpdateRequest(Parish_HallBO objParish_HallBO, int id)
+        {
+            return objParish_HallDAL.UpdateRequest(objParish_HallBO,id);
         }
     }
 }

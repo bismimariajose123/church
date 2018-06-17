@@ -41,6 +41,20 @@ namespace Diocese.Project_Code.SubAdmin
 
         }
 
+        public DataTable LoadMemberNotification(int parishid, int userid,int usertype)
+        {
+            DataTable dt=new DataTable();
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            String query = "select e.EventName,h.HallName,h.No_of_people,h.Rate,u.RequestDate,u.Status,u.Description from EventTable e,Sub_ParishHallTable h,UserHallRequestTable u where e.EventId=u.Eventid and h.Hall_ID=u.HallId and u.Userid="+userid+" and u.Parishid="+parishid+" and u.UserType="+usertype;
+            SqlDataAdapter sda = new SqlDataAdapter(query,con);
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+
+
+        }
+
         public List<String> FillMemberDetails(int familyid, int usertype)
         {
             List<String> list = new List<String>();
@@ -66,11 +80,25 @@ namespace Diocese.Project_Code.SubAdmin
             return list;
         }
 
+        public int UpdateRequest(Parish_HallBO objParish_HallBO, int id)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update UserHallRequestTable set Status=@Status,Description=@requestdesc where HallRequestId = @id", con);
+            cmd.Parameters.AddWithValue("@Status", objParish_HallBO.Status);
+            cmd.Parameters.AddWithValue("@requestdesc", objParish_HallBO.Description);
+            cmd.Parameters.AddWithValue("@id", id);
+           
+            int Result = cmd.ExecuteNonQuery();
+            con.Close();
+            return Result;
+        }
+
         public DataTable LoadGVRequest(int parishid)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName, r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid;
+            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName,r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid;
             SqlDataAdapter sda = new SqlDataAdapter(query,con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
