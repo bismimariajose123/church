@@ -70,6 +70,32 @@ namespace Diocese.Project_Code
             return balupdate;
             }
 
+        public DataTable LoadHall(int parishid)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select * from Sub_ParishHallTable where ParishId=" + parishid;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+        }
+
+        public DataTable LoadEventDDl(int parishid)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select * from EventTable where Parishid="+parishid;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+        }
+
         public DataTable Get_Search_Str(string searchstr, int parishid) //IMAGEBTN SEARCH
         {
             SqlConnection con = new SqlConnection(ConnectionString);

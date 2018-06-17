@@ -160,6 +160,7 @@
     <Content Include="SubAdimn_Income.aspx" />
     <Content Include="SubadminAddResponsibility.aspx" />
     <Content Include="SubAdminExpense.aspx" />
+    <Content Include="SubAdminHallRequest.aspx" />
     <Content Include="SubAdminHome.aspx" />
     <Content Include="SubAdminNotification.aspx" />
     <Content Include="subadmin\css\bootstrap.min.css" />
@@ -596,6 +597,13 @@
     </Compile>
     <Compile Include="SubAdminExpense.aspx.designer.cs">
       <DependentUpon>SubAdminExpense.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdminHallRequest.aspx.cs">
+      <DependentUpon>SubAdminHallRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdminHallRequest.aspx.designer.cs">
+      <DependentUpon>SubAdminHallRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubAdminHome.aspx.cs">
       <DependentUpon>SubAdminHome.aspx</DependentUpon>

@@ -1,4 +1,6 @@
 ﻿using Diocese.Project_Code;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,10 +19,19 @@ namespace Diocese
             int parishid = Convert.ToInt32(Session["parishid"].ToString());
             if (!IsPostBack)
             {
-                //Load_DonationIncome();
+                LoadEventDDl();
             }
         }
+        public void LoadEventDDl()
+        {
+            int parishid = Convert.ToInt32(Session["parishid"].ToString());
 
+            DataTable dt = objDonationBLL.LoadEventDDl(parishid);
+            DDleventid.DataSource = dt;
+            DDleventid.DataTextField = "EventName";
+            DDleventid.DataValueField = "EventId";
+            DDleventid.DataBind();
+        }
 
         public void Load_DonationIncome() //Load donation details to gv first
         {
@@ -109,6 +120,8 @@ namespace Diocese
             string date2 = Dobhidden1.Value;
             int eventid = Convert.ToInt32(DDleventid.SelectedValue);
             string eventName = Convert.ToString(DDleventid.SelectedItem);
+            Session["EventName"] = eventName;
+            Session["Eventid"] = eventid;
             if (eventid != 6)   //not sunday collection
             {
                 GVSundayCollection.Visible = false;
@@ -204,6 +217,99 @@ namespace Diocese
                 }
             }
 
+        }
+
+        protected void BtnConvertPdf_Click(object sender, EventArgs e)
+        {
+            
+            string  eventName= Session["EventName"].ToString();
+            int eventid= Convert.ToInt16(Session["Eventid"]);
+            if(eventid==6)
+            {
+                PdfPTable pdfPTable1 = new PdfPTable(1);
+                PdfPCell cell1 = new PdfPCell(new Phrase("Report for " + Session["EventName"].ToString()));
+                pdfPTable1.AddCell(cell1);
+
+                PdfPTable pdfPTable = new PdfPTable(GVSundayCollection.HeaderRow.Cells.Count);
+                foreach (TableCell headercell in GVSundayCollection.HeaderRow.Cells)
+                {
+                    Font font = new Font();
+                    font.Color = new BaseColor(GVSundayCollection.HeaderStyle.ForeColor);
+
+                    PdfPCell pdfPCell = new PdfPCell(new Phrase(headercell.Text, font));
+                    pdfPCell.BackgroundColor = new BaseColor(GVSundayCollection.HeaderStyle.BackColor);
+                    pdfPTable.AddCell(pdfPCell);
+                }
+
+                foreach (GridViewRow gridViewRow in GVSundayCollection.Rows)
+                {
+                    foreach (TableCell tableCell in gridViewRow.Cells)
+                    {
+                        Font font = new Font();
+                        font.Color = new BaseColor(GVSundayCollection.RowStyle.ForeColor);
+
+                        PdfPCell pdfPCell = new PdfPCell(new Phrase(tableCell.Text));
+                        pdfPCell.BackgroundColor = new BaseColor(GVSundayCollection.RowStyle.BackColor);
+                        pdfPTable.AddCell(pdfPCell);
+                    }
+                }
+                Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 50f, 10f);
+                PdfWriter.GetInstance(pdfDocument, Response.OutputStream);
+                pdfDocument.Open();
+                pdfDocument.Add(pdfPTable1);
+                pdfDocument.Add(pdfPTable);
+                pdfDocument.Close();
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=Report.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
+
+            }
+            else
+            {
+
+           
+            PdfPTable pdfPTable1 = new PdfPTable(1);
+            PdfPCell cell1 = new PdfPCell(new Phrase("Report for " + Session["EventName"].ToString()));
+            pdfPTable1.AddCell(cell1);
+
+            PdfPTable pdfPTable = new PdfPTable(GVIncomeTable.HeaderRow.Cells.Count);
+            foreach (TableCell headercell in GVIncomeTable.HeaderRow.Cells)
+            {
+                Font font = new Font();
+                font.Color = new BaseColor(GVIncomeTable.HeaderStyle.ForeColor);
+
+                PdfPCell pdfPCell = new PdfPCell(new Phrase(headercell.Text, font));
+                pdfPCell.BackgroundColor = new BaseColor(GVIncomeTable.HeaderStyle.BackColor);
+                pdfPTable.AddCell(pdfPCell);
+            }
+
+            foreach (GridViewRow gridViewRow in GVIncomeTable.Rows)
+            {
+                foreach (TableCell tableCell in gridViewRow.Cells)
+                {
+                    Font font = new Font();
+                    font.Color = new BaseColor(GVIncomeTable.RowStyle.ForeColor);
+                    
+                    PdfPCell pdfPCell = new PdfPCell(new Phrase(tableCell.Text));
+                    pdfPCell.BackgroundColor = new BaseColor(GVIncomeTable.RowStyle.BackColor);
+                    pdfPTable.AddCell(pdfPCell);
+                }
+            }
+            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 50f, 10f);
+            PdfWriter.GetInstance(pdfDocument, Response.OutputStream);
+            pdfDocument.Open();
+            pdfDocument.Add(pdfPTable1);
+            pdfDocument.Add(pdfPTable);
+            pdfDocument.Close();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition", "attachment;filename=Report.pdf");
+            Response.Write(pdfDocument);
+            Response.Flush();
+            Response.End();
+
+            }
         }
     }
 }

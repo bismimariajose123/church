@@ -31,6 +31,16 @@ namespace Diocese.Project_Code
              objDonationDAL.Update_ispayed_inDonation(userid, usertype);
         }
 
+        public DataTable LoadHall(int parishid)
+        {
+            return objDonationDAL.LoadHall(parishid);
+        }
+
+        public DataTable LoadEventDDl(int parishid)
+        {
+            return objDonationDAL.LoadEventDDl(parishid);
+        }
+
         public DataTable Get_Search_IncomeDetails(string searchstr,int parishid)  //BTN SEARCH(A)
         {
             return objDonationDAL.Get_Search_IncomeDetails(searchstr, parishid);

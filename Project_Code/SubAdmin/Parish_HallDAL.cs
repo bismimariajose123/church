@@ -41,7 +41,86 @@ namespace Diocese.Project_Code.SubAdmin
 
         }
 
-       public int UpdateParishHall(Parish_HallBO objParish_HallBO, int id)
+        public List<String> FillMemberDetails(int familyid, int usertype)
+        {
+            List<String> list = new List<String>();
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query;
+            if(usertype==3)
+            {
+                query = "select f.FamilyName,p.Parish_Name from Sub_Create_FamilyLoginTable f,Sup_ParishTable p where f.Family_ID=" + familyid + " and f.Parish_id=p.Parish_ID";
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    list.Add(dr["FamilyName"].ToString());
+
+                    list.Add(dr["Parish_Name"].ToString());
+                   
+                }
+                dr.Close();
+            }
+         
+            return list;
+        }
+
+        public DataTable LoadGVRequest(int parishid)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName, r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid;
+            SqlDataAdapter sda = new SqlDataAdapter(query,con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+        }
+
+        public int AddHallRequest(Parish_HallBO objParish_HallBO)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query1 = "insert into UserHallRequestTable values(@UserType,@Userid,@Eventid,@HallId,@OfficialName,@RequestDate,@Parishid,@Status,@Description)";
+            SqlCommand cmd = new SqlCommand(query1, con);
+            cmd.Parameters.AddWithValue("@UserType", objParish_HallBO.Usertype);
+            cmd.Parameters.AddWithValue("@Userid", objParish_HallBO.Userid);
+            cmd.Parameters.AddWithValue("@Eventid", objParish_HallBO.Eventid1);
+            cmd.Parameters.AddWithValue("@HallId", objParish_HallBO.Hallid1);
+            cmd.Parameters.AddWithValue("@OfficialName", objParish_HallBO.OfficialName1);
+            cmd.Parameters.AddWithValue("@RequestDate", objParish_HallBO.RequestDate1);
+            cmd.Parameters.AddWithValue("@Parishid", objParish_HallBO.parishid);
+            cmd.Parameters.AddWithValue("@Status", objParish_HallBO.Status);
+            cmd.Parameters.AddWithValue("@Description", objParish_HallBO.Description);
+
+            int a = cmd.ExecuteNonQuery();
+            con.Close();
+            return a;
+        }
+
+        public Parish_HallBO GetParishHallDetails(int hallid)
+        {
+            Parish_HallBO objParish_HallBO = new Parish_HallBO();
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Sub_ParishHallTable where Hall_ID=" + hallid, con);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            if(dr.HasRows)
+            {
+                dr.Read();
+               
+                objParish_HallBO.hallno = Convert.ToInt32(dr["HallNo"]);
+                objParish_HallBO.rate = dr["Rate"].ToString();
+                objParish_HallBO.People_count= Convert.ToInt32(dr["No_of_people"]);
+            }
+            dr.Close();
+            con.Close();
+            return objParish_HallBO;
+        }
+
+        public int UpdateParishHall(Parish_HallBO objParish_HallBO, int id)
         {
             int result;
             SqlConnection con = new SqlConnection(ConnectionString);
@@ -53,6 +132,7 @@ namespace Diocese.Project_Code.SubAdmin
 
             cmd.Parameters.AddWithValue("@id", id);
             result = cmd.ExecuteNonQuery();
+            con.Close();
             return result;
         }
 
@@ -77,6 +157,7 @@ namespace Diocese.Project_Code.SubAdmin
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
+            con.Close();
             return dt;
         }
 

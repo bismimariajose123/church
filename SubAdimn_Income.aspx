@@ -40,10 +40,10 @@
                          <th> &nbsp;  &nbsp;<b style="color:cadetblue">To</b></th>
                          
                        <tr>
-                           <th ><asp:DropDownList ID="DDleventid" Width="90px"  runat="server" AppendDataBoundItems="True" DataSourceID="Event" DataTextField="EventName" DataValueField="EventId">
+                           <th ><asp:DropDownList ID="DDleventid" Width="90px"  runat="server" AppendDataBoundItems="True" >
                                  <asp:ListItem Value="0">--select--</asp:ListItem>
                                 </asp:DropDownList>
-                                 <asp:SqlDataSource ID="Event" runat="server" ConnectionString="<%$ ConnectionStrings:MyConnection %>" SelectCommand="SELECT * FROM [EventTable]"></asp:SqlDataSource>
+                               
          
                            </th>
                        <th> 
@@ -58,6 +58,7 @@
                            <th>
                                <asp:Button ID="BTN_Search" runat="server" Text="GO" OnClick="BTN_Search_Click" />  <%--//original--%>
                            </th>
+                           <th><asp:Button  ID="BtnConvertPdf" runat="server"  Text="Generate Report" OnClick="BtnConvertPdf_Click"/></th>
                            </tr>
                                    
                     </table>
@@ -87,67 +88,67 @@
                          <!-- /input-group -->
                        
 
-                    <asp:gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
+                    <asp:Gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
                         BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="356px" AutoGenerateColumns="False"
                          DataKeyNames="DonationId"   
                       AllowPaging="True" OnPageIndexChanging="GVIncomeTable_PageIndexChanging" Visible="false">
                         <AlternatingRowStyle BackColor="#CCCCCC" />
                         <Columns>
                                  
-                            <asp:TemplateField HeaderText="FamilyName" SortExpression="FamilyName">
+                            <asp:BoundField HeaderText="FamilyName" SortExpression="FamilyName" DataField="FamilyName">
                                 
-                                <ItemTemplate>
+                              <%-- <ItemTemplate>
                                     <asp:Label ID="LblFamilyName" runat="server" Text='<%# Bind("FamilyName") %>'></asp:Label>
                                     <asp:Label ID="LblToParishid" runat="server" Text='<%# Bind("ToParishid") %>' Visible="false"></asp:Label>
                              <asp:Label ID="Label9" runat="server" Text='<%# Bind("Memberid") %>' Visible="false"></asp:Label>
                                <asp:Label ID="LblDonationId" runat="server" Text='<%# Bind("DonationId") %>' Visible="false"></asp:Label>
                               <asp:Label ID="LblIsParishMember" runat="server" Text='<%# Bind("IsParishMember") %>' Visible="false"></asp:Label>
                                
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Persons_ParishName" SortExpression="Persons_ParishName">
-                                
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="ParishName" SortExpression="Persons_ParishName" DataField="Persons_ParishName">
+                              <%--  
                                 <ItemTemplate>
                                     <asp:Label ID="LblPersons_ParishName" runat="server" Text='<%# Bind("Persons_ParishName") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="OfficialName" SortExpression="OfficialName">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Name" SortExpression="OfficialName" DataField="OfficialName">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblOfficialName" runat="server" Text='<%# Bind("OfficialName") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ContactNo" SortExpression="ContactNo">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="ContactNo" SortExpression="ContactNo" DataField="ContactNo">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblContactNo" runat="server" Text='<%# Bind("ContactNo") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Diocese" SortExpression="Diocese">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Diocese" SortExpression="Diocese" DataField="Diocese">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblDiocese" runat="server" Text='<%# Bind("Diocese") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="EventName" SortExpression="EventName">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Event" SortExpression="EventName" DataField="EventName">
                                
-                                <ItemTemplate>
+                                <%--<ItemTemplate>
                                     <asp:Label ID="LblEventName" runat="server" Text='<%# Bind("EventName") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
                             
-                            <asp:TemplateField HeaderText="Amount" SortExpression="Amount">
+                            <asp:BoundField HeaderText="Amount" SortExpression="Amount" DataField="Amount">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblAmount" runat="server" Text='<%# Bind("Amount") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="AmountReceivedDate" SortExpression="AmountReceivedDate">
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="DateReceived" SortExpression="AmountReceivedDate" DataField="AmountReceivedDate">
                                
-                                <ItemTemplate>
+                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblAmountReceivedDate" runat="server" Text='<%# Bind("AmountReceivedDate") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                </ItemTemplate>--%>
+                            </asp:BoundField>
                             
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
@@ -158,7 +159,7 @@
                         <SortedAscendingHeaderStyle BackColor="#808080" />
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#383838" />
-                    </asp:gridview>
+                    </asp:Gridview>
                           <div style="margin-left:467px;margin-bottom:10px"> <b style="color:chocolate">
                         <asp:Label ID="LblTotalAmt" runat="server" Visible="false" Text="Total amount=">
 
@@ -172,17 +173,17 @@
                     <b style="color:aqua"><asp:Label ID="EventNameSundaycollection" runat="server" Text="Sunday Collection" Visible="false"></asp:Label> </b>
                 <asp:GridView ID="GVSundayCollection" runat="server" AutoGenerateColumns="False" Visible="false" DataKeyNames="Collection_SundayId" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="264px" >
                     <Columns>
-                         <asp:TemplateField HeaderText="Amount" SortExpression="Amount">
-                             <ItemTemplate>
+                         <asp:BoundField HeaderText="Amount" SortExpression="Amount" DataField="Amount">
+                             <%--<ItemTemplate>
                                 <asp:Label ID="LBLAmount" runat="server" Text='<%# Bind("Amount") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Date" SortExpression="SundayCollectionDate">
+                            </ItemTemplate>--%>
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Date" SortExpression="SundayCollectionDate" DataField="SundayCollectionDate">
                            
-                            <ItemTemplate>
+                           <%-- <ItemTemplate>
                                 <asp:Label ID="LBLDate" runat="server" Text='<%# Bind("SundayCollectionDate") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                            </ItemTemplate>--%>
+                        </asp:BoundField>
                     </Columns>
 
                     <FooterStyle BackColor="White" ForeColor="#000066" />

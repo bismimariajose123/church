@@ -94,12 +94,21 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDLHallName;
         
         /// <summary>
-        /// Btndeath control.
+        /// LblHallRate_Capacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btndeath;
+        protected global::System.Web.UI.WebControls.Label LblHallRate_Capacity;
+        
+        /// <summary>
+        /// BtnHallRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnHallRequest;
     }
 }

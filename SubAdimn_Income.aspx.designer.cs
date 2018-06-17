@@ -49,15 +49,6 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDleventid;
         
         /// <summary>
-        /// Event control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Event;
-        
-        /// <summary>
         /// Dobhidden control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BTN_Search;
+        
+        /// <summary>
+        /// BtnConvertPdf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnConvertPdf;
         
         /// <summary>
         /// DDLPagesize control.
