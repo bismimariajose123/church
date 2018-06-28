@@ -27,12 +27,12 @@ namespace Diocese
         public void Load_data()
         {
             DataTable dt = objRequestBLL.GetMemberNotificationDetails(objRequestBO);
-            if(dt.Rows.Count>0)
+            if (dt.Rows.Count > 0)
             {
-             Session["Dt"] = dt;
-            GVMemberNotification.DataSource = Session["Dt"];
-            GVMemberNotification.DataBind();
-        }
+                Session["Dt"] = dt;
+                GVMemberNotification.DataSource = Session["Dt"];
+                GVMemberNotification.DataBind();
+            }
             else
             {
                 Response.Write("<script>alert('no notification')</script>");
@@ -76,7 +76,7 @@ namespace Diocese
         //    Load_data();
         //}
 
-        
+
 
         protected void GVMemberNotification_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
@@ -101,6 +101,35 @@ namespace Diocese
             result = objRequestBLL.UpdateMember_Request(objRequestBO, id);
             GVMemberNotification.EditIndex = -1;
             Load_data();
+        }
+
+        protected void GVMemberNotification_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label RequestStatus = (Label)e.Row.FindControl("LBLRequestStatus");
+                Label LBLRequestStatusLabel = (Label)e.Row.FindControl("LBLRequestStatusLabel");
+                if (RequestStatus == null && LBLRequestStatusLabel == null)
+                {
+                    return;
+                }
+                if (RequestStatus.Text == "1")
+                {
+                    LBLRequestStatusLabel.Visible = true;
+                    LBLRequestStatusLabel.Text = "Approved";
+                }
+                if (RequestStatus.Text == "2")
+                {
+                    LBLRequestStatusLabel.Visible = true;
+                    LBLRequestStatusLabel.Text = "Rejected";
+                }
+                if (RequestStatus.Text == "4")
+                {
+                    LBLRequestStatusLabel.Visible = true;
+                    LBLRequestStatusLabel.Text = "Added";
+                }
+
+            }
         }
     }
 }

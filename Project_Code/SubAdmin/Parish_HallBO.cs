@@ -16,7 +16,7 @@ namespace Diocese.Project_Code.SubAdmin
         private string Rate;
 
         //--------------hall request Table------------
-        private int HallRequestId; 
+      //  private int HallRequestId; 
 
         private int Eventid;
 

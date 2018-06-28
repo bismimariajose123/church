@@ -40,13 +40,13 @@ namespace Diocese.Project_Code.SubAdmin
             return objParish_HallBO;
 
         }
-
+       
         public DataTable LoadMemberNotification(int parishid, int userid,int usertype)
         {
             DataTable dt=new DataTable();
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            String query = "select e.EventName,h.HallName,h.No_of_people,h.Rate,u.RequestDate,u.Status,u.Description from EventTable e,Sub_ParishHallTable h,UserHallRequestTable u where e.EventId=u.Eventid and h.Hall_ID=u.HallId and u.Userid="+userid+" and u.Parishid="+parishid+" and u.UserType="+usertype;
+            String query = "select u.HallRequestId,u.Userid,u.UserType,e.EventName,h.HallName,h.No_of_people,h.Rate,u.RequestDate,u.Status,u.Description from EventTable e,Sub_ParishHallTable h,UserHallRequestTable u where e.EventId=u.Eventid and h.Hall_ID=u.HallId and u.Userid=" + userid+" and u.Parishid="+parishid+" and u.UserType="+usertype;
             SqlDataAdapter sda = new SqlDataAdapter(query,con);
             sda.Fill(dt);
             con.Close();
@@ -78,6 +78,56 @@ namespace Diocese.Project_Code.SubAdmin
             }
          
             return list;
+        }
+
+        public DataTable SearchEvent(int parishid, int eventid, int userid, int usertype)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlConnection con = new SqlConnection(ConnectionString);
+                con.Open();
+                String query = "select u.HallRequestId,u.Userid,u.UserType,e.EventName,h.HallName,h.No_of_people,h.Rate,u.RequestDate,u.Status,u.Description from EventTable e, Sub_ParishHallTable h,UserHallRequestTable u where e.EventId ="+eventid+" and h.Hall_ID = u.HallId and u.Userid =" + userid + " and u.Parishid =" + parishid + " and u.UserType =" + usertype;
+                SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                sda.Fill(dt);
+                con.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable Search(DateTime oDate, int parishid, int eventid,int userid,int usertype)
+        {
+            try { 
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            String query = "select u.HallRequestId,u.Userid,u.UserType,e.EventName,h.HallName,h.No_of_people,h.Rate,u.RequestDate,u.Status,u.Description from EventTable e, Sub_ParishHallTable h,UserHallRequestTable u where e.EventId ="+eventid+" and h.Hall_ID = u.HallId and u.Userid =" + userid + " and u.Parishid =" + parishid + " and u.UserType =" + usertype + " and  u.RequestDate='" + oDate + "'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int UpdateMember_Request(Parish_HallBO objParish_HallBO, int id)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update UserHallRequestTable set RequestDate=@RequestDate where HallRequestId = @id", con);
+             cmd.Parameters.AddWithValue("@RequestDate", objParish_HallBO.RequestDate1);
+             cmd.Parameters.AddWithValue("@id", id);
+
+            int Result = cmd.ExecuteNonQuery();
+            con.Close();
+            return Result;
         }
 
         public int UpdateRequest(Parish_HallBO objParish_HallBO, int id)

@@ -114,7 +114,8 @@
                                       </asp:DropDownList>
                                   </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="LBLRequestStatus" runat="server" Text='<%# Bind("RequestStatus") %>'></asp:Label>
+                                    <asp:Label ID="LBLRequestStatus" runat="server" Text='<%# Bind("RequestStatus") %>' Visible="false"></asp:Label>
+                                    <asp:Label ID="LblRequestStatusLabel" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Option" SortExpression="Option">

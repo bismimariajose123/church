@@ -113,6 +113,8 @@ namespace Diocese
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label RequestStatus = (Label)e.Row.FindControl("LBLRequestStatus");
+                Label LblRequestStatusLabel = (Label)e.Row.FindControl("LblRequestStatusLabel");
+                
                 Button Addtbn = (Button)e.Row.FindControl("Addtbn");
                 Label Event_Name = (Label)e.Row.FindControl("LBLEvent_Name");
                 Button Download = (Button)e.Row.FindControl("Download");
@@ -137,7 +139,10 @@ namespace Diocese
                         isparishmemberName.Visible = true;
                         LBLIsParishMember.Visible = false;
                     }
+                    LblRequestStatusLabel.Visible = true;
+                    LblRequestStatusLabel.Text = "Approved";
                         Addtbn.Visible = true;
+
                 }
                
                 else if(RequestStatus.Text == "4" && Event_Name.Text == "Baptism")
@@ -154,9 +159,16 @@ namespace Diocese
                         isparishmemberName.Visible = true;
                         LBLIsParishMember.Visible = false;
                     }
+                    LblRequestStatusLabel.Visible = true;
+                    LblRequestStatusLabel.Text = "Added";
                     Addtbn.Visible = true;
                     Addtbn.Text = "Added";
                     Download.Visible = true;
+                }
+                else if(RequestStatus.Text == "2")
+                {
+                    LblRequestStatusLabel.Visible = true;
+                    LblRequestStatusLabel.Text = "Rejected";
                 }
                 else
                 {

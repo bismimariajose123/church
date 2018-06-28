@@ -94,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									  <li id="menu-academico2" ><a href="#"><i class="fa fa-tachometer"></i> <span> NOTIFICATION</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub2" >
                                            <li id="menu-academico-avaliacoes2" ><a href="Member_ViewNotification.aspx">CEREMONIAL </a></li>
-										   <li id="menu-academico-avaliacoes" ><a href="MemberHallBookNotification.aspx">HALL BOOKING</a></li>
+										   <li id="menu-academico-avaliacoes" ><a href="MemberHallBookNotification1.aspx">HALL BOOKING</a></li>
 											 </ul>
 										</li>
 
