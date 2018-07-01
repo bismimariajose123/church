@@ -103,6 +103,38 @@ namespace Diocese
             Load_data();
         }
 
+        protected void Imgbtnsearch_Click(object sender, ImageClickEventArgs e)
+        {
+            string searchstr = string.Empty;
+            searchstr = TBsearch.Text;
+            objRequestBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+            objRequestBO.FamilyId1 = Convert.ToInt32(Session["family_id"].ToString());
+
+            if (searchstr == "")
+            {
+                Load_data();
+            }
+            else
+            {
+
+
+                DataTable dt = objRequestBLL.Get_Search_FamilyDetails(objRequestBO, searchstr);
+
+                if (dt.Rows.Count > 0)
+                {
+                    GVMemberNotification.DataSource = dt;
+                    GVMemberNotification.DataBind();
+                }
+                else
+                {
+                    Response.Write("<script>alert('search not found');</script>");
+
+                }
+            }
+
+        }
+
+
         protected void GVMemberNotification_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

@@ -154,6 +154,7 @@
     <Content Include="NonMember_Notification.aspx" />
     <Content Include="ParishHallBooking.aspx" />
     <Content Include="Paymentgateway.aspx" />
+    <Content Include="PaymentgatewayHallbooking.aspx" />
     <Content Include="PaymentGatewayScripts\css\style.css" />
     <Content Include="PaymentGatewayScripts\js\index.js" />
     <Content Include="PriestGalary.aspx" />
@@ -506,6 +507,13 @@
     </Compile>
     <Compile Include="Paymentgateway.aspx.designer.cs">
       <DependentUpon>Paymentgateway.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentgatewayHallbooking.aspx.cs">
+      <DependentUpon>PaymentgatewayHallbooking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentgatewayHallbooking.aspx.designer.cs">
+      <DependentUpon>PaymentgatewayHallbooking.aspx</DependentUpon>
     </Compile>
     <Compile Include="PriestGalary.aspx.cs">
       <DependentUpon>PriestGalary.aspx</DependentUpon>

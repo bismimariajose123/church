@@ -24,9 +24,20 @@ namespace Diocese.Project_Code.People
             return objMemberRegisterDAL.Get_Member_Details(objMemberRegisterBO);
         }
 
-        public DataTable Get_Search_MemberDetails(string searchstr, MemberBO objMemberRegisterBO)
+        public DataTable Get_Search_MemberDetails(string searchstr, MemberBO objMemberRegisterBO,int familyid,int parishid)
         {
-            return objMemberRegisterDAL.Get_Search_MemberDetails(searchstr, objMemberRegisterBO);
+            return objMemberRegisterDAL.Get_Search_MemberDetails(searchstr, objMemberRegisterBO, familyid, parishid);
+        }
+
+        public DataTable Load_DDLMemberNames(MemberBO objMemberRegisterBO)
+        {
+            return objMemberRegisterDAL.Load_DDLMemberNames( objMemberRegisterBO);
+
+        }
+
+        public int Update_MemberImage(MemberBO objMemberRegisterBO)
+        {
+            return objMemberRegisterDAL.Update_MemberImage(objMemberRegisterBO);
         }
 
         //public string GetStatus(MemberBO objMemberRegisterBO)

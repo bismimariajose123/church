@@ -223,8 +223,8 @@
                 
                 var givendate = new Date(textbox.value)
                 var bapdate=givendate.toLocaleDateString();
-                alert(bapdate);
-                if (bapdate < currdate)
+                
+                if (bapdate <= currdate)
                 {
                    
                     alert("invalid date");
@@ -232,7 +232,7 @@
 
                 else
                 {
-                    alert("valid date");
+                    
                     document.getElementById('<%=Dobhidden.ClientID%>').value = textbox.value;
                 }
             }
@@ -259,7 +259,7 @@
                 divUR.style.display = "none";
                 BaptismTime.style.display = "block";
 
-                alert("baprequest");
+                
 
             }
             else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) { //newborn & parents not parish member

@@ -45,8 +45,7 @@
         BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="Ward_ID" 
         Width="400px" >
         <Columns>
-            <asp:BoundField DataField="Ward_ID" HeaderText="Ward_ID" InsertVisible="False" ReadOnly="True" SortExpression="Ward_ID" />
-            <asp:TemplateField HeaderText="Ward Name" SortExpression="WardName">
+              <asp:TemplateField HeaderText="Ward Name" SortExpression="WardName">
                 <EditItemTemplate>
                     <asp:TextBox ID="TBWardName" runat="server" Text='<%# Bind("WardName") %>'></asp:TextBox>
                 </EditItemTemplate>

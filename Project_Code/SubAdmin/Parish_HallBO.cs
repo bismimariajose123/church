@@ -27,6 +27,7 @@ namespace Diocese.Project_Code.SubAdmin
         private int userid;
         private int status;
         private string description;
+        private string IsPaid;
        public string Hallname
         {
             get { return HallName; }
@@ -66,5 +67,6 @@ namespace Diocese.Project_Code.SubAdmin
         public int Userid { get => userid; set => userid = value; }
         public int Status { get => status; set => status = value; }
         public string Description { get => description; set => description = value; }
+        public string IsPaid1 { get => IsPaid; set => IsPaid = value; }
     }
 }

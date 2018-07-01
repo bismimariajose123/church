@@ -35,7 +35,7 @@
 				<%--buttonregform in subadmin/style.css--%>
             <asp:Button ID="BtnCreateFamily" runat="server" Text="ADD"  CssClass="buttonregform" OnClick="BtnCreateFamily_Click"/>
 		</div>
-		<a href="login.html">CreateFamily</a>
+		
 </div>
 </div>
 </asp:Content>

@@ -76,5 +76,18 @@ namespace Diocese
                 Response.Redirect("Paymentgateway.aspx");
             }
         }
+
+        protected void LnkbtnHome_Click(object sender, EventArgs e)
+        {
+            int usertype = Convert.ToInt32(Session["usertype"].ToString());
+            if (usertype == 3)
+            {
+                Response.Redirect("MemberHome.aspx");
+            }
+            else if (usertype == 4)
+            {
+                Response.Redirect("NonMemberHome.aspx");
+            }
+        }
     }
 }

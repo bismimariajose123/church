@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SimpleFormsMaster.Master" AutoEventWireup="true" CodeBehind="ParishHallBooking.aspx.cs" Inherits="Diocese.ParishHallBooking" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+     <asp:LinkButton ID="LnkbtnHome" runat="server" OnClick="LnkbtnHome_Click">Back to Home</asp:LinkButton>
+   
         <!--grid-->
  	<div class="validation-system">
  		
@@ -76,6 +78,7 @@
               <div class="col-md-12 form-group">
               <asp:Button ID="BtnHallRequest" runat="server" Text="Submit"  CssClass="btn btn-primary" OnClick="BtnHallRequest_Click"/>
               <button type="reset" class="btn btn-default">Reset</button>
+                  
             </div>
           <div class="clearfix"> </div>
    </div>

@@ -20,8 +20,12 @@ namespace Diocese
         {
             int userid =Convert.ToInt32(Session["userid"].ToString());
             int usertype = Convert.ToInt32(Session["usertype_donation"].ToString());
+            int eventid= Convert.ToInt32(Session["paymenteventid"]);
+
+           int parishid =  Convert.ToInt32(Session["parishid"].ToString());
+            
             DonationBLL objDonationBLL = new DonationBLL();
-            objDonationBLL.Update_ispayed_inDonation(userid, usertype);
+            objDonationBLL.Update_ispayed_inDonation(userid, usertype, parishid);
             Response.Write("<script>alert('payment successful')</script>");
             if(usertype==3)
             {
@@ -31,7 +35,7 @@ namespace Diocese
             {
                 Response.Redirect("NonMemberHome.aspx");
             }
-            
+          
         }
     }
 }

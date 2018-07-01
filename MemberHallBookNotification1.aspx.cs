@@ -37,10 +37,7 @@ namespace Diocese
             GVMemberNotification.DataSource = Session["DT"];
             GVMemberNotification.DataBind();
             }
-            else
-            {
-                Response.Write("<script>alert(' no record found');</script>");
-            }
+            
         }
         protected void DDLPagesize_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -197,5 +194,12 @@ namespace Diocese
 
         }
 
+        protected void GVMemberNotification_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int result = 0;
+            int id = Convert.ToInt16(GVMemberNotification.DataKeys[e.RowIndex].Values["HallRequestId"].ToString());
+            result = objParish_HallBLL.Delete_HallRequest(id);
+            LoadMemberNotification();
+        }
     }
 }

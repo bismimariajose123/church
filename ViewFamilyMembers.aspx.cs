@@ -15,19 +15,31 @@ namespace Diocese
         MemberBLL objMemberRegisterBLL = new MemberBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+         
+            Load_Image();
+            Load_DDLMemberNames();
+           
+
+        }
+
+       public void Load_DDLMemberNames()
+        {
+
             objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
             objMemberRegisterBO.Familyid = Convert.ToInt32(Session["family_id"].ToString());
 
-          
-            Load_Image();
-         
-        
+            DataTable dt = objMemberRegisterBLL.Load_DDLMemberNames(objMemberRegisterBO);
+            DDLMemberName.DataSource=dt;
+            DDLMemberName.DataTextField = "OfficialName";
+            DDLMemberName.DataValueField = "Member_ID";
+            DDLMemberName.DataBind();
         }
-
-       
-        public void Load_Image()
+        public void Load_Image()  //load member details in listview
         {
-            
+            objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
+            objMemberRegisterBO.Familyid = Convert.ToInt32(Session["family_id"].ToString());
+
             DataTable dt = new DataTable();
             dt = objMemberRegisterBLL.Get_Member_Details(objMemberRegisterBO);
             if (dt.Rows.Count > 0)
@@ -46,24 +58,22 @@ namespace Diocese
         }
 
 
-        protected void Member_Image_Command(object sender, CommandEventArgs e)
-        {
-            if (e.CommandName == "Member")
-            {
-                string id = e.CommandArgument.ToString();
-
-                int memberid = Convert.ToInt32(id);
-                Session["ParishMember_id"] = memberid;
-               
-            }
-        }
+     
 
         protected void Imgbtnsearch_Click(object sender, ImageClickEventArgs e)
         {
             string searchstr = string.Empty;
             searchstr = TBsearch.Text;
+           
+            int familyid= Convert.ToInt32(Session["family_id"].ToString());
+            int parishid= Convert.ToInt32(Session["parishid"].ToString());
             DataTable dt = new DataTable();
-            dt = objMemberRegisterBLL.Get_Search_MemberDetails(searchstr,objMemberRegisterBO);
+            if (searchstr == "")
+            {
+                Load_Image();
+            }
+            else { 
+            dt = objMemberRegisterBLL.Get_Search_MemberDetails(searchstr,objMemberRegisterBO, familyid, parishid);
             if (dt.Rows.Count > 0)
             {
                 ListView1.DataSource = dt;
@@ -75,6 +85,7 @@ namespace Diocese
             {
                 Response.Write("<script>alert('search not found');</script>");
             }
+        }
         }
 
         protected void ListView1_ItemDataBound(object sender, ListViewItemEventArgs e)
@@ -158,5 +169,43 @@ namespace Diocese
         {
             Response.Redirect("MemberHome.aspx");
         }
+
+        protected void BtnUpdateimage_Click(object sender, EventArgs e)
+        {
+            string fileName = string.Empty;
+            if (FileUploadimg.HasFile)
+            {
+
+                fileName = FileUploadimg.FileName; //gets full path name in filename
+                fileName = "~/Project_Code/People/PeopleImage/" + fileName;
+                FileUploadimg.SaveAs(Server.MapPath(fileName));
+            }
+           
+            int memberid = Convert.ToInt32(DDLMemberName.SelectedValue);
+            objMemberRegisterBO.Imagepath = fileName;
+            objMemberRegisterBO.Memberid = memberid;
+            objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
+            objMemberRegisterBO.Familyid = Convert.ToInt32(Session["family_id"].ToString());
+           
+            int result = objMemberRegisterBLL.Update_MemberImage(objMemberRegisterBO);
+            if(result==1)
+            {
+                Load_Image();
+            }
+
+        }
+
+        //protected void Member_Image_Click(object sender, ImageClickEventArgs e)
+        //{
+        //    ImageButton imgbtn = (sender as ImageButton);
+
+        //    //Get the Command Name.
+        //   // string commandName = btnSelect.CommandName;
+
+        //    //Get the Command Argument.
+        //    string commandArgument = imgbtn.CommandArgument;
+        //    TBsearch.Text = commandArgument;
+
+        //}
     }
     }

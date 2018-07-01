@@ -26,9 +26,9 @@ namespace Diocese.Project_Code
            return  objDonationDAL.Load_DonationIncome(parishid);
         }
 
-        public void Update_ispayed_inDonation(int userid, int usertype)
+        public void Update_ispayed_inDonation(int userid, int usertype,int parishid)
         {
-             objDonationDAL.Update_ispayed_inDonation(userid, usertype);
+             objDonationDAL.Update_ispayed_inDonation(userid, usertype, parishid);
         }
 
         public DataTable LoadHall(int parishid)

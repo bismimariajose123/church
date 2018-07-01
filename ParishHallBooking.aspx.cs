@@ -1,6 +1,7 @@
 ﻿using Diocese.Project_Code;
 using Diocese.Project_Code.SubAdmin;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -75,6 +76,7 @@ namespace Diocese
 
 
             LblHallRate_Capacity.Text = "Hall Nobr ("+objParish_HallBO.hallno+") Capacity ("+objParish_HallBO.People_count+") Rate ("+objParish_HallBO.rate+")";
+            Session["HallRate"] = objParish_HallBO.rate;
         }
 
         protected void BtnHallRequest_Click(object sender, EventArgs e)
@@ -100,9 +102,34 @@ namespace Diocese
             objParish_HallBO.parishid= Convert.ToInt32(Session["parishid"].ToString());
             objParish_HallBO.Status = 1;
             objParish_HallBO.Description = "";
+            objParish_HallBO.IsPaid1 = "pending";
             int result = objParish_HallBLL.AddHallRequest(objParish_HallBO);
+            if(result==1)
+             {
+                ArrayList al = new ArrayList();
+                al.Insert(0, objParish_HallBO.Hallid1);
+                al.Insert(1, objParish_HallBO.Usertype);
+                al.Insert(2, objParish_HallBO.Eventid1);
+                al.Insert(3, objParish_HallBO.parishid);
+                al.Insert(4, objParish_HallBO.Userid);
+
+                Session["arraylist"] = al;
+                Response.Redirect("PaymentgatewayHallbooking.aspx");
+            }
             Response.Redirect("ParishHallBooking.aspx");
         }
 
+        protected void LnkbtnHome_Click(object sender, EventArgs e)
+        {
+            objParish_HallBO.Usertype = Convert.ToInt32(Session["usertype"]);
+            if (objParish_HallBO.Usertype == 3)
+            {
+                Response.Redirect("MemberHome.aspx");
+            }
+            else if (objParish_HallBO.Usertype == 4)
+            {
+                Response.Redirect("NonMemberHome.aspx");
+            }
+        }
     }
 }

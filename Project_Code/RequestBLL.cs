@@ -56,6 +56,11 @@ namespace Diocese.Project_Code
             return objRequestDAL.UpdateNon_Member_Request(objRequestBO, id);
         }
 
+        public DataTable Get_Search_FamilyDetails(RequestBO objRequestBO, string searchstr)
+        {
+            return objRequestDAL.Get_Search_FamilyDetails(objRequestBO, searchstr);
+        }
+
         //public int Delete_MemberRequest(int id)
         //{
         //    return objRequestDAL.Delete_MemberRequest(id);

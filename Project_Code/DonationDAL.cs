@@ -336,7 +336,7 @@ namespace Diocese.Project_Code
 
         }
 
-        public void Update_ispayed_inDonation(int userid, int usertype)
+        public void Update_ispayed_inDonation(int userid, int usertype,int parishid)
         {
             int user=0;
             SqlConnection con = new SqlConnection(ConnectionString);
@@ -349,7 +349,7 @@ namespace Diocese.Project_Code
             {
                 user = 0;
             }
-            SqlCommand cmd = new SqlCommand("update DonationTable1 set ispayed="+1+" where IsParishMember="+user+ " and Memberid="+userid, con);
+            SqlCommand cmd = new SqlCommand("update DonationTable1 set ispayed="+1+" where IsParishMember="+user+ " and Memberid="+userid+ "and ToParishid="+ parishid, con);
             int result = cmd.ExecuteNonQuery();
             con.Close();
         }

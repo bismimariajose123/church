@@ -9,9 +9,10 @@
                                      <tr>
                                          <th><asp:TextBox ID="TBsearch" runat="server" CssClass="form-control">
 
-                                   </asp:TextBox></th><th>
+                                   </asp:TextBox></th>
+                                         <th>
                                        <asp:ImageButton ID="Imgbtnsearch" runat="server" 
-                                           ImageUrl="~/images/search.png" Width="20px"/></th>
+                                           ImageUrl="~/images/search.png" Width="20px" OnClick="Imgbtnsearch_Click" /></th>
                                      </tr>
                                  </table>
                              

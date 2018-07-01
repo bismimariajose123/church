@@ -57,6 +57,18 @@ namespace Diocese.Project_Code
             return Result;
         }
 
+        public DataTable Get_Search_FamilyDetails(RequestBO objRequestBO, string searchstr)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select r.Request_Id,r.isParishMember,r.Event_Name,b.FamilyName,b.OfficialName,r.ProposedDateOfBap,r.ProposedTimeOfBap,r.Memberid,r.RequestStatus_Description,r.RequestStatus from Sub_RequestTable r left join BaptismTable b on r.Request_Id = b.Requestid where r.Parishid ="+ objRequestBO.Parishid1 +" and (b.OfficialName like '%"+searchstr+ "%' or b.FamilyName like '%" + searchstr + "%' or r.Event_Name like'%" + searchstr + "%')";
+              SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+        }
+
         public int UpdateMember_Request(RequestBO objRequestBO, int id) //member update
         {
             SqlConnection con = new SqlConnection(ConnectionString);

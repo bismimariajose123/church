@@ -10,15 +10,18 @@
                                      <tr>
                                          <th><asp:TextBox ID="TBsearch" runat="server" CssClass="form-control search">
 
-                                   </asp:TextBox></th><th>
+                                   </asp:TextBox></th>
+                                         <th>
                                        <asp:ImageButton ID="Imgbtnsearch" runat="server" OnClick="Imgbtnsearch_Click"
                                            ImageUrl="~/images/search.png" Width="20px"/></th>
                                      </tr>
+                                  
                                  </table>
                              
                               </div>
         
                       <br />
+      
                     <label style="color:white"> Select Entries:</label>
                          <div class="dropdown">
                              <asp:DropDownList ID="DDLPagesize" runat="server" 

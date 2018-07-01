@@ -40,6 +40,33 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.ImageButton Imgbtnsearch;
         
         /// <summary>
+        /// FileUploadimg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadimg;
+        
+        /// <summary>
+        /// DDLMemberName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLMemberName;
+        
+        /// <summary>
+        /// BtnUpdateimage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnUpdateimage;
+        
+        /// <summary>
         /// PanelImage control.
         /// </summary>
         /// <remarks>

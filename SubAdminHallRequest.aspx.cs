@@ -18,9 +18,28 @@ namespace Diocese
             if(!IsPostBack)
             {
                 LoadGvRequest();
+                LoadEventName();
             }
             
 
+        }
+        public void LoadEventName()
+        {
+            
+            objParish_HallBO.parishid = Convert.ToInt32(Session["parishid"].ToString());
+            DataTable dt = new DataTable();
+            dt = objParish_HallBLL.LoadEventName(objParish_HallBO);
+            if (dt.Rows.Count > 0)
+            {
+                DDlEventName.DataSource = dt;                  //DDLExpenseEvent [AMOUNT TAKEN FROM]
+                DDlEventName.DataTextField = "EventName";
+                DDlEventName.DataValueField = "EventId";
+                DDlEventName.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert(' no record found');</script>");
+            }
         }
 
         public void LoadGvRequest()
@@ -138,6 +157,49 @@ namespace Diocese
                         Status.Text = "Rejected";
                     }
                 }
+            }
+        }
+
+        protected void BtnSearch_Click(object sender, EventArgs e)
+        {
+            int parishid = Convert.ToInt32(Session["parishid"].ToString());
+            string date1 = Dobhidden.Value;
+            int userid = Convert.ToInt32(Session["family_id"].ToString());
+            int usertype = Convert.ToInt32(Session["usertype"]);
+            int eventid = Convert.ToInt32(DDlEventName.SelectedValue);
+            //string eventname = DDlExpenseEvent.SelectedItem.ToString();
+            //Session["EventName"] = eventname;
+            DataTable dt = new DataTable();
+            if (eventid != 0)
+            {
+                if (date1 != "")//all not null
+                {
+                    DateTime oDate = DateTime.Parse(date1);
+
+                    dt = objParish_HallBLL.Search(oDate, parishid, eventid, userid, usertype);
+
+
+                }
+                else if (date1 == "") //only event search
+                {
+                    dt = objParish_HallBLL.SearchEvent(parishid, eventid, userid, usertype);
+
+                }
+                if (dt.Rows.Count > 0)
+                { 
+                    GVHall.DataSource = dt;
+                    GVHall.DataBind();
+                }
+                else
+                {
+                    Response.Write("<script>alert('search not found');</script>");
+                }
+
+
+            }
+            else
+            {
+                Response.Write("<script>alert('select event');</script>");
             }
         }
     }

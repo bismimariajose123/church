@@ -40,7 +40,46 @@ namespace Diocese.Project_Code.SubAdmin
             return objParish_HallBO;
 
         }
-       
+
+        public DataTable LoadEventName(Parish_HallBO objParish_HallBO)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select EventName,EventId from EventTable where Parishid=" + objParish_HallBO.parishid;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+        }
+
+        public int UpdateIsPaid(Parish_HallBO objParish_HallBO)
+        {
+            int Result = 0;
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            try
+            {
+
+            
+            SqlCommand cmd = new SqlCommand("update UserHallRequestTable set IsPaid=@IsPaid where UserType=@UserType and Userid=@Userid and Eventid=@Eventid and HallId=@HallId and Parishid=@Parishid", con);
+            cmd.Parameters.AddWithValue("@IsPaid", objParish_HallBO.IsPaid1);
+            cmd.Parameters.AddWithValue("@UserType", objParish_HallBO.Usertype);
+            cmd.Parameters.AddWithValue("@Userid", objParish_HallBO.Userid);
+            cmd.Parameters.AddWithValue("@Eventid", objParish_HallBO.Eventid1);
+            cmd.Parameters.AddWithValue("@HallId", objParish_HallBO.Hallid1);
+                cmd.Parameters.AddWithValue("@Parishid", objParish_HallBO.parishid);
+                Result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            con.Close();
+            return Result;
+        }
+
         public DataTable LoadMemberNotification(int parishid, int userid,int usertype)
         {
             DataTable dt=new DataTable();
@@ -53,6 +92,18 @@ namespace Diocese.Project_Code.SubAdmin
             return dt;
 
 
+        }
+
+        public int Delete_HallRequest(int id)
+        {
+            int result;
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete from UserHallRequestTable where HallRequestId=@id", con);
+            cmd.Parameters.AddWithValue("@id", id);
+            result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
         }
 
         public List<String> FillMemberDetails(int familyid, int usertype)
@@ -148,7 +199,7 @@ namespace Diocese.Project_Code.SubAdmin
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName,r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid;
+            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName,r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description,r.IsPaid from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid;
             SqlDataAdapter sda = new SqlDataAdapter(query,con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -160,7 +211,7 @@ namespace Diocese.Project_Code.SubAdmin
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query1 = "insert into UserHallRequestTable values(@UserType,@Userid,@Eventid,@HallId,@OfficialName,@RequestDate,@Parishid,@Status,@Description)";
+            string query1 = "insert into UserHallRequestTable values(@UserType,@Userid,@Eventid,@HallId,@OfficialName,@RequestDate,@Parishid,@Status,@Description,@IsPaid)";
             SqlCommand cmd = new SqlCommand(query1, con);
             cmd.Parameters.AddWithValue("@UserType", objParish_HallBO.Usertype);
             cmd.Parameters.AddWithValue("@Userid", objParish_HallBO.Userid);
@@ -171,6 +222,8 @@ namespace Diocese.Project_Code.SubAdmin
             cmd.Parameters.AddWithValue("@Parishid", objParish_HallBO.parishid);
             cmd.Parameters.AddWithValue("@Status", objParish_HallBO.Status);
             cmd.Parameters.AddWithValue("@Description", objParish_HallBO.Description);
+            cmd.Parameters.AddWithValue("@IsPaid", objParish_HallBO.IsPaid1);
+
 
             int a = cmd.ExecuteNonQuery();
             con.Close();

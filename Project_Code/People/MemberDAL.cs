@@ -69,6 +69,34 @@ namespace Diocese.Project_Code.People
             }
         }
 
+        public int Update_MemberImage(MemberBO objMemberRegisterBO) //upload image
+        {
+            int result;
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update MemberDetailsTable set ImagePath=@ImagePath where Member_ID=@Member_ID and Parish_id=@Parish_id and Family_id=@Family_id", con);
+            cmd.Parameters.AddWithValue("@ImagePath", objMemberRegisterBO.Imagepath);
+            cmd.Parameters.AddWithValue("@Member_ID", objMemberRegisterBO.Memberid);
+            cmd.Parameters.AddWithValue("@Parish_id", objMemberRegisterBO.Parishid);
+            cmd.Parameters.AddWithValue("@Family_id", objMemberRegisterBO.Familyid);
+       
+            result = cmd.ExecuteNonQuery();
+            return result;
+        }
+
+        public DataTable Load_DDLMemberNames(MemberBO objMemberRegisterBO)  //load member names in dropdownlist
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select * from MemberDetailsTable where  Parish_id=" + objMemberRegisterBO.Parishid + " and Family_id = " + objMemberRegisterBO.Familyid;
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+        }
+
         //public MemberBO GetStatus(MemberBO objMemberRegisterBO)
         //{
         //    SqlConnection con = new SqlConnection(ConnectionString);
@@ -84,18 +112,18 @@ namespace Diocese.Project_Code.People
         //        objMemberRegisterBO.Baptism_id = Convert.ToInt32(dr["BaptismId"].ToString());
         //        objMemberRegisterBO.Marriage_id= Convert.ToInt32(dr["Marriageid"].ToString());
         //        objMemberRegisterBO.Registered_Status= Convert.ToInt32(dr["RegisteredStatus"].ToString());
-            
+
         //    }
         //    dr.Close();
 
         //    return objMemberRegisterBO;
         //}
 
-        public DataTable Get_Search_MemberDetails(string searchstr,MemberBO objMemberRegisterBO)
+        public DataTable Get_Search_MemberDetails(string searchstr,MemberBO objMemberRegisterBO,int familyid,int parishid)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query = "select * from MemberDetailsTable where OfficialName like '%" + searchstr + "%'or BaptismName like '%" + searchstr + "%' and Parish_id="+ objMemberRegisterBO.Parishid +" and Family_id="+ objMemberRegisterBO.Familyid;
+            string query = "select * from MemberDetailsTable where (OfficialName like '%" + searchstr + "%' or BaptismName like '%" + searchstr + "%') and Family_id in (select Family_id from MemberDetailsTable where Parish_id=" + parishid + " and Family_id = " + familyid + ")";
 
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
