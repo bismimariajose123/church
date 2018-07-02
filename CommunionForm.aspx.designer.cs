@@ -13,6 +13,15 @@ namespace Diocese {
     public partial class CommunionForm {
         
         /// <summary>
+        /// LnkbtnHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LnkbtnHome;
+        
+        /// <summary>
         /// parishmember control.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,13 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBCommunionParish;
         
         /// <summary>
-        /// TBdiocese control.
+        /// Docommunionhhidden control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBdiocese;
+        protected global::System.Web.UI.WebControls.HiddenField Docommunionhhidden;
         
         /// <summary>
         /// TBFatherName control.
@@ -112,15 +121,6 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBCelebrantName;
         
         /// <summary>
-        /// Docommunionhhidden control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Docommunionhhidden;
-        
-        /// <summary>
         /// DDLGender control.
         /// </summary>
         /// <remarks>
@@ -130,12 +130,12 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.DropDownList DDLGender;
         
         /// <summary>
-        /// Btndeath control.
+        /// BtnAdd_Communiondetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btndeath;
+        protected global::System.Web.UI.WebControls.Button BtnAdd_Communiondetails;
     }
 }

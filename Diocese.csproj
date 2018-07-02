@@ -528,6 +528,9 @@
     <Compile Include="Project_Code\BaptismBLL.cs" />
     <Compile Include="Project_Code\BaptismBO.cs" />
     <Compile Include="Project_Code\BaptismDAL.cs" />
+    <Compile Include="Project_Code\CommunionBLL.cs" />
+    <Compile Include="Project_Code\CommunionBO.cs" />
+    <Compile Include="Project_Code\CommunionDAL.cs" />
     <Compile Include="Project_Code\DonationBLL.cs" />
     <Compile Include="Project_Code\DonationBO.cs" />
     <Compile Include="Project_Code\DonationDAL.cs" />
