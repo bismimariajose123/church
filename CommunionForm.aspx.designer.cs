@@ -22,15 +22,6 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.LinkButton LnkbtnHome;
         
         /// <summary>
-        /// parishmember control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox parishmember;
-        
-        /// <summary>
         /// TBFamilyName control.
         /// </summary>
         /// <remarks>
@@ -38,24 +29,6 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TBFamilyName;
-        
-        /// <summary>
-        /// TBParishName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBParishName;
-        
-        /// <summary>
-        /// TBOfficialName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBOfficialName;
         
         /// <summary>
         /// TBBaptismName control.
@@ -67,13 +40,13 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBBaptismName;
         
         /// <summary>
-        /// TBCommunionParish control.
+        /// TBOfficialName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCommunionParish;
+        protected global::System.Web.UI.WebControls.TextBox TBOfficialName;
         
         /// <summary>
         /// Docommunionhhidden control.
@@ -103,24 +76,6 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.TextBox TBMotherName;
         
         /// <summary>
-        /// TBParishPriestName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBParishPriestName;
-        
-        /// <summary>
-        /// TBCelebrantName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCelebrantName;
-        
-        /// <summary>
         /// DDLGender control.
         /// </summary>
         /// <remarks>
@@ -128,6 +83,15 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLGender;
+        
+        /// <summary>
+        /// hiddob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hiddob;
         
         /// <summary>
         /// BtnAdd_Communiondetails control.

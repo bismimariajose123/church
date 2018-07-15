@@ -22,6 +22,8 @@ namespace Diocese
             objResponsibilityBO.DutyName1 = TBResponsibilityName.Text;
             objResponsibilityBO.Uname = TBUname.Text;
             objResponsibilityBO.Pwd = TBPasswd.Text;
+            objResponsibilityBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+
             int result = objResponsibilityBLL.AddResponsibility(objResponsibilityBO);
             Response.Redirect("SubadminAddResponsibility.aspx");
         }

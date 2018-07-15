@@ -27,6 +27,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //lined-icons -->
    <%-- <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>--%>
+    <script type="text/javascript" >
+        history.forward();
+</script>
 </head>
 <body>
     <div class="page-container">
@@ -96,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									 <li><a href="DonationForm.aspx"><i class="fa fa-tachometer"></i>   <span>DONATION</span><div class="clearfix"></div></a></li>
 								  <li><a href="ParishHallBooking.aspx"><i class="fa fa-tachometer"></i>   <span>PARISH HALL BOOKING</span><div class="clearfix"></div></a></li>
 								--%>
-                                        <li><a href="LoginForm.aspx"><i class="fa fa-tachometer"></i><span>LOGOUT</span><div class="clearfix"></div></a></li>
+                                        <li><a href="Logout.aspx"><i class="fa fa-tachometer"></i><span>LOGOUT</span><div class="clearfix"></div></a></li>
                                         </ul>
 								</div>
 							  </div>

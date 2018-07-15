@@ -14,7 +14,15 @@ namespace Diocese
         AccountantBLL objAccountantBLL = new AccountantBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            objAccountantBO.Parishid1= Convert.ToInt32(Session["parishid"].ToString());
+
+           if( Session["parishid"].ToString()==null)
+            {
+                Response.Redirect("Logout.aspx");
+            }
+            else
+            {
+                objAccountantBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+            }
         }
 
         protected void BtnSundayCollection_Click(object sender, EventArgs e)  //ADD SUNDAY COLLECTION TO COLLECTION_SUNDAY_TABLE

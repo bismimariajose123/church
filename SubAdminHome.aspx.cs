@@ -11,14 +11,24 @@ namespace Diocese
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-             LBLsubadminname.Text = Session["AdminName"].ToString();
+            if(!IsPostBack)
+            { 
+            if (Session["AdminName"] == null)
+            {
+                Response.Redirect("Logout.aspx");
+            }
+            else { 
+            LBLsubadminname.Text = Session["AdminName"].ToString();
+        }
+            }
         }
 
         protected void logout_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(2000);
+            Session["AdminName"] =null;
+            
             Session.Clear();
-            Response.Redirect("LoginForm.aspx");
+            Response.Redirect("Logout.aspx");
         }
     }
 }

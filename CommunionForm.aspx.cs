@@ -1,6 +1,7 @@
 ﻿using Diocese.Project_Code;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,43 +17,57 @@ namespace Diocese
         {
 
         }
+      
 
-
-        protected void LnkbtnHome_Click(object sender, EventArgs e)
-        {
-            int usertype = Convert.ToInt32(Session["usertype"]);
-            if (usertype == 3)
+            protected void LnkbtnHome_Click(object sender, EventArgs e)
             {
-                Response.Redirect("MemberHome.aspx");
-            }
-            else if (usertype == 4)
-            {
-                Response.Redirect("NonMemberHome.aspx");
-            }
-        }
+                int usertype = Convert.ToInt32(Session["usertype"]);
 
-        protected void BtnAdd_Communiondetails_Click(object sender, EventArgs e)
-        {
-            int usertype = Convert.ToInt32(Session["usertype"]);
-            int parishid= Convert.ToInt32(Session["parishid"].ToString());
-            int familyid= Convert.ToInt32(Session["family_id"]);
+                if (usertype == 3)
+                {
+                    Response.Redirect("MemberHome.aspx");
+                }
+                else if (usertype == 4)
+                {
+                    Response.Redirect("NonMemberHome.aspx");
+                }
+
+
+                else if(usertype == 6)
+               {
+                Response.Redirect("SundaySchool.aspx");
+                 }
+            }
+
+            protected void BtnAdd_Communiondetails_Click(object sender, EventArgs e)
+            {
+           
+               int parishid = Convert.ToInt32(Session["parishid"].ToString());
+
+
             objCommunionBO.FamilyName1 = TBFamilyName.Text;
-            objCommunionBO.PersonsParishName1 = TBParishName.Text;
-            objCommunionBO.OfficialName1 = TBOfficialName.Text;
             objCommunionBO.BaptismName1 = TBBaptismName.Text;
-            objCommunionBO.ParishofCommumion1 = TBCommunionParish.Text;
 
-            String dateofcommunion= Docommunionhhidden.Value;
+            objCommunionBO.OfficialName1 = TBOfficialName.Text;
+            
+            String dateofcommunion = Docommunionhhidden.Value;
             DateTime oDate = DateTime.Parse(dateofcommunion);
 
             objCommunionBO.DO_communion1 = oDate;
             objCommunionBO.FName1 = TBFatherName.Text;
             objCommunionBO.MName1 = TBMotherName.Text;
-            objCommunionBO.Parish_PriestName1 = TBParishName.Text;
-            objCommunionBO.BlessedBy1 = TBCelebrantName.Text;
+            
             objCommunionBO.Gender1 = DDLGender.SelectedItem.ToString();
-            objCommunionBO.Commu_status1 = "pending";
-            int result = objCommunionBLL.AddCommunionRequest(objCommunionBO, usertype, parishid, familyid);
+            
+            String dobirth = hiddob.Value;
+            DateTime datebirth = DateTime.Parse(dobirth);
+
+            objCommunionBO.DO_Birth1 = datebirth;
+            int result = objCommunionBLL.AddCommunionRequest(objCommunionBO,parishid);
+            if(result==1)
+            {
+                Response.Redirect("CommunionForm.aspx");
+            }
+        }
         }
     }
-}

@@ -58,6 +58,14 @@ namespace Diocese
                 Session["DutyName"] = objLoginBO.Personname;       //here personname as dutyname
                 Response.Redirect("AccountantSundayCollection.aspx");
             }
+            else if (value == 1 && objLoginBO.User_type == 6)
+            {
+                Session["usertype"] = 6; //for donation identification
+                Session["Responsibilityid"] = objLoginBO.Familyid;    //here familyid as  Responsibilityd id
+                Session["DutyName"] = objLoginBO.Personname;       //here personname as dutyname
+                Response.Redirect("SundaySchool.aspx");
+            }
+
             else
             {
                 Response.Write("<script>alert('Invalid login');</script>");

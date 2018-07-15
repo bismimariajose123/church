@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SimpleFormsMaster.Master" AutoEventWireup="true" CodeBehind="CommunionForm.aspx.cs" Inherits="Diocese.CommunionForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
      <asp:LinkButton ID="LnkbtnHome" runat="server" OnClick="LnkbtnHome_Click">Back to Home</asp:LinkButton>
   
      <!--grid-->
@@ -8,28 +7,17 @@
  		
  		<div class="validation-form">
  	<!---->
-             <div class="vali-form">
-            <div class="col-md-6 form-group1">
- 
-             <div class="checkbox1">
-                <label>
-                    <asp:checkbox runat="server" ID="parishmember" ng-model="model.winner" required="" class="ng-invalid ng-invalid-required" onclick="ShowHideDiv()" checked></asp:checkbox>
-                   New request?<label style="margin-left:30px;color:cadetblue">tick if yes</label>
-                </label>
-              </div>
-                </div>
-                  <div class="clearfix"> </div>
-                 </div>
+            
 
            <div class="vali-form">
             <div class="col-md-6 form-group1">
               <label class="control-label">Family Name</label>
                 <asp:textbox ID="TBFamilyName" runat="server" required="" placeholder="Family Name"></asp:textbox>
             </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Parish Name</label>
-               <asp:textbox ID="TBParishName" runat="server" required="" placeholder="Person's Parish Name"></asp:textbox>
-            </div>
+             <div class="col-md-6 form-group1 form-last">
+              <label class="control-label">Baptism Name</label>
+               <asp:textbox ID="TBBaptismName" runat="server" required="" placeholder="Baptism Name"></asp:textbox>
+          </div>
             <div class="clearfix"> </div>
             </div>
 
@@ -39,19 +27,8 @@
                 <asp:textbox ID="TBOfficialName" runat="server" required="" placeholder="Official Name of person recieving communion"></asp:textbox>
             </div>
             <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Baptism Name</label>
-               <asp:textbox ID="TBBaptismName" runat="server" required="" placeholder="Baptism Name"></asp:textbox>
-          </div>
-            <div class="clearfix"> </div>
-            </div>
-               <div class="vali-form">
-            <div class="col-md-6 form-group1">
-              <label class="control-label"> Parish of Communion </label>
-                <asp:textbox ID="TBCommunionParish" runat="server"  placeholder="Parish Name"></asp:textbox>
-           </div>
-            <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Date of Communion</label>
-                <input type="date" id="dateofcommunion" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="">
+                <input type="date" id="dateofcommunion" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="" onchange="date_dis()">
                 <asp:hiddenfield ID="Docommunionhhidden" runat="server"></asp:hiddenfield>
                 </div>
             <div class="clearfix"> </div>
@@ -69,18 +46,6 @@
             <div class="clearfix"> </div>
             </div>
 
-               
-            <div class="vali-form">
-            <div class="col-md-6 form-group1">
-              <label class="control-label">Parish Priest's Name</label>
-                <asp:textbox ID="TBParishPriestName" runat="server" required="" placeholder="where communion is held"></asp:textbox>
-            </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Blessed By</label>
-               <asp:textbox ID="TBCelebrantName" runat="server" required="" placeholder="Celebrant's Name"></asp:textbox>
-        </div>
-            <div class="clearfix"> </div>
-            </div>
               <div class="vali-form">
             <div class="col-md-6 form-group1">
                  <label class="control-label">Gender</label>
@@ -92,6 +57,11 @@
               </asp:dropdownlist>
              
                  </div>
+                    <div class="col-md-6 form-group1 form-last">
+              <label class="control-label">Date of Birth</label>
+                <input type="date" id="datofbirth" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="" onchange="dateobbirth_dis()">
+                <asp:hiddenfield ID="hiddob" runat="server"></asp:hiddenfield>
+                </div>
                   
               <div class="clearfix"> </div>
             </div>
@@ -113,11 +83,16 @@
 
         function date_dis()
         {
-            var textbox = document.getElementById('orddate');
+            var textbox = document.getElementById('dateofcommunion');
             document.getElementById('<%=Docommunionhhidden.ClientID%>').value = textbox.value;
             alert(textbox.value);
 
-         }
+        }
+        function dateobbirth_dis() {
+            var textbox = document.getElementById('datofbirth');
+            document.getElementById('<%=hiddob.ClientID%>').value = textbox.value;
+        alert(textbox.value);
+        }
 
         
           

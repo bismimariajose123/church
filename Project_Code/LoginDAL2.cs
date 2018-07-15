@@ -200,6 +200,52 @@ namespace Diocese.Project_Code
                 }
 
             }
+
+            else if (objLoginBO.User_type == 6) //accountant
+            {
+                SqlConnection con = new SqlConnection(ConnectionString);
+                con.Open();
+                try
+                {
+                    string query = "select count(*) from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid;
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count == 1)
+                    {
+
+                        string query2 = "select Responsibilityd,DutyName from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid;
+                        SqlCommand cmd_Headname = new SqlCommand(query2, con);
+
+                        SqlDataReader dr = cmd_Headname.ExecuteReader();
+                        if (dr.HasRows)
+                        {
+
+                            dr.Read();
+                            result = 1;
+
+                            objLoginBO.Familyid = Convert.ToInt32(dr["Responsibilityd"].ToString());    //here familyid as  Responsibilityd id
+                            objLoginBO.Personname = dr["DutyName"].ToString(); //here personname as dutyname
+                        }
+                        else
+                        {
+                            result = 0;
+                        }
+                        dr.Close();
+
+                    }
+                    else
+                    {
+                        result = 0;
+                    }
+                }
+
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+            }
+
             else
             {
                 result = 0;

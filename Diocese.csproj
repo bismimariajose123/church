@@ -92,6 +92,7 @@
     </Content>
     <Content Include="BaptismForm.aspx" />
     <Content Include="CommunionForm.aspx" />
+    <Content Include="CommunionViewForm.aspx" />
     <Content Include="CreateFamily.aspx" />
     <Content Include="css\Galary_image.css" />
     <Content Include="DeathForm.aspx" />
@@ -101,6 +102,7 @@
     <Content Include="dist\js\sb-admin-2.min.js" />
     <Content Include="DonationForm.aspx" />
     <Content Include="images\search.png" />
+    <Content Include="Logout.aspx" />
     <Content Include="MarriageDetails_Fill.aspx" />
     <Content Include="MasterFirstPage.Master" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -198,6 +200,7 @@
     <Content Include="subadmin\js\script.js" />
     <Content Include="subadmin\js\scripts.js" />
     <Content Include="Sub_ViewMore_Baptism_Details.aspx" />
+    <Content Include="SundaySchool.aspx" />
     <Content Include="Superadminhome.aspx" />
     <Content Include="SuperAdminMaster.Master" />
     <Content Include="SuperAdminNotification.aspx" />
@@ -258,6 +261,7 @@
     <Content Include="subadmin\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="SubAdminMaster.Master" />
     <Content Include="SimpleFormsMaster.Master" />
+    <Content Include="SundaySchool.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -386,6 +390,13 @@
     <Compile Include="CommunionForm.aspx.designer.cs">
       <DependentUpon>CommunionForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CommunionViewForm.aspx.cs">
+      <DependentUpon>CommunionViewForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommunionViewForm.aspx.designer.cs">
+      <DependentUpon>CommunionViewForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateFamily.aspx.cs">
       <DependentUpon>CreateFamily.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -423,6 +434,13 @@
     </Compile>
     <Compile Include="LoginForm.aspx.designer.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="MarriageDetails_Fill.aspx.cs">
       <DependentUpon>MarriageDetails_Fill.aspx</DependentUpon>
@@ -536,6 +554,7 @@
     <Compile Include="Project_Code\DonationDAL.cs" />
     <Compile Include="Project_Code\GalaryDAL.cs" />
     <Compile Include="Project_Code\Galary_BLL.cs" />
+    <Compile Include="Project_Code\List.cs" />
     <Compile Include="Project_Code\LoginBLL.cs" />
     <Compile Include="Project_Code\LoginBO.cs" />
     <Compile Include="Project_Code\LoginDAL2.cs" />
@@ -651,6 +670,20 @@
     </Compile>
     <Compile Include="Sub_ViewMore_Baptism_Details.aspx.designer.cs">
       <DependentUpon>Sub_ViewMore_Baptism_Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SundaySchool.aspx.cs">
+      <DependentUpon>SundaySchool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SundaySchool.aspx.designer.cs">
+      <DependentUpon>SundaySchool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SundaySchool.Master.cs">
+      <DependentUpon>SundaySchool.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SundaySchool.Master.designer.cs">
+      <DependentUpon>SundaySchool.Master</DependentUpon>
     </Compile>
     <Compile Include="Superadminhome.aspx.cs">
       <DependentUpon>Superadminhome.aspx</DependentUpon>
