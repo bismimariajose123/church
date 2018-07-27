@@ -94,6 +94,17 @@ namespace Diocese.Project_Code.SubAdmin
 
         }
 
+        public DataTable Searchbydate(DateTime oDate, int parishid)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(ConnectionString);
+            String query= "select r.HallRequestId,r.Userid,h.HallName,e.EventName,r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description,r.IsPaid from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and (r.Parishid=" + parishid + " and r.RequestDate='"+oDate+"') order by (r.RequestDate) desc";
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            sda.Fill(dt);
+            con.Close();
+            return dt;
+        }
+
         public int Delete_HallRequest(int id)
         {
             int result;
@@ -199,7 +210,7 @@ namespace Diocese.Project_Code.SubAdmin
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName,r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description,r.IsPaid from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid;
+            string query = "select r.HallRequestId,r.Userid,h.HallName,e.EventName,r.UserType,r.OfficialName,r.RequestDate,r.Status,r.Description,r.IsPaid from Sub_ParishHallTable h,EventTable e,UserHallRequestTable r where r.Eventid=e.EventId and r.HallId=h.Hall_ID and r.Parishid=" + parishid +"order by (r.RequestDate) desc";
             SqlDataAdapter sda = new SqlDataAdapter(query,con);
             DataTable dt = new DataTable();
             sda.Fill(dt);

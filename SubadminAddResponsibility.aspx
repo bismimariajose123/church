@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="SubadminAddResponsibility.aspx.cs" Inherits="Diocese.SubadminAddResponsibility" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+     <div style="margin-top:10px;"><b> WELCOME <asp:Label ID="LBLsubadminname" runat="server" Text="Label" ></asp:Label></b></div>
+ 
      <div class="reg-w3">
 <div class="w3layouts-main">
 	<h2>ADD DUTY</h2>

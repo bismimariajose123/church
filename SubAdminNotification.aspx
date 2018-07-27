@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="SubAdminNotification.aspx.cs" Inherits="Diocese.SubAdminNotification" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     
+    
     <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">

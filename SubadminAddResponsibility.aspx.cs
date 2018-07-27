@@ -14,7 +14,19 @@ namespace Diocese
         ResponsibilityBLL objResponsibilityBLL = new ResponsibilityBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            objResponsibilityBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+             if (!IsPostBack)
+            {
+                if (Session["AdminName"] == null)
+                {
+                    Response.Redirect("Logout.aspx");
+                }
+                else
+                {
+                    LBLsubadminname.Text = Session["AdminName"].ToString();
+                }
+                objResponsibilityBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+
+            }
         }
 
         protected void BtnAddResponsibility_Click(object sender, EventArgs e) //ADD RESPONSIBILITY(1)
@@ -23,9 +35,53 @@ namespace Diocese
             objResponsibilityBO.Uname = TBUname.Text;
             objResponsibilityBO.Pwd = TBPasswd.Text;
             objResponsibilityBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+            String tbresponsibilityname = TBResponsibilityName.Text;
+            List<String> list = new List<String>();
+            list.Add("Sunday Collection");
+            list.Add("SundaySchool");
+            int ch = 0;
+            foreach (String a in list)
+            {
+                if (a.Equals(tbresponsibilityname))
+                {
+                    ch = 1;
+                   
+                    break;
+                   
+                }
+                else
+                {
+                    ch = 0;
+                }
+               
+            }
+            if (ch == 0)
+            {
+                Response.Write("<script>alert('responsibility should only be Sunday Collection or SundaySchool');</script>;");
+            }
+            else
+            {
 
-            int result = objResponsibilityBLL.AddResponsibility(objResponsibilityBO);
-            Response.Redirect("SubadminAddResponsibility.aspx");
+                int chk_duplicate_responsibility = objResponsibilityBLL.chk_duplicate_responsibility(objResponsibilityBO);
+                if(chk_duplicate_responsibility==0)
+                {
+                    int result = objResponsibilityBLL.AddResponsibility(objResponsibilityBO);
+                    if (result == 1)
+                    {
+                        Response.Write("<script>alert('added successfully');</script>");
+                    }
+                   
+                }
+                else
+                {
+                    Response.Write("<script>alert('Value already exists');</script>");
+                }
+
+                Response.Redirect("SubadminAddResponsibility.aspx");
+            }
+           
         }
+
+       
     }
 }

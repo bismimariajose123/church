@@ -18,7 +18,7 @@ namespace Diocese.Project_Code
             long balamt = 0;
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("insert into DonationTable1 values(@FamilyName,@Persons_ParishName,@OfficialName,@Gender,@ContactNo,@Diocese,@EventName,@ToParishid,@Memberid,@IsParishMember,@Amount,@AmountReceivedDate,@ispayed,@BalanceAmount)", con);
+            SqlCommand cmd = new SqlCommand("insert into DonationTable1 values(@FamilyName,@Persons_ParishName,@OfficialName,@Gender,@ContactNo,@Diocese,@EventName,@ToParishid,@Memberid,@IsParishMember,@Amount,@AmountReceivedDate,@ispayed)", con);
            
                 cmd.Parameters.AddWithValue("@FamilyName", objDonationBO.FamilyName1);
                 cmd.Parameters.AddWithValue("@Persons_ParishName", objDonationBO.Persons_ParishName1);
@@ -122,7 +122,7 @@ namespace Diocese.Project_Code
             return TotalAmount;
         }
 
-        public string Search_Event(int parishid, int eventid)   //BTN SEARCH(A)
+        public string Search_Event(int parishid, int eventid,String eventName)   //BTN SEARCH(A)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
@@ -159,12 +159,12 @@ namespace Diocese.Project_Code
             return TotalAmount;
         }
 
-        public DataTable Load_DonationIncome_Twodate_EventName(DateTime oDate, DateTime oDate1, int parishid, int eventid)  //BTN SEARCH(A)
+        public DataTable Load_DonationIncome_Twodate_EventName(DateTime oDate, DateTime oDate1, int parishid, int eventid,String eventName)  //BTN SEARCH(A)
         {
             DataTable dt = new DataTable();
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            if (eventid == 6)
+            if (eventName.Equals("Sunday Collection"))
             {
                 string query = "select Collection_SundayId,Amount,SundayCollectionDate from SundayCollectionTable where Parishid = " + parishid + " and SundayCollectionDate between '" + oDate + "' and '" + oDate1 + "'";
 
@@ -186,20 +186,20 @@ namespace Diocese.Project_Code
             return dt;
         }
 
-        public string DisplayTwoDatesBasedEventName_TotalAmount(int parishid, DateTime oDate, DateTime oDate1, int eventid)   //BTN SEARCH(A)
+        public string DisplayTwoDatesBasedEventName_TotalAmount(int parishid, DateTime oDate, DateTime oDate1, int eventid,String eventName)   //BTN SEARCH(A)
         {
             string TotalAmount = string.Empty;
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            if(eventid!=6)
+            if(!eventName.Equals("Sunday Collection"))
             { 
             string query = "select sum(Amount) from DonationTable1 where ToParishid = " + parishid + " and AmountReceivedDate between '" + oDate + "' and '" + oDate1 + "' and EventName="+eventid;
             SqlCommand cmd = new SqlCommand(query, con);
             TotalAmount = Convert.ToString(cmd.ExecuteScalar());
             }
-            else if (eventid == 6)  //sunday collection
+            else if (eventName.Equals("Sunday Collection"))  //sunday collection
             {
-                string query = "select sum(Amount) from SundayCollectionTable where Parishid = " + parishid + " and SundayCollectionDate between '" + oDate + "' and '" + oDate1 + "'";
+                string query = "select sum(Amount)  from SundayCollectionTable where Parishid = " + parishid + " and SundayCollectionDate between '" + oDate + "' and '" + oDate1 + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 TotalAmount = Convert.ToString(cmd.ExecuteScalar());
 

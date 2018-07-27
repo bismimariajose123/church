@@ -29,6 +29,12 @@ namespace Diocese.Project_Code.SubAdmin
             return objFamilyDAL.GetFamilyDetails(objFamilyBO);
         }
 
+     
+        public DataTable getFamilyName(FamilyBO objFamilyBO)
+        {
+            return objFamilyDAL.getFamilyName(objFamilyBO);
+        }
+
         public DataTable Get_Search_FamilyDetails(FamilyBO objFamilyBO, string searchstr)
         {
             return objFamilyDAL.Get_Search_FamilyDetails(objFamilyBO, searchstr);

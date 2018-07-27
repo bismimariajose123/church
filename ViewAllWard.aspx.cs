@@ -26,10 +26,18 @@ namespace Diocese
             objWardBO.Parish_id = Convert.ToInt32(Session["parishid"].ToString());
             DataTable dt;
             dt= objWardBLL.GetWardDetails(objWardBO);
-            Session["Dt"] = dt;
+            if(dt.Rows.Count>0)
+            {
+                Session["Dt"] = dt;
 
-            GVWardTable.DataSource = dt;
-            GVWardTable.DataBind();
+                GVWardTable.DataSource = dt;
+                GVWardTable.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('no members are added in ward');</script>");
+            }
+           
         }
         protected void DDLPagesize_SelectedIndexChanged(object sender, EventArgs e)
         {

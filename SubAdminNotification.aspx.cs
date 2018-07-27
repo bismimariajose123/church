@@ -296,25 +296,26 @@ namespace Diocese
         }
         protected void Download_Click(object sender, EventArgs e)//get memberid and isparishmember and requestid
         {
+            String parishname = Session["Parishname"].ToString();
             Button lnk = sender as Button;
             GridViewRow gvr = lnk.NamingContainer as GridViewRow;
             Label LBLIsParishMember = gvr.FindControl("LBLIsParishMember") as Label;
             Label LBLRequestid = gvr.FindControl("LBLRequestid") as Label;
             Label LBLOfficialName = gvr.FindControl("LBLOfficialName") as Label;
             int memberid = Convert.ToInt32(((Button)sender).CommandArgument);
-            Downloadfun(memberid,Convert.ToInt32(LBLIsParishMember.Text), Convert.ToInt32(LBLRequestid.Text), LBLOfficialName.Text);
+            Downloadfun(memberid,Convert.ToInt32(LBLIsParishMember.Text), Convert.ToInt32(LBLRequestid.Text), LBLOfficialName.Text, parishname);
         }
-        public void Downloadfun(int memid,int isparishmember,int requsetid,string name)
+        public void Downloadfun(int memid,int isparishmember,int requsetid,string name,string parishname)
         {
 
             DataTable dt = objRequestBLL.GeneratePdfBaptism(memid,isparishmember,requsetid);
             DataRow drow = dt.Rows[0];
             if(dt.Rows.Count>0)
             {
-                Document doc = new Document(PageSize.A4, 50, 40, 50, 40);
+                Document doc = new Document(PageSize.A4, 60, 50, 60, 50);
                 PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("D:/Certificates/BaptismCertificate"+name+".pdf", FileMode.Create));
                 doc.Open();
-                iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance("D:/3 tierfare/Diocese/Project_Code/People/PeopleImage/stjosephslogo.jpg");
+                iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance("D:/3 tierfare/Diocese/Project_Code/People/PeopleImage/frontimage.png");
                 pic.Alignment = Element.ALIGN_CENTER;
                 pic.ScaleToFit(100f, 100f);
                 doc.Add(pic);
@@ -332,7 +333,7 @@ namespace Diocese
                 c2.Font.Size = 14;
                 Chunk c3 = new Chunk(" was Baptised at ", FontFactory.GetFont("Times New Roman"));
                 c3.Font.Size = 12;
-                Chunk c4 = new Chunk(" St. Joseph's Church, Parappa ", FontFactory.GetFont("Times New Roman"));
+                Chunk c4 = new Chunk(" "+parishname, FontFactory.GetFont("Times New Roman"));
                 c4.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
                 c4.Font.SetStyle(0);
                 c4.Font.Size = 14;

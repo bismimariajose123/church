@@ -87,9 +87,9 @@ namespace Diocese.Project_Code
             return objDonationDAL.Get_Search_Str(searchstr, parishid);
         }
 
-        public string Search_Event(int parishid, int eventid)  //BTN SEARCH(A)
+        public string Search_Event(int parishid, int eventid,String eventName)  //BTN SEARCH(A)
         {
-            return objDonationDAL.Search_Event(parishid, eventid);
+            return objDonationDAL.Search_Event(parishid, eventid, eventName);
         }
 
         public string Get_Search_TotalAmount(string searchstr, int parishid)  //BTN SEARCH(A)   
@@ -102,16 +102,16 @@ namespace Diocese.Project_Code
             return objDonationDAL.LoadEvent_search(parishid, eventid);
         }
 
-        public string DisplayTwoDatesBasedEventName_TotalAmount(int parishid, DateTime oDate, DateTime oDate1, int eventid)  //BTN SEARCH(A)
+        public string DisplayTwoDatesBasedEventName_TotalAmount(int parishid, DateTime oDate, DateTime oDate1, int eventid,String eventName)  //BTN SEARCH(A)
         {
-            return objDonationDAL.DisplayTwoDatesBasedEventName_TotalAmount(parishid, oDate, oDate1, eventid);
+            return objDonationDAL.DisplayTwoDatesBasedEventName_TotalAmount(parishid, oDate, oDate1, eventid, eventName);
         }
 
        
 
-        public DataTable Load_DonationIncome_Twodate_EventName(DateTime oDate, DateTime oDate1, int parishid, int eventid)  //BTN SEARCH(A)
+        public DataTable Load_DonationIncome_Twodate_EventName(DateTime oDate, DateTime oDate1, int parishid, int eventid,String eventName)  //BTN SEARCH(A)
         {
-            return objDonationDAL.Load_DonationIncome_Twodate_EventName(oDate, oDate1, parishid, eventid);
+            return objDonationDAL.Load_DonationIncome_Twodate_EventName(oDate, oDate1, parishid, eventid, eventName);
         }
     }
 }

@@ -1,19 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="SubAdminHallRequest.aspx.cs" Inherits="Diocese.SubAdminHallRequest" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+     <div style="margin-top:10px;"><b> WELCOME <asp:Label ID="LBLsubadminname" runat="server" Text="Label" ></asp:Label></b></div>
+ 
         <div style="margin-top:5px">
                        <table>
                         <tr>
-                         <th style="padding-right:100px">
-                        <b style="color:cadetblue"> Select Event </b>
-                         </th>
-                         <th  style="padding-right:70px"> <b style="color:cadetblue"> Request Date</b> </th> 
                         
+                         <th  style="padding-right:70px"> <b style="color:cadetblue"> Request Date</b> </th> 
+                      
                          
-                       <tr>
-                           <th><asp:DropDownList ID="DDlEventName" Width="150px" Height="45px" runat="server" AppendDataBoundItems="True" style="font-family:'Times New Roman', Times, serif;font-size:10px" >
-                        <asp:ListItem Value="0" Text="--select--" ></asp:ListItem>
-                         </asp:DropDownList></th>
+                      
                        <th> <input type="date" class="form-control1 ng-invalid ng-invalid-required" id="orddate" ng-model="model.date" onchange="date_dis()">
                       <asp:hiddenfield ID="Dobhidden" runat="server"></asp:hiddenfield>
                        </th>

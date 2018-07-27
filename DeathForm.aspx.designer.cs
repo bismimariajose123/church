@@ -13,49 +13,31 @@ namespace Diocese {
     public partial class DeathForm {
         
         /// <summary>
-        /// parishmember control.
+        /// LnkbtnHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox parishmember;
+        protected global::System.Web.UI.WebControls.LinkButton LnkbtnHome;
         
         /// <summary>
-        /// TBFamilyName control.
+        /// DDlWardName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBFamilyName;
+        protected global::System.Web.UI.WebControls.DropDownList DDlWardName;
         
         /// <summary>
-        /// TBParishName control.
+        /// DDlFamilyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBParishName;
-        
-        /// <summary>
-        /// TBOfficialName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBOfficialName;
-        
-        /// <summary>
-        /// TBBaptismName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBBaptismName;
+        protected global::System.Web.UI.WebControls.DropDownList DDlFamilyName;
         
         /// <summary>
         /// Dodeathhidden control.
@@ -67,31 +49,31 @@ namespace Diocese {
         protected global::System.Web.UI.WebControls.HiddenField Dodeathhidden;
         
         /// <summary>
-        /// Dohidfuneral control.
+        /// DDLOfficialName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Dohidfuneral;
+        protected global::System.Web.UI.WebControls.DropDownList DDLOfficialName;
         
         /// <summary>
-        /// Textbox1 control.
+        /// TBFuneralTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textbox1;
+        protected global::System.Web.UI.WebControls.TextBox TBFuneralTime;
         
         /// <summary>
-        /// TBBurriedParish control.
+        /// Hiddenfield1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBBurriedParish;
+        protected global::System.Web.UI.WebControls.HiddenField Hiddenfield1;
         
         /// <summary>
         /// DDLGender control.
@@ -101,60 +83,6 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLGender;
-        
-        /// <summary>
-        /// TBFatherName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBFatherName;
-        
-        /// <summary>
-        /// TBMotherName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBMotherName;
-        
-        /// <summary>
-        /// TBFatherBapName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBFatherBapName;
-        
-        /// <summary>
-        /// TBMotherBapName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBMotherBapName;
-        
-        /// <summary>
-        /// TBParishPriestName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBParishPriestName;
-        
-        /// <summary>
-        /// TBCelebrantName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCelebrantName;
         
         /// <summary>
         /// Btndeath control.

@@ -41,6 +41,17 @@ namespace Diocese.Project_Code.SuperAdmin
             }
         }
 
+        public DataTable GetParishNotAssignedDetails()
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select pa.Parish_Name,pa.Parish_ID from Sup_ParishTable pa where pa.Parish_ID not  in(select Parish_Id from Sup_Priest_TransferTable)", con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+        }
+
         public int DeleteParish(int id)
         {
             SqlConnection con = new SqlConnection(ConnectionString);

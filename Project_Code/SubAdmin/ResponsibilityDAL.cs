@@ -26,5 +26,19 @@ namespace Diocese.Project_Code.SubAdmin
             con.Close();
             return Result;
         }
+
+        public int chk_duplicate_responsibility(ResponsibilityBO objResponsibilityBO)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            String query = "select count(*) from ResponsibilityTable where Parishid="+ objResponsibilityBO.Parishid1+ "and DutyName='" + objResponsibilityBO.DutyName1+"'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int Result = Convert.ToInt16(cmd.ExecuteScalar());
+            con.Close();
+            return Result;
+
+
+
+        }
     }
 }

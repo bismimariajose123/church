@@ -25,6 +25,12 @@ namespace Diocese.Project_Code.SuperAdmin
                 objParishDAL = null;
             }
         }
+
+        public DataTable GetParishNotAssignedDetails()
+        {
+            return objParishDAL.GetParishNotAssignedDetails();
+        }
+
         public DataTable GetParishDetails()
         {
             return objParishDAL.GetParishInformation();

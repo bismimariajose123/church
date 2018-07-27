@@ -155,7 +155,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <a href="AddParish.aspx">ADD PARISH</a>
                                 </li>
                                 <li>
-                                    <a href="ViewParish.aspx">VIEW PARISH</a>
+                                    <a href="ViewParish.aspx">VIEW ALL PARISH</a>
+                                </li>
+                                <li>
+
+                                    <a href="ViewParishNotAssigned.aspx">VIEW PARISH NOT ASSIGNED</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -182,15 +186,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <!-- /.nav-second-level -->
                         </li>
 						
-						 <li>
+						 <!-- <li>
                             <a href="SuperAdminNotification.aspx"><i class="fa fa-dashboard fa-fw"></i> NOTIFICATION </a>
-                        </li>
+                        </li>-->
                             <li>
-                            <a href="Super_AdminChange.aspx"><i class="fa fa-dashboard fa-fw"></i> CHANGE ADMIN </a>
+                            <a href="Super_AdminChange.aspx"><i class="fa fa-dashboard fa-fw"></i> CHANGE ADMIN PASSWORD</a>
                         </li>
-                        <li>
-                            <a href="Super_AdminView.aspx"><i class="fa fa-dashboard fa-fw"></i> VIEW ADMIN </a>
-                        </li>
+                       
                         
                         
                     </ul>

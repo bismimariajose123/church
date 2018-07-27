@@ -40,6 +40,11 @@ namespace Diocese.Project_Code.People
             return objMemberRegisterDAL.Update_MemberImage(objMemberRegisterBO);
         }
 
+        public DataTable Load_MemberDetails(int familyid, int wardid, int parish_id)
+        {
+            return objMemberRegisterDAL.Load_MemberDetails(familyid, wardid, parish_id);
+        }
+
         //public string GetStatus(MemberBO objMemberRegisterBO)
         //{
         //    MemberBO obj=objMemberRegisterDAL.GetStatus(objMemberRegisterBO);

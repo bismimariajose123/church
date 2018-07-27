@@ -8,6 +8,12 @@
  		
  		<div class="validation-form">
  	<!---->
+
+               <label>
+                    <asp:checkbox runat="server" ID="Checkbox1" ng-model="model.winner" required="" class="ng-invalid ng-invalid-required" 
+                        onclick="Newborn()" ></asp:checkbox>
+                 Non-Member ?<label style="margin-left:30px;color:cadetblue">tick if yes</label>
+                </label>
              <div class="vali-form">
             <div class="col-md-6 form-group1">
  
@@ -262,7 +268,7 @@
                 
 
             }
-            else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) { //newborn & parents not parish member
+            else if ((document.getElementById('<%= newborn.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false && (document.getElementById('<%=Checkbox1.ClientID%>').checked) == false) { //newborn & parents not parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
                 var divUR = document.getElementById("divUR");
@@ -273,7 +279,7 @@
                 divGFC.style.display = "block";
                 divUR.style.display = "none";
             }
-            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked)) { //married & parents parish member
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) && (document.getElementById('<%=Checkbox1.ClientID%>').checked) == false) { //married & parents parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
                 var divUR = document.getElementById("divUR");
@@ -286,7 +292,7 @@
                 divUR.style.display = "block";
             }
 
-            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false) { //married & parents not  parish member
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false && (document.getElementById('<%=Checkbox1.ClientID%>').checked) == false) { //married & parents not  parish member
                 var divFC = document.getElementById("divFC");
                 var divGFC = document.getElementById("divGFC");
                 var divUR = document.getElementById("divUR");
@@ -297,7 +303,7 @@
                 divGFC.style.display = "none";
                 divUR.style.display = "block";
             }
-            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked)== false && (document.getElementById('<%=  newborn.ClientID  %>').checked)== false && (document.getElementById('<%= parishmember.ClientID  %>').checked)){
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) == false && (document.getElementById('<%=  newborn.ClientID  %>').checked) == false && (document.getElementById('<%=Checkbox1.ClientID%>').checked) == false && (document.getElementById('<%= parishmember.ClientID  %>').checked)){
                 var divFC = document.getElementById("divFC");              //not married & not new born but parents is parish member
                 var divGFC = document.getElementById("divGFC");
                 var divUR = document.getElementById("divUR");
@@ -308,7 +314,7 @@
                 divGFC.style.display = "none";
                 divUR.style.display = "block";
             }
-            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) == false && (document.getElementById('<%=  newborn.ClientID  %>').checked) == false && (document.getElementById('<%= parishmember.ClientID  %>').checked)==false) {
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) == false && (document.getElementById('<%=  newborn.ClientID  %>').checked) == false && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false && (document.getElementById('<%=Checkbox1.ClientID%>').checked) == false) {
                 var divFC = document.getElementById("divFC");              //not married & not new born but parents not is parish member
                 var divGFC = document.getElementById("divGFC");
                 var divUR = document.getElementById("divUR");
@@ -318,6 +324,18 @@
                 divFC.style.display = "none"
                 divGFC.style.display = "none";
                 divUR.style.display = "block";
+            }
+            else if ((document.getElementById('<%= marriedstatus.ClientID  %>').checked) == true && (document.getElementById('<%=  newborn.ClientID  %>').checked) == false && (document.getElementById('<%= parishmember.ClientID  %>').checked) == false && (document.getElementById('<%=Checkbox1.ClientID%>').checked)==true) {
+                alert('hiii');
+                var divFC = document.getElementById("divFC");              //not married & not new born but parents not is parish member
+                var divGFC = document.getElementById("divGFC");
+                var divUR = document.getElementById("divUR");
+                var BaptismTime = document.getElementById("BaptismTime");
+                BaptismTime.style.display = "block";
+
+                divFC.style.display = "block"
+                divGFC.style.display = "block";
+                divUR.style.display = "none";
             }
         }
         

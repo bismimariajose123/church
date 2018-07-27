@@ -20,7 +20,7 @@ namespace Diocese
         {
             if (!IsPostBack)
             {
-              //  Load_data();
+               Load_data();
             }
         }
 
@@ -32,10 +32,11 @@ namespace Diocese
            
            int countMale = objCommunionBLL.count_of_Male(parishid);
            int countFeMale = objCommunionBLL.count_of_Female(parishid);
-            if (countMale > 0 && countFeMale>0)
+            if (countMale > 0 || countFeMale>0)
             {
+                LBL_NumberOfMF.Text = "<b>Count of     Male : " + countMale + " Female : " + countFeMale + "<b>";
                 LBL_NumberOfMF.Visible = true;
-                LBL_NumberOfMF.Text = "<b>Count of     Male : " + countMale + " Female : " + countFeMale +"<b>";
+               
             }
             else
             {
@@ -95,8 +96,10 @@ namespace Diocese
                 else
                 {
                     String doc = LBLDOFCommunion.Text;
-                    doc= doc.Substring(0, 9);
-                    LBLDOFCommunion.Text= doc;
+                    DateTime oDate = DateTime.Parse(doc);
+                    LBLDOFCommunion.Text = oDate.ToString("dd/MM/yyyy");
+                   // doc = doc.Substring(0, 10);
+                    
                 }
 
             }
@@ -238,7 +241,12 @@ namespace Diocese
             doc.Add(Chunk.NEWLINE);
             doc.Add(p7);
             doc.Close();
-                Response.Write("<script>alert('successfull downloaded');</script>");
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition", "attachment;filename=Report.pdf");
+            Response.Write(doc);
+            Response.Flush();
+            Response.End();
+         //   Response.Write("<script>alert('successfull downloaded');</script>");
             }
     }
 }

@@ -7,7 +7,7 @@ namespace Diocese.Project_Code.SubAdmin
 {
     public class FamilyBO
     {
-        private string FamilyName;
+       private string FamilyName;
         private int Ward_id;
         private int Parish_id;
         private string Username;
@@ -15,6 +15,7 @@ namespace Diocese.Project_Code.SubAdmin
         private int FamilyNo;
         private string Contact_No;
         private string HeadName;
+        private int Familyid;
         public string familyname
         {
             get { return FamilyName; }
@@ -57,6 +58,6 @@ namespace Diocese.Project_Code.SubAdmin
             set { HeadName = value; }
         }
 
-
+        public int Familyid1 { get => Familyid; set => Familyid = value; }
     }
 }

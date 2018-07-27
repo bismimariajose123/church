@@ -21,9 +21,18 @@ namespace Diocese
         {
             
             objEventBO.EventName1 = TBEventName.Text;
-            objEventBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
-            int result = objEventBLL.AddEvent(objEventBO);
-            Response.Redirect("AddEvent.aspx");
+
+            if (Session["parishid"].ToString() == null)
+            {
+                Response.Redirect("Logout.aspx");
+            }
+            else
+            {
+                objEventBO.Parishid1 = Convert.ToInt32(Session["parishid"].ToString());
+                int result = objEventBLL.AddEvent(objEventBO);
+                Response.Redirect("AddEvent.aspx");
+            }
+           
 
         }
     }

@@ -15,6 +15,7 @@ namespace Diocese
             NonMemberBO objNonMemberBO = new NonMemberBO();
             objNonMemberBO.NonMember_id1 = Convert.ToInt32(Session["nonmember_id"]);
             Session["non_member_type"] = 4;
+            LBLHeadName.Text = Session["Headname"].ToString();
         }
     }
 }

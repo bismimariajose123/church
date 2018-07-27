@@ -17,44 +17,35 @@ namespace Diocese
         {
             if(!IsPostBack)
             {
+                if (Session["AdminName"] == null)
+                {
+                    Response.Redirect("Logout.aspx");
+                }
+                else
+                {
+                    LBLsubadminname.Text = Session["AdminName"].ToString();
+                }
                 LoadGvRequest();
-                LoadEventName();
+               
             }
             
 
         }
-        public void LoadEventName()
-        {
-            
-            objParish_HallBO.parishid = Convert.ToInt32(Session["parishid"].ToString());
-            DataTable dt = new DataTable();
-            dt = objParish_HallBLL.LoadEventName(objParish_HallBO);
-            if (dt.Rows.Count > 0)
-            {
-                DDlEventName.DataSource = dt;                  //DDLExpenseEvent [AMOUNT TAKEN FROM]
-                DDlEventName.DataTextField = "EventName";
-                DDlEventName.DataValueField = "EventId";
-                DDlEventName.DataBind();
-            }
-            else
-            {
-                Response.Write("<script>alert(' no record found');</script>");
-            }
-        }
+       
 
         public void LoadGvRequest()
         {
             int parishid = Convert.ToInt32(Session["parishid"].ToString());
             int usertype = Convert.ToInt32(Session["usertype"]);
-            int userid;
-            if (usertype == 3)//member
-            {
-                 userid = Convert.ToInt32(Session["family_id"]);
-            }
-            else
-            {
-                 userid= Convert.ToInt32(Session["nonmember_id"]);
-            }
+           // int userid;
+            //if (usertype == 3)//member
+            //{
+            //     userid = Convert.ToInt32(Session["family_id"]);
+            //}
+            //else
+            //{
+            //     userid= Convert.ToInt32(Session["nonmember_id"]);
+            //}
                 
             Session["Dt"] = objParish_HallBLL.LoadGVRequest(parishid);
             GVHall.DataSource = Session["Dt"];
@@ -128,13 +119,18 @@ namespace Diocese
                 Label Usertype = (Label)e.Row.FindControl("Lblusertype");
                 Label Status = (Label)e.Row.FindControl("LblStatus"); 
                 Label LblUsertype= (Label)e.Row.FindControl("Lbluser");
-                if(Status==null)
+                Label LblRequestDate = (Label)e.Row.FindControl("LblRequestDate");
+                String doc = LblRequestDate.Text;
+                DateTime oDate = DateTime.Parse(doc);
+                LblRequestDate.Text = oDate.ToString("dd/MM/yyyy");
+                if (Status==null)
                 {
                     return;
                 }
-                else { 
+                else {
 
-                if (Usertype.Text=="3" ) //member
+                  
+                    if (Usertype.Text=="3" ) //member
                 {
                     LblUsertype.Visible = true;
                     LblUsertype.Text="Member";
@@ -164,27 +160,20 @@ namespace Diocese
         {
             int parishid = Convert.ToInt32(Session["parishid"].ToString());
             string date1 = Dobhidden.Value;
-            int userid = Convert.ToInt32(Session["family_id"].ToString());
-            int usertype = Convert.ToInt32(Session["usertype"]);
-            int eventid = Convert.ToInt32(DDlEventName.SelectedValue);
+          //  int userid = Convert.ToInt32(Session["family_id"].ToString());
+          //  int usertype = Convert.ToInt32(Session["usertype"]);
+           // int eventid = Convert.ToInt32(DDlEventName.SelectedValue);
             //string eventname = DDlExpenseEvent.SelectedItem.ToString();
             //Session["EventName"] = eventname;
             DataTable dt = new DataTable();
-            if (eventid != 0)
+            if (!date1.Equals(""))
             {
-                if (date1 != "")//all not null
-                {
-                    DateTime oDate = DateTime.Parse(date1);
+                   DateTime oDate = DateTime.Parse(date1);
 
-                    dt = objParish_HallBLL.Search(oDate, parishid, eventid, userid, usertype);
+                    dt = objParish_HallBLL.Searchbydate(oDate, parishid);
 
 
-                }
-                else if (date1 == "") //only event search
-                {
-                    dt = objParish_HallBLL.SearchEvent(parishid, eventid, userid, usertype);
-
-                }
+               
                 if (dt.Rows.Count > 0)
                 { 
                     GVHall.DataSource = dt;

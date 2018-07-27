@@ -69,6 +69,23 @@ namespace Diocese.Project_Code.People
             }
         }
 
+        public DataTable Load_MemberDetails(int familyid, int wardid, int parish_id)
+        {
+
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+
+
+            //not done
+            string query = "select m.Member_ID,m.OfficialName from MemberDetailsTable m,Sub_Create_FamilyLoginTable f where m.Family_id=f.Family_ID and f.Family_ID="+familyid+"and f.Ward_id="+wardid+"and f.Parish_id="+parish_id;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+
+        }
+
         public int Update_MemberImage(MemberBO objMemberRegisterBO) //upload image
         {
             int result;

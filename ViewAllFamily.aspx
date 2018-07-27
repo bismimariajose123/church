@@ -5,7 +5,7 @@
 
   <%-- -------- search & user info start--%>
     
-        <label style="color:white">Search by Column </label> <div style="width:20%">
+        <label style="color:white">Search by Family Name or Ward Name or Head Name </label> <div style="width:20%">
                                  <table>
                                      <tr>
                                          <th><asp:TextBox ID="TBsearch" runat="server" CssClass="form-control search">

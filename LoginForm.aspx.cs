@@ -30,6 +30,8 @@ namespace Diocese
              int value = objLoginBLL.CheckLogin(objLoginBO);
             if(value==1 && objLoginBO.User_type==1)       //Superadmin
             {
+
+                Session["Username"]= TBUsername.Text;
                 Response.Redirect("Superadminhome.aspx");
             }
             else if(value == 1 && objLoginBO.User_type == 2)  //subadmin
@@ -45,20 +47,28 @@ namespace Diocese
                 Session["family_id"] = objLoginBO.Familyid;
                 Response.Redirect("MemberHome.aspx");
             }
-            else if (value == 1 && objLoginBO.User_type == 4)
+            else if (value == 1 && objLoginBO.User_type == 4)//nonmember
             {
+                Session["Headname"] = objLoginBO.Personname;
                 Session["usertype"] = 4; //for donation identification
                 Session["nonmember_id"] = objLoginBO.Familyid;
                 Response.Redirect("NonMemberHome.aspx");
             }
-            else if (value == 1 && objLoginBO.User_type == 5)
+            else if (value == 1 && objLoginBO.User_type == 5)//Accontant
             {
                 Session["usertype"] = 5; //for donation identification
                 Session["Responsibilityid"] = objLoginBO.Familyid;    //here familyid as  Responsibilityd id
-                Session["DutyName"] = objLoginBO.Personname;       //here personname as dutyname
+                Session["DutyName"] = objLoginBO.Personname;
+
+                //here personname as dutyname
+                if(objLoginBO.Personname=="Sunday Collection")
+                { 
+
                 Response.Redirect("AccountantSundayCollection.aspx");
             }
-            else if (value == 1 && objLoginBO.User_type == 6)
+                
+            }
+            else if (value == 1 && objLoginBO.User_type == 6)//Sundayschool
             {
                 Session["usertype"] = 6; //for donation identification
                 Session["Responsibilityid"] = objLoginBO.Familyid;    //here familyid as  Responsibilityd id

@@ -85,17 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                 </li>
                 
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>PARISH Not done<i class="glyphicon glyphicon-chevron-right"></i></span>
-                    </a>
-                    <ul class="sub">
-					<li><a href="typography.html">ABOUT PARISH</a></li>
-						<li><a href="AddParishPriest.aspx">ADD PRIESTS</a></li>
-						<li><a href="ViewParish_Priest.aspx">VIEW PRIEST</a></li>
-                    </ul>
-                </li>
+              
                 
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -129,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
 				
-                <li class="sub-menu">
+              <%--  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
                         <span> NON PARISH NOT DONE <i class="glyphicon glyphicon-chevron-right"></i></span>
@@ -138,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="AddWard.aspx">VIEW NON PARISH MEMBERS</a></li>
                         
                     </ul>
-                </li>
+                </li>--%>
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
@@ -149,35 +139,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                     </ul>
                 </li>
-                <%-- <li class="sub-menu">
+                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span> CERTIFICATES NOT DONE <i class="glyphicon glyphicon-chevron-right"></i></span>
+                        <span> RECORDS<i class="glyphicon glyphicon-chevron-right"></i></span>
                     </a>
                     <ul class="sub">
-                        <li><a href="AddWard.aspx">BAPTISM</a></li>
-                        <li><a href="ViewAllWard.aspx">COMMUNION</a></li>
-                        <li><a href="ViewAllWard.aspx">MARRIAGE</a></li>
-                        <li><a href="ViewAllWard.aspx">DEATH</a></li>
-                        <li><a href="ViewAllWard.aspx">COMMUNITY</a></li>
+                        <li><a href="DeathForm.aspx">ADD DEATH</a></li>  
+                        <li><a href="ViewDeathRecord.aspx">VIEW DEATH RECORD</a></li>
+                       
                     </ul>
-                </li>--%>
+                </li>
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
                         <span> ACCOUNTS <i class="glyphicon glyphicon-chevron-right"></i></span>
                     </a>
                     <ul class="sub">
-                        <li><a href="SubAdimn_Income.aspx">INCOME</a></li>
+                        <li><a href="SubAdmin_Income1.aspx">INCOME</a></li>
                         <li><a href="SubAdminExpense.aspx">EXPENSE</a></li>
                     </ul>
                 </li>
-				<li>
-                    <a href="fontawesome.html">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>CALENDER not done</span>
-                    </a>
-                </li>
+			
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
@@ -185,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                     <ul class="sub">
                         <li><a href="AddEvent.aspx">ADD EVENT</a></li>
-                        <li><a href="ViewDonation.aspx">VIEW DONATIONS</a></li>
+                       <%-- <li><a href="ViewDonation.aspx">VIEW DONATIONS</a></li>--%>
                     </ul>
                 </li>
                 <li class="sub-menu">

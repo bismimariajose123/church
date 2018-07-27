@@ -13,5 +13,10 @@ namespace Diocese.Project_Code.SubAdmin
         {
             return objResponsibilityDAL.AddResponsibility(objResponsibilityBO);
         }
+
+        public int chk_duplicate_responsibility(ResponsibilityBO objResponsibilityBO)
+        {
+            return objResponsibilityDAL.chk_duplicate_responsibility(objResponsibilityBO);
+        }
     }
 }

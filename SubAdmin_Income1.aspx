@@ -1,22 +1,25 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="SubAdimn_Income.aspx.cs" Inherits="Diocese.SubAdimn_Income" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="SubAdmin_Income1.aspx.cs" Inherits="Diocese.SubAdmin_Income1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!-- Page Content -->
+     <!-- Page Content -->
+      <div style="margin-top:10px;"><b> WELCOME <asp:Label ID="LBLsubadminname" runat="server" Text="Label" ></asp:Label></b></div>
+ <br /><br />
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header"> WELCOME <asp:Label ID="Lblname" runat="server" Text="Label"></asp:Label></h1>
-                    </div>
+                    
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
                              <b>Search by Column Names Like </b><b style="color:aquamarine">Family Name or Official Name</b>
+               
                 <div style="width:20%">
                                  <table>
                                      <tr style="padding-right:10px">
                                          <th><asp:TextBox ID="TBsearch" runat="server" CssClass="form-control">
 
-                                   </asp:TextBox></th>
+                                   </asp:TextBox>
+                                             
+                                         </th>
 
                                          <th>
                                        <asp:ImageButton ID="Imgbtnsearch" runat="server" OnClick="Imgbtnsearch_Click" 
@@ -27,8 +30,8 @@
                                      </table>
                             
                  </div>
-
-
+                <br />
+                <br />
                  
                 <div style="margin-top:5px">
                   <table>
@@ -40,7 +43,7 @@
                          <th> &nbsp;  &nbsp;<b style="color:cadetblue">To</b></th>
                          
                        <tr>
-                           <th ><asp:DropDownList ID="DDleventid" Width="90px"  runat="server" AppendDataBoundItems="True" >
+                           <th style="padding-right:3px"><asp:DropDownList ID="DDleventid" Width="160px"  runat="server" AppendDataBoundItems="True" >
                                  <asp:ListItem Value="0">--select--</asp:ListItem>
                                 </asp:DropDownList>
                                
@@ -55,47 +58,27 @@
                        <asp:hiddenfield ID="Dobhidden1" runat="server"></asp:hiddenfield></th>
                      
                           
-                           <th>
-                               <asp:Button ID="BTN_Search" runat="server" Text="GO" OnClick="BTN_Search_Click" />  <%--//original--%>
+                           <th style="padding-right:5px">
+                               <asp:Button ID="BTN_Search" runat="server" Text="Search" OnClick="BTN_Search_Click" />  <%--//original--%>
                            </th>
                            <th><asp:Button  ID="BtnConvertPdf" runat="server"  Text="Generate Report" OnClick="BtnConvertPdf_Click"/></th>
                            </tr>
                                    
                     </table>
                     </div>
-
-
-
-
-               
-                                            
-             
                   
                 <br />
-                     Select Entries:
-                         <div class="dropdown">
-                             <asp:DropDownList ID="DDLPagesize" runat="server" 
-                                 OnSelectedIndexChanged="DDLPagesize_SelectedIndexChanged" AutoPostBack="true"> 
-                       <asp:ListItem Selected="True" Text="--Select--" Value="--"></asp:ListItem>
-                          <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                          <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                          <asp:ListItem Text="25" Value="20"></asp:ListItem>
-                        <asp:ListItem Text="50" Value="10"></asp:ListItem>
-                          <asp:ListItem Text="100" Value="20"></asp:ListItem>
-                        <asp:ListItem Text="All" Value="All"></asp:ListItem>
-                       </asp:DropDownList>
-                        </div>
-                         <!-- /input-group -->
+                    
                        
 
                     <asp:Gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
-                        BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="356px" AutoGenerateColumns="False"
-                         DataKeyNames="DonationId"   
-                      AllowPaging="True" OnPageIndexChanging="GVIncomeTable_PageIndexChanging" Visible="false">
+                        BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="900px"  AutoGenerateColumns="False" 
+                         DataKeyNames="DonationId"    OnRowDataBound="GVIncomeTable_RowDataBound"
+                      AllowPaging="True"  Visible="false" Height="291px">
                         <AlternatingRowStyle BackColor="#CCCCCC" />
                         <Columns>
                                  
-                            <asp:BoundField HeaderText="FamilyName" SortExpression="FamilyName" DataField="FamilyName">
+                            <asp:BoundField HeaderText="Family Name" SortExpression="Family Name" DataField="FamilyName">
                                 
                               <%-- <ItemTemplate>
                                     <asp:Label ID="LblFamilyName" runat="server" Text='<%# Bind("FamilyName") %>'></asp:Label>
@@ -106,19 +89,19 @@
                                
                                 </ItemTemplate>--%>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="ParishName" SortExpression="Persons_ParishName" DataField="Persons_ParishName">
+                            <asp:BoundField HeaderText="Parish Name" SortExpression="Persons_ParishName" DataField="Persons_ParishName">
                               <%--  
                                 <ItemTemplate>
                                     <asp:Label ID="LblPersons_ParishName" runat="server" Text='<%# Bind("Persons_ParishName") %>'></asp:Label>
                                 </ItemTemplate>--%>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Name" SortExpression="OfficialName" DataField="OfficialName">
+                            <asp:BoundField HeaderText="Official Name" SortExpression="OfficialName" DataField="OfficialName">
                                
                                <%-- <ItemTemplate>
                                     <asp:Label ID="LblOfficialName" runat="server" Text='<%# Bind("OfficialName") %>'></asp:Label>
                                 </ItemTemplate>--%>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="ContactNo" SortExpression="ContactNo" DataField="ContactNo">
+                            <asp:BoundField HeaderText="Contact No" SortExpression="ContactNo" DataField="ContactNo">
                                
                                <%-- <ItemTemplate>
                                     <asp:Label ID="LblContactNo" runat="server" Text='<%# Bind("ContactNo") %>'></asp:Label>
@@ -130,7 +113,7 @@
                                     <asp:Label ID="LblDiocese" runat="server" Text='<%# Bind("Diocese") %>'></asp:Label>
                                 </ItemTemplate>--%>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Event" SortExpression="EventName" DataField="EventName">
+                            <asp:BoundField HeaderText="Event    " SortExpression="EventName" DataField="EventName">
                                
                                 <%--<ItemTemplate>
                                     <asp:Label ID="LblEventName" runat="server" Text='<%# Bind("EventName") %>'></asp:Label>
@@ -143,12 +126,13 @@
                                     <asp:Label ID="LblAmount" runat="server" Text='<%# Bind("Amount") %>'></asp:Label>
                                 </ItemTemplate>--%>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="DateReceived" SortExpression="AmountReceivedDate" DataField="AmountReceivedDate">
-                               
-                               <%-- <ItemTemplate>
+                            <asp:TemplateField  HeaderText="Date Received" SortExpression="AmountReceivedDate">
+                                 <ItemTemplate>
                                     <asp:Label ID="LblAmountReceivedDate" runat="server" Text='<%# Bind("AmountReceivedDate") %>'></asp:Label>
-                                </ItemTemplate>--%>
-                            </asp:BoundField>
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+    
                             
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
@@ -171,19 +155,20 @@
 
                 <div style="margin-top:10px">
                     <b style="color:aqua"><asp:Label ID="EventNameSundaycollection" runat="server" Text="Sunday Collection" Visible="false"></asp:Label> </b>
-                <asp:GridView ID="GVSundayCollection" runat="server" AutoGenerateColumns="False" Visible="false" DataKeyNames="Collection_SundayId" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="264px" >
+                <asp:GridView ID="GVSundayCollection" runat="server" AutoGenerateColumns="False" Visible="false" OnRowDataBound="GVSundayCollection_RowDataBound" DataKeyNames="Collection_SundayId" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="264px" >
                     <Columns>
                          <asp:BoundField HeaderText="Amount" SortExpression="Amount" DataField="Amount">
                              <%--<ItemTemplate>
                                 <asp:Label ID="LBLAmount" runat="server" Text='<%# Bind("Amount") %>'></asp:Label>
                             </ItemTemplate>--%>
                         </asp:BoundField>
-                        <asp:BoundField HeaderText="Date" SortExpression="SundayCollectionDate" DataField="SundayCollectionDate">
-                           
-                           <%-- <ItemTemplate>
+                        <asp:TemplateField>
+                              <ItemTemplate>
                                 <asp:Label ID="LBLDate" runat="server" Text='<%# Bind("SundayCollectionDate") %>'></asp:Label>
-                            </ItemTemplate>--%>
-                        </asp:BoundField>
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
+                        
                     </Columns>
 
                     <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -225,4 +210,5 @@
         }
           
          </script>
+
 </asp:Content>

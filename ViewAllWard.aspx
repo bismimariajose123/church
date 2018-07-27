@@ -6,7 +6,7 @@
 
   <%-- -------- search & user info start--%>
     
-        <label style="color:white">Search by Column </label> <div style="width:20%">
+        <label style="color:white">Search by Ward Name </label> <div style="width:20%">
                                  <table>
                                      <tr>
                                          <th><asp:TextBox ID="TBsearch" runat="server" CssClass="form-control search">
@@ -52,6 +52,11 @@
                 <ItemTemplate>
                     <asp:Label ID="LBLWardNAme" runat="server" Text='<%# Bind("WardName") %>'></asp:Label>
                 </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Count Of People" SortExpression="Count">
+                <ItemTemplate>
+                       <asp:Label ID="LBLCountOfPeople" runat="server" Text='<%# Bind("peoplecount") %>'></asp:Label>
+                  </ItemTemplate>
             </asp:TemplateField>
         </Columns>
         <FooterStyle BackColor="White" ForeColor="#000066" />

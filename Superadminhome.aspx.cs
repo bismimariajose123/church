@@ -11,7 +11,7 @@ namespace Diocese
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Lblname.Text = Session["Username"].ToString();
         }
 
         protected void logout_Click(object sender, EventArgs e)

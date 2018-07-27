@@ -34,5 +34,7 @@ namespace Diocese.Project_Code.SubAdmin
         {
             return objWardDAL.Get_Search_WardDetails(objWardBO,searchstr);
         }
+
+        
     }
 }

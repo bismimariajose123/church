@@ -83,7 +83,6 @@
     <Content Include="AddMemberDetail.aspx" />
     <Content Include="AddParish.aspx" />
     <Content Include="AddParishHall.aspx" />
-    <Content Include="AddParishPriest.aspx" />
     <Content Include="AddPriest.aspx" />
     <Content Include="AddWard.aspx" />
     <Content Include="App_Data\DioceseDB.mdf" />
@@ -160,8 +159,8 @@
     <Content Include="PaymentGatewayScripts\css\style.css" />
     <Content Include="PaymentGatewayScripts\js\index.js" />
     <Content Include="PriestGalary.aspx" />
+    <Content Include="Project_Code\People\PeopleImage\frontimage.png" />
     <Content Include="Selected_priest_details.aspx" />
-    <Content Include="SubAdimn_Income.aspx" />
     <Content Include="SubadminAddResponsibility.aspx" />
     <Content Include="SubAdminExpense.aspx" />
     <Content Include="SubAdminHallRequest.aspx" />
@@ -199,6 +198,7 @@
     <Content Include="subadmin\js\raphael-min.js" />
     <Content Include="subadmin\js\script.js" />
     <Content Include="subadmin\js\scripts.js" />
+    <Content Include="SubAdmin_Income1.aspx" />
     <Content Include="Sub_ViewMore_Baptism_Details.aspx" />
     <Content Include="SundaySchool.aspx" />
     <Content Include="Superadminhome.aspx" />
@@ -304,10 +304,12 @@
     <Content Include="vendor\metisMenu\metisMenu.min.js" />
     <Content Include="ViewAllFamily.aspx" />
     <Content Include="ViewAllWard.aspx" />
+    <Content Include="ViewDeathRecord.aspx" />
     <Content Include="ViewDonation.aspx" />
     <Content Include="ViewFamilyMembers.aspx" />
     <Content Include="ViewParish.aspx" />
     <Content Include="ViewParishHall.aspx" />
+    <Content Include="ViewParishNotAssigned.aspx" />
     <Content Include="ViewParishPriest.aspx" />
     <Content Include="ViewParish_Priest.aspx" />
     <Content Include="Web.config" />
@@ -354,13 +356,6 @@
     </Compile>
     <Compile Include="AddParishHall.aspx.designer.cs">
       <DependentUpon>AddParishHall.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AddParishPriest.aspx.cs">
-      <DependentUpon>AddParishPriest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddParishPriest.aspx.designer.cs">
-      <DependentUpon>AddParishPriest.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddPriest.aspx.cs">
       <DependentUpon>AddPriest.aspx</DependentUpon>
@@ -567,6 +562,9 @@
     <Compile Include="Project_Code\RequestBLL.cs" />
     <Compile Include="Project_Code\RequestBO.cs" />
     <Compile Include="Project_Code\RequestDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\DeathBLL.cs" />
+    <Compile Include="Project_Code\SubAdmin\DeathDAL.cs" />
+    <Compile Include="Project_Code\SubAdmin\DeathBO.cs" />
     <Compile Include="Project_Code\SubAdmin\EventBLL.cs" />
     <Compile Include="Project_Code\SubAdmin\EventBO.cs" />
     <Compile Include="Project_Code\SubAdmin\EventDAL.cs" />
@@ -615,13 +613,6 @@
     <Compile Include="SimpleFormsMaster.Master.designer.cs">
       <DependentUpon>SimpleFormsMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="SubAdimn_Income.aspx.cs">
-      <DependentUpon>SubAdimn_Income.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SubAdimn_Income.aspx.designer.cs">
-      <DependentUpon>SubAdimn_Income.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SubadminAddResponsibility.aspx.cs">
       <DependentUpon>SubadminAddResponsibility.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -663,6 +654,13 @@
     </Compile>
     <Compile Include="SubAdminNotification.aspx.designer.cs">
       <DependentUpon>SubAdminNotification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubAdmin_Income1.aspx.cs">
+      <DependentUpon>SubAdmin_Income1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubAdmin_Income1.aspx.designer.cs">
+      <DependentUpon>SubAdmin_Income1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sub_ViewMore_Baptism_Details.aspx.cs">
       <DependentUpon>Sub_ViewMore_Baptism_Details.aspx</DependentUpon>
@@ -741,6 +739,13 @@
     <Compile Include="ViewAllWard.aspx.designer.cs">
       <DependentUpon>ViewAllWard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewDeathRecord.aspx.cs">
+      <DependentUpon>ViewDeathRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewDeathRecord.aspx.designer.cs">
+      <DependentUpon>ViewDeathRecord.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewDonation.aspx.cs">
       <DependentUpon>ViewDonation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -769,6 +774,13 @@
     <Compile Include="ViewParishHall.aspx.designer.cs">
       <DependentUpon>ViewParishHall.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewParishNotAssigned.aspx.cs">
+      <DependentUpon>ViewParishNotAssigned.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewParishNotAssigned.aspx.designer.cs">
+      <DependentUpon>ViewParishNotAssigned.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewParishPriest.aspx.cs">
       <DependentUpon>ViewParishPriest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -786,9 +798,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Project_Code\People\PeopleImage\" />
     <Folder Include="Project_Code\SuperAdmin\Priest_Images\" />
     <Folder Include="Scripts\" />
+    <Folder Include="subadmin\PriestExcel\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

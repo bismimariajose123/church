@@ -94,5 +94,10 @@ namespace Diocese.Project_Code.SubAdmin
             return objParish_HallDAL.Delete_HallRequest(id);
 
         }
+
+        public DataTable Searchbydate(DateTime oDate, int parishid)
+        {
+            return objParish_HallDAL.Searchbydate(oDate, parishid);
+        }
     }
 }

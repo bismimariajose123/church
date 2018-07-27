@@ -47,6 +47,21 @@ namespace Diocese.Project_Code.SubAdmin
             return result;
         }
 
+       
+
+        public DataTable getFamilyName(FamilyBO objFamilyBO)
+        {
+            SqlConnection con = new SqlConnection(ConnectionString);
+            con.Open();
+            string query = "select Family_ID,FamilyName from Sub_Create_FamilyLoginTable where Parish_id="+objFamilyBO.parish_id+ " and Ward_id="+objFamilyBO.ward_id;
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sda.Fill(dt);
+            return dt;
+        }
+
         //public int UpdateWard(FamilyBO objFamilyBO, int id)
         //{
         //    int result;

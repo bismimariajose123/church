@@ -138,6 +138,7 @@ namespace Diocese.Project_Code
                             result = 1;
                             objLoginBO.Personname = dr["OfficialName"].ToString();
                             objLoginBO.Familyid = Convert.ToInt32(dr["NonMember_id"].ToString());
+                           
                         }
                         else
                         {
@@ -156,13 +157,13 @@ namespace Diocese.Project_Code
                 }
 
             }
-            else if(objLoginBO.User_type == 5) //accountant
+            else if(objLoginBO.User_type == 5)  //Accountanat
             {
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
                 try
                 {
-                    string query = "select count(*) from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid;
+                    string query = "select count(*) from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid + " and DutyName='Sunday Collection'";
                     SqlCommand cmd = new SqlCommand(query, con);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count == 1)
@@ -207,7 +208,7 @@ namespace Diocese.Project_Code
                 con.Open();
                 try
                 {
-                    string query = "select count(*) from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid;
+                    string query = "select count(*) from ResponsibilityTable where uname='" + objLoginBO.username + "'and pwd='" + objLoginBO.Pwd + "' and Parishid=" + objLoginBO.Parishid + " and DutyName='SundaySchool'";
                     SqlCommand cmd = new SqlCommand(query, con);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count == 1)

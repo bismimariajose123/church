@@ -16,14 +16,28 @@ namespace Diocese
         protected void Page_Load(object sender, EventArgs e)
         {
            
-         
-            Load_Image();
-            Load_DDLMemberNames();
-           
+            
+                Load_Image();
+            if(!IsPostBack)
+            {
+                Load_DDLMemberNames();
+            }
+                
 
+            
+            ListView1.ItemCommand += new EventHandler<ListViewCommandEventArgs>(ListView1_ItemCommand);
+       
         }
 
-       public void Load_DDLMemberNames()
+
+        void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            string memberid = (String)e.CommandArgument;
+            Session["ParishMember_id"] = memberid;
+            Session["Usertype_normal_bap_req"] = 3;
+            Response.Redirect("BaptismForm.aspx");
+        }
+        public void Load_DDLMemberNames()
         {
 
             objMemberRegisterBO.Parishid = Convert.ToInt32(Session["parishid"].ToString());
@@ -44,6 +58,7 @@ namespace Diocese
             dt = objMemberRegisterBLL.Get_Member_Details(objMemberRegisterBO);
             if (dt.Rows.Count > 0)
             {
+                Session["dt"] = dt;
                 ListView1.DataSource = dt;
                 ListView1.DataBind();
                 PanelImage.Controls.Add(ListView1);
@@ -52,6 +67,7 @@ namespace Diocese
             else
             {
                 Response.Write("<script>alert('None Registered');</script>");
+               // Response.Redirect("AddMemberDetail.aspx");
             }
            
             
@@ -142,17 +158,17 @@ namespace Diocese
             }
         }
 
-        protected void LnkBap_Command(object sender, CommandEventArgs e)
-        {
-            if (e.CommandName == "Baptism")
-            {
+        //protected void LnkBap_Command(object sender, CommandEventArgs e)
+        //{
+        //    if (e.CommandName == "Baptism")
+        //    {
             
-            int memberid = Convert.ToInt32(e.CommandArgument.ToString());
-                Session["ParishMember_id"] = memberid;
-                Session["Usertype_normal_bap_req"] = 3;
-                Response.Redirect("BaptismForm.aspx");
-            }
-        }
+        //       int memberid = Convert.ToInt32(e.CommandArgument.ToString());
+        //        Session["ParishMember_id"] = memberid;
+        //        Session["Usertype_normal_bap_req"] = 3;
+        //        Response.Redirect("BaptismForm.aspx");
+        //    }
+        //}
 
         protected void LnkMarriage_Command(object sender, CommandEventArgs e)
         {
@@ -194,6 +210,17 @@ namespace Diocese
             }
 
         }
+
+        //protected void LnkBap_Click(object sender, EventArgs e)
+        //{
+        //    LinkButton lnkmemberid = (sender as LinkButton);
+        //    Label LBLmemberid = (sender as Label);
+        //   // int idd = Convert.ToInt32(LBLmemberid.Text);
+        //    int id = Convert.ToInt32(lnkmemberid.CommandArgument);
+        //    Session["ParishMember_id"] = id;
+        //    Session["Usertype_normal_bap_req"] = 3;
+        //    Response.Redirect("BaptismForm.aspx");
+        //}
 
         //protected void Member_Image_Click(object sender, ImageClickEventArgs e)
         //{

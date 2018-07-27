@@ -83,5 +83,30 @@ namespace Diocese
             GV_Non_MemberNotification.EditIndex = -1;
             Load_data();
         }
-    }
+
+        protected void GV_Non_MemberNotification_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label LBLRequestStatus = (Label)e.Row.FindControl("LBLRequestStatus");
+                if (LBLRequestStatus == null)
+                {
+                    return;
+                }
+                else if(LBLRequestStatus.Text=="2")
+                {
+                    LBLRequestStatus.Text = "Approved";
+                }
+                else if(LBLRequestStatus.Text == "3")
+                {
+                    LBLRequestStatus.Text = "Rejected";
+                }
+                else if(LBLRequestStatus.Text == "4")
+                    {
+                    LBLRequestStatus.Text = "Added";
+                }
+            }
+            }
+        }
 }

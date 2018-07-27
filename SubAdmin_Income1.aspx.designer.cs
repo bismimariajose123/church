@@ -10,16 +10,16 @@
 namespace Diocese {
     
     
-    public partial class SubAdimn_Income {
+    public partial class SubAdmin_Income1 {
         
         /// <summary>
-        /// Lblname control.
+        /// LBLsubadminname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lblname;
+        protected global::System.Web.UI.WebControls.Label LBLsubadminname;
         
         /// <summary>
         /// TBsearch control.
@@ -83,15 +83,6 @@ namespace Diocese {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnConvertPdf;
-        
-        /// <summary>
-        /// DDLPagesize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLPagesize;
         
         /// <summary>
         /// GVIncomeTable control.

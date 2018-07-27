@@ -10,51 +10,42 @@
 namespace Diocese {
     
     
-    public partial class AddParishPriest {
+    public partial class ViewDeathRecord {
         
         /// <summary>
-        /// TBPriestName control.
+        /// TBsearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBPriestName;
+        protected global::System.Web.UI.WebControls.TextBox TBsearch;
         
         /// <summary>
-        /// TBJYF control.
+        /// Imgbtnsearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBJYF;
+        protected global::System.Web.UI.WebControls.ImageButton Imgbtnsearch;
         
         /// <summary>
-        /// TBJYT control.
+        /// DDLPagesize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBJYT;
+        protected global::System.Web.UI.WebControls.DropDownList DDLPagesize;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// GVDeathTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
-        /// <summary>
-        /// BtnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAdd;
+        protected global::System.Web.UI.WebControls.GridView GVDeathTable;
     }
 }

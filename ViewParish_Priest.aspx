@@ -7,7 +7,8 @@
         <li>
             <label style="color:white">Search by column</label>
         </li>
-        <br /><i class="glyphicon glyphicon-search"></i>
+        <br />
+        <i class="glyphicon glyphicon-search"></i>
         <li>
             
             <asp:TextBox ID="TBSearch" runat="server" CssClass="form-control search" placeholder=" Search"></asp:TextBox>

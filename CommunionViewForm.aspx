@@ -8,9 +8,9 @@
                 <th><label class="control-label">Date of Communion</label>
                 <input type="date" id="dateofcommunion" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" required="" onchange="date_dis()">
                 <asp:hiddenfield ID="hid_docommunion" runat="server"></asp:hiddenfield></th>      
-              <th style="padding-left:2px;"><asp:ImageButton ID="Imgbtnsearch" runat="server" OnClick="Imgbtnsearch_Click"                                       ImageUrl="~/images/search.png" Width="20px"/></th>
+              <th style="padding-left:2px;"><asp:ImageButton ID="Imgbtnsearch" runat="server" OnClick="Imgbtnsearch_Click"  ImageUrl="~/images/search.png" Width="20px"/></th>
             </tr>
-            <tr><th><asp:TextBox ID="TBPriestname" runat="server"></asp:TextBox></th></tr>
+            <tr><th><asp:TextBox ID="TBPriestname" runat="server" Visible="false"></asp:TextBox></th></tr>
         </table>
     </div>
     <div style="margin-left:70%">

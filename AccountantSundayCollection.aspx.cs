@@ -30,7 +30,9 @@ namespace Diocese
             try {
                 objAccountantBO.Amount1 = Convert.ToInt64(TBAmount.Text.ToString());
                 string h =Dobhidden.Value;
-                DateTime dt= Convert.ToDateTime(h.Substring(0,9));
+              
+
+                DateTime dt = DateTime.Parse(h); 
                 objAccountantBO.SundayCollectionDate1 = dt;
                 objAccountantBO.SC_BalanceAmount1 = objAccountantBO.Amount1;
             }

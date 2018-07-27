@@ -23,7 +23,15 @@ namespace Diocese
 
             if (!IsPostBack)
             {
-               
+                if (Session["AdminName"] == null)
+                {
+                    Response.Redirect("Logout.aspx");
+                }
+                else
+                {
+                    LBLsubadminname.Text = Session["AdminName"].ToString();
+                }
+
                 Load_DDl_EventName();
             }
         }
@@ -181,6 +189,21 @@ namespace Diocese
             Response.End();
 
             
+        }
+
+        protected void GVIncomeTable_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label LblAmount = (Label)e.Row.FindControl("LblAmount");
+                Label LblDateExpense = (Label)e.Row.FindControl("LblDateExpense");
+                Label LblEventName = (Label)e.Row.FindControl("LblEventName");
+                Label LblReason = (Label)e.Row.FindControl("LblReason");
+                String doc = LblDateExpense.Text;
+                DateTime oDate = DateTime.Parse(doc);
+                LblDateExpense.Text = oDate.ToString("dd/MM/yyyy");
+            }
+
         }
     }
 }

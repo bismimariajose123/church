@@ -99,6 +99,7 @@ namespace Diocese
                
                 Label Status = (Label)e.Row.FindControl("LblStatus");
                 Label LblUsertype = (Label)e.Row.FindControl("Lbluser");
+                Label LblRequestDate = (Label)e.Row.FindControl("LblRequestDate");
                 if (Status == null)
                 {
                     return;
@@ -122,6 +123,10 @@ namespace Diocese
                     {
                         Status.Text = "Added";
                     }
+                    String doc = LblRequestDate.Text;
+                         DateTime oDate = DateTime.Parse(doc);
+                    LblRequestDate.Text = oDate.ToString("dd/MM/yyyy");
+
                 }
             }
         }

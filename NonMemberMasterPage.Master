@@ -90,9 +90,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										 <li id="menu-academico1" ><a href="#"><i class="fa fa-tachometer"></i> <span> REQUESTS</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
                                            <li id="menu-academico-avaliacoes1" ><a href="BaptismForm.aspx">BAPTISM</a></li>
-										   <li id="menu-academico-avaliacoes2" ><a href="MarriageDetails_Fill.aspx">MARRIAGE</a></li>
+										  <!-- <li id="menu-academico-avaliacoes2" ><a href="MarriageDetails_Fill.aspx">MARRIAGE</a></li>
                                                <li id="menu-academico-avaliacoes3" ><a href="CommunionForm.aspx">COMMUNION</a></li>
-                                                <li id="menu-academico-avaliacoes" ><a href="DeathForm.aspx">FUNERAL</a></li>
+                                                <li id="menu-academico-avaliacoes" ><a href="DeathForm.aspx">FUNERAL</a></li>-->
 											 </ul>
 										</li>
 									<li id="menu-academico" ><a href="NonMember_Notification.aspx"><i class="fa fa-tachometer"></i> <span>NOTIFICATION</span><div class="clearfix"></div></a></li>

@@ -1,13 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubAdminMaster.Master" AutoEventWireup="true" CodeBehind="SubAdminExpense.aspx.cs" Inherits="Diocese.SubAdminExpense" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+     <div style="margin-top:10px;"><b> WELCOME <asp:Label ID="LBLsubadminname" runat="server" Text="Label" ></asp:Label></b></div>
+ 
       <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header"> WELCOME <asp:Label ID="Lblname" runat="server" Text="Label"></asp:Label></h1>
-                    </div>
+                   
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -73,36 +72,40 @@
 
                     <asp:Gridview runat="server" ID="GVIncomeTable" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" 
                         BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="356px" AutoGenerateColumns="False"
-                         DataKeyNames="ExpenseId"   
+                         DataKeyNames="ExpenseId"    OnRowDataBound="GVIncomeTable_RowDataBound"
                       AllowPaging="True" OnPageIndexChanging="GVIncomeTable_PageIndexChanging">
                         <AlternatingRowStyle BackColor="#CCCCCC" />
                                                        
                                
                         <Columns>
-                             <asp:BoundField HeaderText="Amount" SortExpression="Expense_Amount" DataField="Expense_Amount">
-                               
-                               <%-- <ItemTemplate>
+                            <asp:TemplateField HeaderText="Amount" SortExpression="Expense_Amount">
+                                  <ItemTemplate>
                                     <asp:Label ID="LblAmount" runat="server" Text='<%# Bind("Expense_Amount") %>'></asp:Label>
-                                </ItemTemplate>--%>
-                            </asp:BoundField>
-                             <asp:BoundField HeaderText="Date" SortExpression="Exp_date" DataField="Exp_date">
-                               
-                                <%--<ItemTemplate>
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Date" SortExpression="Exp_date">
+                                   <ItemTemplate>
                                     <asp:Label ID="LblDateExpense" runat="server" Text='<%# Bind("Exp_date") %>'></asp:Label>
-                                </ItemTemplate>--%>
-                            </asp:BoundField>
-                            <asp:BoundField HeaderText="Event Name" SortExpression="EventName" DataField="EventName">
-                               
-                               <%-- <ItemTemplate>
+                                </ItemTemplate>
+                                  </asp:TemplateField>
+                         
+                             <asp:TemplateField HeaderText="Event Name" SortExpression="EventName">
+                                   
+                                <ItemTemplate>
                                     <asp:Label ID="LblEventName" runat="server" Text='<%# Bind("EventName") %>'></asp:Label>
-                                </ItemTemplate>--%>
-                            </asp:BoundField>
-                          <asp:BoundField HeaderText="Reason" SortExpression="EventName" DataField="Reason">
-                               
-                               <%-- <ItemTemplate>
+                                </ItemTemplate>
+
+                             </asp:TemplateField>
+                           
+                              <asp:TemplateField  HeaderText="Reason" SortExpression="EventName">
+                                       
+                                <ItemTemplate>
                                     <asp:Label ID="LblReason" runat="server" Text='<%# Bind("Reason") %>'></asp:Label>
-                                </ItemTemplate>--%>
-                            </asp:BoundField>
+                                </ItemTemplate>
+                              </asp:TemplateField>
+                        
+                            
                         </Columns>
                                                        
                                

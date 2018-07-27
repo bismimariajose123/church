@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterFirstPage.Master" AutoEventWireup="true" CodeBehind="LoginForm.aspx.cs" Inherits="Diocese.LoginForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    
     <div class="loginform" style="margin-left:30%;">
         
   <div class="logincontainer">

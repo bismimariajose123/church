@@ -40,11 +40,15 @@ namespace Diocese.Project_Code.SubAdmin
             return result;
         }
 
+      
+
         public DataTable Get_Search_WardDetails(WardBO objWardBO,string searchstr)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Sub_WardTable where WardName like '%"+searchstr+ "%' and Parishid=@id", con);
+            String query = "select w.Ward_ID, w.WardName,f.Family_ID,count(m.Member_ID) as peoplecount from Sub_WardTable w ,Sub_Create_FamilyLoginTable f,MemberDetailsTable m  where f.Ward_id=w.Ward_ID and m.Family_id=f.Family_ID and m.Parish_id=@id and WardName like '%" + searchstr + "%' group by  w.Ward_ID, w.WardName,f.Family_ID";
+
+            SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@id", objWardBO.Parish_id);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -81,7 +85,8 @@ namespace Diocese.Project_Code.SubAdmin
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Sub_WardTable where Parishid=@id", con);
+            String query = "select w.Ward_ID, w.WardName,f.Family_ID,count(m.Member_ID) as peoplecount from Sub_WardTable w ,Sub_Create_FamilyLoginTable f,MemberDetailsTable m  where f.Ward_id=w.Ward_ID and m.Family_id=f.Family_ID and m.Parish_id=@id group by  w.Ward_ID, w.WardName,f.Family_ID";
+            SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@id",objAddWardBO.Parish_id);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

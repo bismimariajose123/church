@@ -44,7 +44,7 @@
 
      <table>
      <asp:Panel ID="PanelImage" runat="server">
-            <asp:ListView ID="ListView1" runat="server" OnItemDataBound="ListView1_ItemDataBound"  DataKeyNames="Member_ID">
+            <asp:ListView ID="ListView1" runat="server" OnItemDataBound="ListView1_ItemDataBound" DataKeyNames="Member_ID">
                 <ItemTemplate>
                    
                         <tr>
@@ -75,12 +75,12 @@
                                     <asp:HiddenField ID="LBLMar" runat="server" value='<%#Eval("Marriageid") %>'></asp:HiddenField>
                                     <asp:HiddenField ID="LBLMatSts" runat="server" value='<%#Eval("MarriesStatus") %>'></asp:HiddenField>
                                     <asp:HiddenField ID="LBLRegsts" runat="server" value='<%#Eval("RegisteredStatus") %>'></asp:HiddenField>
-
+                                  
                                 
                               
                               <li>
-                                    <asp:LinkButton ID="LnkBap" runat="server" Visible="false"  CommandArgument='<%#Eval("Member_ID")%>' CommandName="Baptism" OnCommand="LnkBap_Command" >Baptism Form</asp:LinkButton>
-                                    
+                                    <asp:LinkButton ID="LnkBap" runat="server" Visible="false"  CommandArgument='<%#Eval("Member_ID")%>' CommandName="Baptism" >Baptism Form</asp:LinkButton>
+                                    <asp:Label ID="LBLmemberid" runat="server" value= '<%#Eval("Member_ID") %>' Visible="false"></asp:Label>
                                 </li>
                                 <li><asp:LinkButton ID="LnkMarriage" runat="server" Visible="false"  CommandArgument='<%#Eval("Member_ID")%>' CommandName="Marriage" OnCommand="LnkMarriage_Command">Marriage Form</asp:LinkButton></li>
                               

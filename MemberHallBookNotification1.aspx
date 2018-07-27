@@ -6,9 +6,9 @@
                              <div style="margin-top:5px">
                        <table>
                         <tr>
-                         <th style="padding-right:100px">
+                      <%--   <th style="padding-right:100px">
                         <b style="color:cadetblue"> Select Event </b>
-                         </th>
+                         </th>--%>
                          <th  style="padding-right:70px"> <b style="color:cadetblue"> Request Date</b> </th> 
                         
                          
